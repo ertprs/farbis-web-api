@@ -1,0 +1,36 @@
+{
+  "name": "sireis-web",
+  "version": "1.0.0",
+  "description": "App academy.",
+  "engines": {
+    "node": "6.9.2",
+    "npm": "3.10.9"
+  },
+  "main": "node server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcarlosverase/AppAcademia-MEAN.git"
+  },
+  "author": "@jcarlosverase",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcarlosverase/AppAcademia-MEAN/issues"
+  },
+  "homepage": "https://github.com/jcarlosverase/AppAcademia-MEAN#readme",
+  "dependencies": {
+    "angular": "^1.6.0",
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "express-fileupload": "^0.1.4",
+    "mysql": "^2.13.0",
+    "node-gcm": "^0.14.6",
+    "phantom": "^4.0.5",
+    "socket.io": "^1.7.2"
+  }
+}

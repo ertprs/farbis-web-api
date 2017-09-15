@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="alumnos">
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>SIREIS ::.. Programaciones</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" />
+        <script src="/node_modules/angular/angular.js"></script>
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <div class="container" ng-controller="alumnosCtr as vm">
+            <header>
+                <h1>{{ vm.Titulo }}</h1>
+            </header>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Email</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <input type="text" class="form-control" ng-model="vm.alumno.nombres" placeholder="Nombres"/>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" ng-model="vm.alumno.apellidos" placeholder="Apellidos"/>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" ng-model="vm.alumno.email" placeholder="Email"/>
+                        </td>
+                        <td>
+                            <input type="button" class="btn btn-primary" value="Agregar" ng-disabled="vm.alumno._id" ng-click="vm.addAlumno()"/>
+                            <input type="button" class="btn btn-success" value="Actualizar" ng-disabled="!vm.alumno._id" ng-click="vm.updateAlumno(vm.alumno._id)"/>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="alumno in vm.ListaAlumnosInfo">
+                        <td>{{ alumno.nombres }}</td>
+                        <td>{{ alumno.apellidos }}</td>
+                        <td>{{ alumno.email }}</td>
+                        <td>
+                            <input type="button" class="btn btn-warning" value="Editar" ng-click="vm.editAlumno(alumno._id)"/>
+                            <input type="button" class="btn btn-danger" value="Eliminar" ng-click="vm.deleteAlumno(alumno._id)"/>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,97 @@
+var mysql = require('mysql');
+var views = require('.././routes/views');
+var functions = require('.././util/functions');
+var observacion_model = require('.././models/observacion_model');
+
+module.exports = {
+
+    /**
+     * REST
+     */
+    post_lista_por_programacion : function(req, res, next)
+    {
+        functions.print_console('rest method observacion: post_lista_por_programacion');
+
+        var id_programacion = req.body.id_programacion;
+
+        observacion_model.lista_por_operario(id_programacion, function(msg, data){
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : msg, 
+                'observaciones' : data
+            };
+
+            res.json(response);
+        });
+    },
+
+    post_registro : function(req, res, next)
+    {
+        functions.print_console('rest method observacion: post_registro');
+
+        var id_programacion = req.body.id_programacion;
+        var observacion = req.body.observacion;
+        var origen = req.body.origen;
+        var ruta_foto = req.body.ruta_foto;
+        var ruta_audio = req.body.ruta_audio;
+        var id_usuario = req.body.id_usuario;
+
+        observacion_model.registro(id_programacion, observacion, origen, 
+                        ruta_foto, ruta_audio, id_usuario, function(msg, data, item, fecha){
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : msg,
+                'item' : item,
+                'fecha_hora' : fecha
+            };
+
+            res.json(response);
+        });
+    },
+
+    post_actualiza : function(req, res, next)
+    {
+        functions.print_console('rest method observacion: post_actualiza');
+
+        var id_programacion = req.body.id_programacion;
+        var item = req.body.item;
+        var observacion = req.body.observacion;
+        var ruta_foto = req.body.ruta_foto;
+        var ruta_audio = req.body.ruta_audio;
+        var id_usuario = req.body.id_usuario;
+
+        observacion_model.actualiza(id_programacion, item, observacion,  
+                        ruta_foto, ruta_audio, id_usuario, function(msg, data){
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : msg
+            };
+
+            res.json(response);
+        });
+    },
+
+    post_elimina : function(req, res, next)
+    {
+        functions.print_console('rest method observacion: post_elimina');
+
+        var id_programacion = req.body.id_programacion;
+        var item = req.body.item;
+        var id_usuario = req.body.id_usuario;
+
+        observacion_model.elimina(id_programacion, item, id_usuario, 
+                                            function(msg, data){
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : msg
+            };
+
+            res.json(response);
+        });
+    }
+    
+};
