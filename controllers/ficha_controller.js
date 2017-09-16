@@ -14,6 +14,7 @@ module.exports = {
         functions.print_console('rest method ficha: post_registro');
 
         var id_programacion = req.body.id_programacion;
+        var numero = req.body.numero;
         var fecha_llegada = req.body.fecha_llegada;
         var foto_llegada = req.body.foto_llegada;
         var fecha_inicio = req.body.fecha_inicio; 
@@ -59,7 +60,7 @@ module.exports = {
             fecha_salida = functions.string_todatetime(fecha_salida, 'dd/MM/yyyy', '/');
         }
 
-        ficha_model.registro(id_programacion, fecha_llegada, foto_llegada,
+        ficha_model.registro(id_programacion, numero, fecha_llegada, foto_llegada,
                             fecha_inicio, foto_inicio, fecha_fin, fecha_salida, diagnostico_codigo,
                             diagnostico_nombre, diagnostico_foto, condicion_sanitaria_codigo, 
                             condicion_sanitaria_nombre, trabajo_realizado_codigo, trabajo_realizado_nombre,
