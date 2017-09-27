@@ -98,4 +98,48 @@ module.exports = {
         cnx.end(function () {});
     },
 
+    elimina : function(id_programacion, tipo, item, id_usuario, callback) {
+
+        var cnx = connection.get_connection();
+
+        cnx.query('CALL ssp_ope_proceso_elimina(?,?,?,?)', [ id_programacion, tipo, item, id_usuario ], 
+                                                                    function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                msg = functions.get_msg(rows);
+            }
+
+            callback(msg, data);
+        });
+
+        cnx.end(function () {});
+    },
+
+    lista_pendientes : function(id_programacion, callback) {
+
+        var cnx = connection.get_connection();
+
+        cnx.query('CALL ssp_ope_proceso_lista_pendientes(?)', [ id_programacion ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                data = functions.get_datatable(rows);
+                msg = functions.get_msg(rows);
+            }
+            
+            callback(msg, data);
+        });
+
+        cnx.end(function () {});
+    },
+
 };

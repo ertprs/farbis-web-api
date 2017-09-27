@@ -184,4 +184,70 @@ module.exports = {
 
         cnx.end(function () {});
     },
+
+    obtiene_personal : function(id_programacion, callback) {
+
+        var cnx = connection.get_connection();
+
+        cnx.query('CALL ssp_ope_programacion_obtiene_personal(?)', [ id_programacion ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                data = functions.get_datarow(rows);
+                msg = functions.get_msg(rows);
+            }
+            
+            callback(msg, data);
+        });
+
+        cnx.end(function () {});
+    },
+
+    lista_sin_descargar : function(callback) {
+
+        var cnx = connection.get_connection();
+
+        cnx.query('CALL ssp_ope_programacion_lista_sin_descargar()', [  ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                data = functions.get_datatable(rows);
+                msg = functions.get_msg(rows);
+            }
+
+            callback(msg, data);
+        });
+
+        cnx.end(function () {});
+    },
+
+    actualiza_descargado : function(id_programacion, callback) {
+
+        var cnx = connection.get_connection();
+
+        cnx.query('CALL ssp_ope_programacion_actualiza_descargado(?)', [ id_programacion ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                msg = functions.get_msg(rows);
+            }
+
+            callback(msg, data);
+        });
+
+        cnx.end(function () {});
+    },
+
 };

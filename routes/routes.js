@@ -44,6 +44,9 @@ router.post(sub_path + 'rws_programacion_actualiza_operario', controllers.progra
 router.post(sub_path + 'rws_programacion_elimina_historial', controllers.programacion_controller.post_elimina_historial);
 router.post(sub_path + 'rws_programacion_notifica_cambio_estado', controllers.programacion_controller.post_notifica_cambio_estado); //F.
 router.post(sub_path + 'rws_programacion_envia_mensaje_whatsapp', controllers.programacion_controller.post_envia_mensaje_whatsapp); //F.
+router.post(sub_path + 'rws_programacion_obtiene_personal', controllers.programacion_controller.post_obtiene_personal);
+router.post(sub_path + 'rws_programacion_lista_sin_descargar', controllers.programacion_controller.post_lista_sin_descargar);
+router.post(sub_path + 'rws_programacion_actualiza_descargado', controllers.programacion_controller.post_actualiza_descargado);
 
 router.post(sub_path + 'rws_observacion_lista_por_programacion', controllers.observacion_controller.post_lista_por_programacion);
 router.post(sub_path + 'rws_observacion_registro', controllers.observacion_controller.post_registro);
@@ -54,6 +57,8 @@ router.post(sub_path + 'rws_proceso_lista_por_programacion', controllers.proceso
 router.post(sub_path + 'rws_proceso_registro', controllers.proceso_controller.post_registro);
 router.post(sub_path + 'rws_proceso_actualiza', controllers.proceso_controller.post_actualiza);
 router.post(sub_path + 'rws_proceso_confirma', controllers.proceso_controller.post_confirma);
+router.post(sub_path + 'rws_proceso_elimina', controllers.proceso_controller.post_elimina);
+router.post(sub_path + 'rws_proceso_lista_pendientes', controllers.proceso_controller.post_lista_pendientes);
 
 router.post(sub_path + 'rws_ficha_registro', controllers.ficha_controller.post_registro);
 router.post(sub_path + 'rws_ficha_enviar_por_email', controllers.ficha_controller.post_enviar_por_email); //F.

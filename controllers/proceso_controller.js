@@ -120,6 +120,46 @@ module.exports = {
 
             res.json(response);
         });
-    }
+    },
 
+    post_elimina : function(req, res, next)
+    {
+        functions.print_console('rest method proceso: post_elimina');
+
+        var id_programacion = req.body.id_programacion;
+        var tipo = req.body.tipo;
+        var item = req.body.item;
+        var id_usuario = req.body.id_usuario;
+
+        proceso_model.elimina(id_programacion, tipo, item, id_usuario, 
+                                            function(msg, data){
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : msg
+            };
+
+            res.json(response);
+        });
+    },
+
+    post_lista_pendientes : function(req, res, next)
+    {
+        functions.print_console('rest method proceso: post_lista_pendientes');
+
+        var id_programacion = req.body.id_programacion;
+
+        proceso_model.lista_pendientes(id_programacion, function(msg, data){
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : msg, 
+                'procesos' : data
+            };
+
+            res.json(response);
+        });
+    },
+
+    
 };

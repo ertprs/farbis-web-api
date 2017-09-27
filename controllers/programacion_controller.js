@@ -321,4 +321,56 @@ module.exports = {
 
         res.json(response);
     },
+
+    post_obtiene_personal : function(req, res, next)
+    {
+        functions.print_console('rest method: post_obtiene_personal');
+
+        var id_programacion = req.body.id_programacion;
+
+        programacion_model.obtiene_personal(id_programacion, function(msg, data){
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : msg, 
+                'programacion' : data
+            };
+
+            res.json(response);
+        });
+    },
+
+    post_lista_sin_descargar : function(req, res, next)
+    {
+        functions.print_console('rest method programacion: post_lista_sin_descargar');
+
+        programacion_model.lista_sin_descargar(function(msg, data){
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : msg, 
+                'programaciones' : data
+            };
+
+            res.json(response);
+        });
+    },
+
+    post_actualiza_descargado : function(req, res, next)
+    {
+        functions.print_console('rest method programacion: post_actualiza_descargado');
+
+        var id_programacion = req.body.id_programacion;
+        
+        programacion_model.actualiza_descargado(id_programacion, function(msg, data){
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : msg
+            };
+
+            res.json(response);
+        });
+    },
+
 };
