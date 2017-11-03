@@ -1,0 +1,23 @@
+.text-bold {
+    font-weight: bold;
+}
+
+.input-md {
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 2px;
+}
+
+.bgm-darkgray {
+  background-color: #4f4f4f !important;
+}
+
+.c-darkgray {
+  color: #4f4f4f !important;
+}
+
+.borderless tr, .borderless td, .borderless th {
+    border: none !important;
+}

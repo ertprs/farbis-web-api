@@ -98,6 +98,11 @@ class functions {
             //msg = rows[0];
         }
 
+        if (output == '')
+        {
+            output = "OK";
+        }
+
         return output;
     }
 

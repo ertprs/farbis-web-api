@@ -49,8 +49,6 @@ module.exports = {
 
     logout : function(req, res, next)
     {
-        res.render('account/index', { 
-            titulo: "Iniciar sesión"
-        });
+        res.redirect('login');
     }
 };

@@ -20,19 +20,17 @@
         <!-- Login -->
         <div class="lc-block toggled" id="l-login">
 
-			<img class="lcb-user" src="img/profile-pics/profile-pic-2.jpg" alt="">
-			<br><br>
             <div class="input-group m-b-20">
                 <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
                 <div class="fg-line">
-                    <input type="text" class="form-control" placeholder="Usuario">
+                    <input id="inp-usuario" type="text" class="form-control" placeholder="Usuario">
                 </div>
             </div>
             
             <div class="input-group m-b-20">
                 <span class="input-group-addon"><i class="zmdi zmdi-male"></i></span>
                 <div class="fg-line">
-                    <input type="password" class="form-control" placeholder="Contraseña">
+                    <input id="inp-contrasenia" type="password" class="form-control" placeholder="Contraseña">
                 </div>
             </div>
             
@@ -46,12 +44,10 @@
                 </label>
             </div>
             
-            <a href="programacion/index" class="btn btn-login btn-danger btn-float"><i class="zmdi zmdi-arrow-forward"></i></a>
+            <div class="text-right">
+                <a id="lnk-ingresar" href="#" class="btn bgm-amber c-blue">INGRESAR</a>
+            </div>
             
-            <ul class="login-navigation">
-                <li data-block="#l-register" class="bgm-red">Registrarme</li>
-                <li data-block="#l-forget-password" class="bgm-orange">Olvidé mi contraseña</li>
-            </ul>
         </div>
         
         <!-- Register -->
@@ -169,6 +165,7 @@
         <![endif]-->
         
         <script src="js/functions.js"></script>
+        <script src="js/views/account/index.js"></script>
         
     </body>
 

@@ -373,4 +373,21 @@ module.exports = {
         });
     },
 
+    /**
+     * WEB
+     */
+    index : function(req, res, next)
+    {
+        var id_operario = req.body.id_operario;
+        functions.print_console("id operario: " + id_operario);
+        id_operario = 1;
+        programacion_model.lista_por_operario(id_operario, function(msg, data){
+
+            res.render('programacion/index', { 
+                titulo: "Programaciones",
+                programaciones: data
+             });    
+        });
+    },
+
 };

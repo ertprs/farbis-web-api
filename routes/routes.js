@@ -14,6 +14,8 @@ router.get('/', function(req, res, next)
 router.get('/login', controllers.account_controller.login);
 router.get('/logout', controllers.account_controller.logout);
 
+router.get('/programacion/index', controllers.programacion_controller.index);
+
 /**
  * API REST
  */
@@ -22,6 +24,8 @@ var sub_path = "/sireis/api/v1/";
 
 // SEGAM - Servidor Web
 router.post(sub_path + 'rws_usuario_registro', controllers.usuario_controller.post_registro);
+router.post(sub_path + 'rws_usuario_actualiza', controllers.usuario_controller.post_actualiza);
+router.post(sub_path + 'rws_usuario_elimina', controllers.usuario_controller.post_elimina);
 router.post(sub_path + 'rws_usuario_actualiza_token', controllers.usuario_controller.post_actualiza_token);
 //router.post(sub_path + 'rws_programacion_registro', controllers.programacion_controller.post_registro);
 //router.post(sub_path + 'rws_programacion_actualiza_operario', controllers.programacion_controller.post_actualiza_operario);
@@ -63,6 +67,11 @@ router.post(sub_path + 'rws_proceso_lista_pendientes', controllers.proceso_contr
 router.post(sub_path + 'rws_ficha_registro', controllers.ficha_controller.post_registro);
 router.post(sub_path + 'rws_ficha_enviar_por_email', controllers.ficha_controller.post_enviar_por_email); //F.
 router.post(sub_path + 'rws_ficha_lista_por_programacion', controllers.ficha_controller.post_lista_por_programacion);
+
+
+// Servidor Web - App Web
+router.post(sub_path + 'rws_programador_valida', controllers.usuario_controller.post_validar_programador);
+
 
 var fs = require('fs');
 var path = require('path');

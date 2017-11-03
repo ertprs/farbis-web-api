@@ -1,89 +1,212 @@
 <%- include('../masterpage/main-header') -%>
 
-	<div class="container">
-
-		<div class="block-header">
-			<h2>
-				<%= titulo %>
-			</h2>
-
-			<ul class="actions">
-				<li>
-					<a href="#">
-						<i class="zmdi zmdi-trending-up"></i>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="zmdi zmdi-check-all"></i>
-					</a>
-				</li>
-				<li class="dropdown">
-					<a href="#" data-toggle="dropdown">
-						<i class="zmdi zmdi-more-vert"></i>
-					</a>
-
-					<ul class="dropdown-menu dropdown-menu-right">
-						<li>
-							<a href="#">Refresh</a>
-						</li>
-						<li>
-							<a href="#">Manage Widgets</a>
-						</li>
-						<li>
-							<a href="#">Widgets Settings</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-
-		</div>
-
+	<div class="container" ng-controller="ProgramacionController" data-ng-init="init()">
 
 		<div class="card">
 
-			<div class="card-body card-padding">
+			<div class="card-header">
+
 				<div class="row">
 
-					<div class="col-sm-3 m-b-20">
-
-						<p class="c-black f-500 m-b-15">Fecha:</p>
-
-						<div class="input-group form-group">
-                        	<span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
-                            <div class="dtp-container fg-line">
-								<input type='text' class="form-control date-picker" placeholder="dd/mm/aaaa">
-                            </div>
-                        </div>
-
+					<div class="col-sm-6">
+						<h4>Programaciones</h4>
 					</div>
-					
-					<div class="col-sm-3 m-b-20">
-						
-						<p class="c-black f-500 m-b-15">Operario:</p>
 
-						<div class="input-group form-group">
-                        	<span class="input-group-addon"><i class="zmdi zmdi-accounts"></i></span>
-                            <div class="dtp-container fg-line">
-								<select class="selectpicker" data-live-search="true">
-									<option>Todos</option>
-									<option>Nombre de operario 1</option>
-									<option>Nombre de operario 2</option>
-									<option>Nombre de operario 3</option>
-									<option>Nombre de operario 4</option>
-									<option>Nombre de operario 5</option>							
-								</select>
-							</div>
-                        </div>
-
-
+					<div class="col-sm-6">
+						<form class="row" role="form" action="#">
+                                <div class="col-sm-4">
+									<div class="input-group form-group fg-line">
+										<div class="dtp-container fg-line">
+											<input type='text' class="form-control date-picker" placeholder="dd/mm/aaaa">
+										</div>
+										<span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
+									</div>
+                                </div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<div class="dtp-container fg-line">
+											<select class="selectpicker" data-live-search="true">
+												<option>Buscar por operario</option>
+												<option>Nombre de operario 1</option>
+												<option>Nombre de operario 2</option>
+												<option>Nombre de operario 3</option>
+												<option>Nombre de operario 4</option>
+												<option>Nombre de operario 5</option>							
+											</select>
+										</div>
+									</div>
+								</div>
+								
+                                <div class="col-sm-2">
+                                    <button class="btn btn-primary btn-sm m-t-5 waves-effect">BUSCAR</button>
+								</div>
+								
+                            </form>
 					</div>
 
 				</div>
 			</div>
-		</div>
 
+			<div class="card-body table-responsive">
+				<table id="tab-datos" class="table table-hover table-condensed">
+					<thead>
+						<tr>
+							<th style="width: 10px;">#</th>
+							<th style="width: 80px;">HORA</th>
+							<th>SERVICIO</th>
+							<th>OPERARIO</th>
+							<th>CLIENTE</th>
+							<th style="width: 100px;">ESTADO</th>
+							<th style="width: 40px;">FICHA</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-id="PROG001">
+							<td>1</td>
+							<td class="text-primary">02:40 PM</td>
+							<td>Christopher</td>
+							<td>@makinton</td>
+							<td>Ducky</td>
+							<td>No iniciado<br>
+								<div style="margin-top: 3px; display: inline-block;">
+									<div class="bgm-amber" style="width: 35px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+									<div class="bgm-red" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+									<div class="bgm-blue" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+								</div>
+							</td>
+							<td><a href="#" class="btn btn-primary waves-effect">VER</a></td>
+						</tr>
+						<tr data-id="PROG002">
+							<td>2</td>
+							<td class="text-primary">02:40 PM</td>
+							<td>Hollaway</td>
+							<td>@hollway</td>
+							<td>Cheese</td>
+							<td>No iniciado<br>
+								<div style="margin-top: 3px; display: inline-block;">
+									<div class="bgm-amber" style="width: 35px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+									<div class="bgm-red" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+									<div class="bgm-blue" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+								</div>
+							</td>
+							<td><a href="#" class="btn btn-primary waves-effect">VER</a></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td class="text-primary">02:40 PM</td>
+							<td>Johnston</td>
+							<td>@sebastian</td>
+							<td>Jaycee</td>
+							<td>No iniciado<br>
+								<div style="margin-top: 3px; display: inline-block;">
+									<div class="bgm-amber" style="width: 35px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+									<div class="bgm-red" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+									<div class="bgm-blue" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+								</div>
+							</td>
+							<td><a href="#" class="btn btn-primary waves-effect">VER</a></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td class="text-primary">02:40 PM</td>
+							<td>Christin</td>
+							<td>@mitchell4u</td>
+							<td>AdskiDeAnus</td>
+							<td>No iniciado<br>
+								<div style="margin-top: 3px; display: inline-block;">
+									<div class="bgm-amber" style="width: 35px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+									<div class="bgm-red" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+									<div class="bgm-blue" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+								</div>
+							</td>
+							<td><a href="#" class="btn btn-primary">VER</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 
 	</div>
 
+	<div class="modal fade" id="mod-info" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Programación - Detalle</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-2">
+							<button class="btn btn-primary btn-icon waves-circle text-bold">1</button>
+						</div>
+						<div class="col-sm-5">
+							<div class="form-group fg-line">
+								<label class="c-blue text-bold">CLIENTE</label><br>
+								<label class="form-control input-md text-bold c-darkgray">GRAÑA Y MONTERO</label>
+							</div>
+						</div>
+						<div class="col-sm-5">
+							<div class="form-group fg-line">
+								<label class="c-blue text-bold">SERVICIO</label><br>
+								<label class="form-control input-md text-bold c-darkgray">DESRATIZACIÓN</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-3">
+							<div class="form-group fg-line">
+								<label class="c-blue text-bold">FECHA</label><br>
+								<label class="form-control input-md text-bold c-darkgray text-center">01/10/2017</label>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="form-group fg-line">
+								<label class="c-blue text-bold">HORA LLEGADA</label><br>
+								<label class="form-control input-md text-bold c-darkgray text-center">02:40 PM</label>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="form-group fg-line">
+								<label class="c-blue text-bold">HORA INICIO</label><br>
+								<label class="form-control input-md text-bold c-darkgray text-center">02:40 PM</label>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="form-group fg-line">
+								<label class="c-blue text-bold">HORA TERMINO</label><br>
+								<label class="form-control input-md text-bold c-darkgray text-center">02:40 PM</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-group fg-line">
+								<label class="c-blue text-bold">OPERARIOS</label><br>
+								<table id="tab-operario" class="table table-condensed">
+									<tbody>
+										<tr class="borderless">
+											<td>AdskiDeAnus</td>
+										</tr>
+										<tr class="borderless">
+											<td>AdskiDeAnus</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">CERRAR</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<%- include('../masterpage/main-scripts') -%>
+
+	<script src="/js/views/programacion/index.js"></script>	
+	
 	<%- include('../masterpage/main-footer') -%>
+
+	
