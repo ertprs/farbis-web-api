@@ -15,6 +15,7 @@ module.exports = {
 
         var id_usuario = req.body.id_usuario;
         var nombres = req.body.nombres;
+        var apellidos = req.body.apellidos;
         var usuario = req.body.usuario;
         var contrasenia = req.body.contrasenia;
         var tipo_usuario = req.body.tipo_usuario;
@@ -22,7 +23,7 @@ module.exports = {
         var id_area = req.body.id_area;
         var usuario_registro = req.body.usuario_registro;
 
-        usuario_model.registro(id_usuario, nombres, usuario, contrasenia, 
+        usuario_model.registro(id_usuario, nombres, apellidos, usuario, contrasenia, 
                                 tipo_usuario, color, id_area, usuario_registro, function(msg, data){
 
             var response = {

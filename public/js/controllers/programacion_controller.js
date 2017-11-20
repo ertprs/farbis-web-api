@@ -1,48 +1,41 @@
-/*
-$(document).ready(function(){
-
-    (function () {
-
-            
-
-    })();
-
-    $('#tab-datos tbody tr td').on('click',function(){
-        
-        //$("#txtfname").val($(this).closest('tr').children()[0].textContent);
-        //$("#txtlname").val($(this).closest('tr').children()[1].textContent);
-
-        var id = $(this).closest('tr').data('id');
-        $('#mod-info').modal('show');
-    });
-});
-*/
-
-(function () {
-    //Create a Module 
-    //var app = angular.module('webApp', ['ngRoute']);  // Will use ['ng-Route'] when we will implement routing
 
     //Create a Controller
-    angular.module('webApp').controller('ProgramacionController', function ($scope, $http) {  // here $scope is used for share data between view and controller
+    angular.module('webApp', [])
+    .controller('ProgramacionController', function ($scope, $http) {  // here $scope is used for share data between view and controller
 
         $scope.init = function () {
+            console.log('init');
             cargarDatos();
         };
 
         $scope.accionNuevo = function () {
             $('#inp-id').val('');
-            $('#inp-nombre').val('');
-            $("#inp-nombre").parent(".fg-line").removeClass("fg-toggled");
-            $("#mod-titulo").text('Nuevo Piso');
+            $('#inp-id_cliente').val('');
+            $('#inp-nombre_cliente').val('');
+            $('#inp-hora').val('');
+            $('#inp-nro_personas').val('');
+            $('#inp-comentarios').val('');
+            $("#inp-nombre_cliente").parent(".fg-line").removeClass("fg-toggled");
+            $("#inp-hora").parent(".fg-line").removeClass("fg-toggled");
+            $("#inp-nro_personas").parent(".fg-line").removeClass("fg-toggled");
+            $("#inp-comentarios").parent(".fg-line").removeClass("fg-toggled");
+            $("#mod-titulo").text('Nueva Lista de Espera');
             $('#mod-registro').modal('show');
         };
 
         $scope.accionEditar = function (item) {
-            $('#inp-id').val(item.id_piso);
-            $('#inp-nombre').val(item.nombre);
-            $("#inp-nombre").parent(".fg-line").addClass("fg-toggled");
+            $('#inp-id').val(item.id_reserva);
+            $('#inp-id_cliente').val(item.id_cliente);
+            $('#inp-nombre_cliente').val(item.nombre_cliente);
+            $('#inp-hora').val(item.hora);
+            $('#inp-nro_personas').val(item.nro_personas);
+            $('#inp-comentarios').val(item.comentarios);
+            $("#inp-nombre_cliente").parent(".fg-line").addClass("fg-toggled");
+            $("#inp-hora").parent(".fg-line").addClass("fg-toggled");
+            $("#inp-nro_personas").parent(".fg-line").addClass("fg-toggled");
+            $("#inp-comentarios").parent(".fg-line").addClass("fg-toggled");
             $("#inp-nombre").focus();
-            $("#mod-titulo").text('Editar Piso');
+            $("#mod-titulo").text('Editar Lista de Espera');
             $('#mod-registro').modal('show');
         };
 
@@ -52,10 +45,10 @@ $(document).ready(function(){
                 id_sesion: $('#inp-ses_id').val(),
                 id_afiliado: $('#inp-ses_afi').val(),
                 id_restaurante: $('#inp-ses_rest').val(),
-                id_piso: item.id_piso
+                id_reserva: item.id_reserva
             });
 
-            $http.post(window.appConfig.api_url + 'rws_piso_eliminar', data, window.appConfig.headers)
+            $http.post(window.appConfig.api_url + 'rws_reserva_eliminar', data, window.appConfig.headers)
             .then(function successCallback(response) {
                 if (response.data.ws_code == "0" && response.data.mensaje == "OK") {
                     cargarDatos();
@@ -73,10 +66,10 @@ $(document).ready(function(){
                 id_restaurante: $('#inp-ses_rest').val()
             });
 
-            $http.post(window.appConfig.api_url + 'rws_piso_listar_por_restaurante', data, window.appConfig.headers)
+            $http.post(window.appConfig.api_url + 'rws_reserva_listar_para_hoy', data, window.appConfig.headers)
             .then(function successCallback(response) {
                 if (response.data.ws_code == "0" && response.data.mensaje == "OK") {
-                    $scope.dataList = angular.copy(response.data.pisos);
+                    $scope.dataList = angular.copy(response.data.reservas);
                 }
             }, function errorCallback(response) {
             });
@@ -116,4 +109,3 @@ $(document).ready(function(){
         };
 
     });
-})();

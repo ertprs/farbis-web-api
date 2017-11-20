@@ -3,13 +3,14 @@ var functions = require('.././util/functions');
 
 module.exports = {
 
-    registro : function(id_usuario, nombres, usuario, contrasenia, 
+    registro : function(id_usuario, nombres, apellidos, usuario, contrasenia, 
                         tipo_usuario, color, id_area, usuario_registro, callback) {
 
         var cnx = connection.get_connection();
 
-        cnx.query('CALL ssp_adm_usuario_registro(?,?,?,?,?,?,?,?,@output);select @output', [ id_usuario, nombres, usuario, contrasenia, 
-                                tipo_usuario, color, id_area, usuario_registro ], function(err, rows, fields)
+        cnx.query('CALL ssp_adm_usuario_registro(?,?,?,?,?,?,?,?,?,@output);select @output', [ id_usuario, 
+            nombres, apellidos, usuario, contrasenia, 
+            tipo_usuario, color, id_area, usuario_registro ], function(err, rows, fields)
         {
             var data = null;
             var msg = '';
@@ -26,13 +27,14 @@ module.exports = {
         cnx.end(function () {});
     },
 
-    actualiza : function(id_usuario, nombres, usuario, contrasenia, 
+    actualiza : function(id_usuario, nombres, apellidos, usuario, contrasenia, 
                         tipo_usuario, color, id_area, usuario_registro, callback) {
 
         var cnx = connection.get_connection();
 
-        cnx.query('CALL ssp_adm_usuario_actualiza(?,?,?,?,?,?,?,?,@output);select @output', [ id_usuario, nombres, usuario, contrasenia, 
-                                tipo_usuario, color, id_area, usuario_registro ], function(err, rows, fields)
+        cnx.query('CALL ssp_adm_usuario_actualiza(?,?,?,?,?,?,?,?,?,@output);select @output', [ id_usuario, 
+            nombres, apellidos, usuario, contrasenia, 
+            tipo_usuario, color, id_area, usuario_registro ], function(err, rows, fields)
         {
             var data = null;
             var msg = '';

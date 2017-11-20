@@ -7,7 +7,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>SIREIS ::.. <%= titulo %></title>
 
-        <script src="/node_modules/angular/angular.js"></script>
+        
+        <!--
+            <script src="/node_modules/angular/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-resource.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.min.js"></script>
+        -->
+        <script src="/js/angular/angular.min.js"></script>
+        <script src="/js/angular/angular-resource.min.js"></script>
+        <script src="/js/angular/angular-route.min.js"></script>
+        <script src="/js/angular/angular-config.js"></script>
 
         <!-- Vendor CSS -->
         <link href="/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
@@ -23,7 +33,7 @@
         <link href="/css/app.min.custom.css" rel="stylesheet">
         
     </head>
-    <body class="toggled sw-toggled" ng-app="webRestApp">
+    <body class="toggled sw-toggled" ng-app="webApp">
         <header id="header" class="clearfix" data-current-skin="blue">
             <ul class="header-inner">
                 <li id="menu-trigger" data-trigger="#sidebar">
