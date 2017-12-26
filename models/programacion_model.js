@@ -70,7 +70,7 @@ module.exports = {
             if (err) {
                 msg = err.message;
             }else{
-                msg = functions.get_msg(rows);
+                msg = functions.get_output(rows, '@output');
                 id = functions.get_output(rows, '@id');
             }
 
