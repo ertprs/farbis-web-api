@@ -243,13 +243,16 @@ module.exports = {
                     celular_programadora2, nombre_programadora3, celular_programadora3, servicio_emergencia, id_usuario, 
                     function(msg, data, id){
     
-                        ids.push(id);
+                        ids.push({
+                            'mensaje' : msg,
+                            'id_programacion' : id
+                        });
             });
         });
 
         var response = {
             'ws_code' : '0',
-            'mensaje' : msg,
+            'mensaje' : 'OK',
             'programaciones' : ids
         };
 
