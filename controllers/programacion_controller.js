@@ -249,16 +249,16 @@ module.exports = {
                             'mensaje' : msg,
                             'id_programacion' : id
                         });
-
+                        functions.print_console(observaciones);
                         // Insertamos las observaciones
-                        observaciones.forEach(function(observacion) {
+                        observaciones.forEach(function(obs) {
 
-                            //var id_programacion = observacion.id_programacion;
-                            var observacion = observacion.observacion;
-                            var origen = observacion.origen;
-                            var ruta_foto = '';//observacion.ruta_foto;
-                            var ruta_audio = '';//robservacion.ruta_audio;
-                            //var id_usuario = observacion.id_usuario;
+                            //var id_programacion = obs.id_programacion;
+                            var observacion = obs.observacion;
+                            var origen = obs.origen;
+                            var ruta_foto = '';//obs.ruta_foto;
+                            var ruta_audio = '';//obs.ruta_audio;
+                            //var id_usuario = obs.id_usuario;
                     
                             observacion_model.registro(id_programacion, observacion, origen, 
                                             ruta_foto, ruta_audio, id_usuario, function(msg, data, item, fecha){
