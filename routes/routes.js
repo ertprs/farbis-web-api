@@ -42,6 +42,7 @@ router.post(sub_path + 'rws_programacion_lista_por_operario', controllers.progra
 router.post(sub_path + 'rws_programacion_actualiza_estado', controllers.programacion_controller.post_actualiza_estado);
 router.post(sub_path + 'rws_programacion_archivos_guarda', controllers.programacion_controller.post_archivos_guarda);
 router.post(sub_path + 'rws_programacion_registro', controllers.programacion_controller.post_registro);
+router.post(sub_path + 'rws_programacion_registro_multiple', controllers.programacion_controller.post_registro_multiple);
 router.post(sub_path + 'rws_programacion_cambio', controllers.programacion_controller.post_cambio);
 router.post(sub_path + 'rws_programacion_lista_sin_operario', controllers.programacion_controller.post_lista_sin_operario);
 router.post(sub_path + 'rws_programacion_actualiza_operario', controllers.programacion_controller.post_actualiza_operario);

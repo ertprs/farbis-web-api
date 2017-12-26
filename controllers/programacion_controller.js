@@ -190,61 +190,70 @@ module.exports = {
     {
         functions.print_console('rest method programacion: post_registro_multiple');
 
-        var id_programacion = req.body.id_programacion;
-        var id_empresa = req.body.id_empresa;
-        var fecha = req.body.fecha;
-        var nro_orden = req.body.nro_orden;
-        var cliente = req.body.cliente;
-        var giro_comercial = req.body.giro_comercial;
-        var direccion = req.body.direccion;
-        var referencia = req.body.referencia;
-        var telefonos = req.body.telefonos;
-        var logo = req.body.logo;
-        var geolatitud = req.body.geolatitud;
-        var geolongitud = req.body.geolongitud;
-        var servicio = req.body.servicio;
-        var area_trabajar = req.body.area_trabajar;
-        var coordino = req.body.coordino;
-        var secordino = req.body.secordino;
-        var celular_secordino = req.body.celular_secordino;
-        var atendera = req.body.atendera;
-        var personal = req.body.personal;
-        var producto = req.body.producto;
-        var personal_encargado = req.body.personal_encargado;
-        var correo = req.body.correo;
-        var nombre_vendedor = req.body.nombre_vendedor;
-        var celular_vendedor = req.body.celular_vendedor;
-        var nombre_programadora1 = req.body.nombre_programadora1;
-        var celular_programadora1 = req.body.celular_programadora1;
-        var nombre_programadora2 = req.body.nombre_programadora2;
-        var celular_programadora2 = req.body.celular_programadora2;
-        var nombre_programadora3 = req.body.nombre_programadora3;
-        var celular_programadora3 = req.body.celular_programadora3;
-        var servicio_cancelado = req.body.servicio_cancelado;
-        var servicio_emergencia = req.body.servicio_emergencia;
-        var id_usuario = req.body.id_usuario;
-        
-        if (fecha == '') {
-            fecha = null;
-        }
-        else{
-            fecha = functions.string_todatetime(fecha, 'dd/MM/yyyy', '/');
-        }
-        
-        programacion_model.registro(id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
-                telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, secordino, 
-                celular_secordino, atendera, personal, producto, personal_encargado, correo, nombre_vendedor,
-                celular_vendedor, nombre_programadora1, celular_programadora1, nombre_programadora2, 
-                celular_programadora2, nombre_programadora3, celular_programadora3, servicio_emergencia, id_usuario, 
-                function(msg, data){
+        var programaciones = req.body;
+        var ids = [];
 
-            var response = {
-                'ws_code' : '0',
-                'mensaje' : msg
-            };
-
-            res.json(response);
+        programaciones.forEach(function(programacion) {
+            //console.log(programacion.id_programacion);
+            var id_programacion = programacion.id_programacion;
+            var id_empresa = programacion.id_empresa;
+            var fecha = programacion.fecha;
+            var nro_orden = programacion.nro_orden;
+            var cliente = programacion.cliente;
+            var giro_comercial = programacion.giro_comercial;
+            var direccion = programacion.direccion;
+            var referencia = programacion.referencia;
+            var telefonos = programacion.telefonos;
+            var logo = programacion.logo;
+            var geolatitud = programacion.geolatitud;
+            var geolongitud = programacion.geolongitud;
+            var servicio = programacion.servicio;
+            var area_trabajar = programacion.area_trabajar;
+            var coordino = programacion.coordino;
+            var secordino = programacion.secordino;
+            var celular_secordino = programacion.celular_secordino;
+            var atendera = programacion.atendera;
+            var personal = programacion.personal;
+            var producto = programacion.producto;
+            var personal_encargado = programacion.personal_encargado;
+            var correo = programacion.correo;
+            var nombre_vendedor = programacion.nombre_vendedor;
+            var celular_vendedor = programacion.celular_vendedor;
+            var nombre_programadora1 = programacion.nombre_programadora1;
+            var celular_programadora1 = programacion.celular_programadora1;
+            var nombre_programadora2 = programacion.nombre_programadora2;
+            var celular_programadora2 = programacion.celular_programadora2;
+            var nombre_programadora3 = programacion.nombre_programadora3;
+            var celular_programadora3 = programacion.celular_programadora3;
+            var servicio_cancelado = programacion.servicio_cancelado;
+            var servicio_emergencia = programacion.servicio_emergencia;
+            var id_usuario = programacion.id_usuario;
+            
+            if (fecha == '') {
+                fecha = null;
+            }
+            else{
+                fecha = functions.string_todatetime(fecha, 'dd/MM/yyyy', '/');
+            }
+            
+            programacion_model.registro(id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
+                    telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, secordino, 
+                    celular_secordino, atendera, personal, producto, personal_encargado, correo, nombre_vendedor,
+                    celular_vendedor, nombre_programadora1, celular_programadora1, nombre_programadora2, 
+                    celular_programadora2, nombre_programadora3, celular_programadora3, servicio_emergencia, id_usuario, 
+                    function(msg, data, id){
+    
+                        ids.push(id);
+            });
         });
+
+        var response = {
+            'ws_code' : '0',
+            'mensaje' : msg,
+            'programaciones' : ids
+        };
+
+        res.json(response);
     },
 
     post_cambio : function(req, res, next)
