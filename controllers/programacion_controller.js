@@ -250,18 +250,20 @@ module.exports = {
                         });
 
                         idea = id;
+
+                        if (programaciones.length == index + 1){
+                            var response = {
+                                'ws_code' : '0',
+                                'mensaje' : 'OK',
+                                'programaciones' : ids,
+                                'idea' : idea
+                            };
+                    
+                            res.json(response);
+                        }
             });
 
-            if (programaciones.length == index + 1){
-                var response = {
-                    'ws_code' : '0',
-                    'mensaje' : 'OK',
-                    'programaciones' : ids,
-                    'idea' : idea
-                };
-        
-                res.json(response);
-            }
+
         });
     },
 
