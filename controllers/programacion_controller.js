@@ -192,6 +192,7 @@ module.exports = {
 
         var programaciones = req.body;
         var ids = [];
+        var idea = '';
 
         programaciones.forEach(function(programacion, index) {
             //console.log(programacion.id_programacion);
@@ -247,13 +248,16 @@ module.exports = {
                             'mensaje' : msg,
                             'id_programacion' : id
                         });
+
+                        idea = id;
             });
 
             if (programaciones.length == index + 1){
                 var response = {
                     'ws_code' : '0',
                     'mensaje' : 'OK',
-                    'programaciones' : ids
+                    'programaciones' : ids,
+                    'idea' : idea
                 };
         
                 res.json(response);
