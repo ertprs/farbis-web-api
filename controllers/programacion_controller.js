@@ -251,18 +251,18 @@ module.exports = {
                         });
 
                         // Insertamos las observaciones
-                        programaciones.forEach(function(programacion) {
+                        observaciones.forEach(function(observacion) {
 
-                            //var id_programacion = req.body.id_programacion;
-                            var observacion = req.body.observacion;
-                            var origen = req.body.origen;
-                            var ruta_foto = '';//req.body.ruta_foto;
-                            var ruta_audio = '';//req.body.ruta_audio;
-                            //var id_usuario = req.body.id_usuario;
+                            //var id_programacion = observacion.id_programacion;
+                            var observacion = observacion.observacion;
+                            var origen = observacion.origen;
+                            var ruta_foto = '';//observacion.ruta_foto;
+                            var ruta_audio = '';//robservacion.ruta_audio;
+                            //var id_usuario = observacion.id_usuario;
                     
                             observacion_model.registro(id_programacion, observacion, origen, 
                                             ruta_foto, ruta_audio, id_usuario, function(msg, data, item, fecha){
-                                                
+
                             });
                         });
 
