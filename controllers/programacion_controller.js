@@ -3,6 +3,7 @@ var views = require('.././routes/views');
 var functions = require('.././util/functions');
 var programacion_model = require('.././models/programacion_model');
 var usuario_model = require('.././models/usuario_model');
+var observacion_model = require('.././models/observacion_model');
 var fs = require('fs');
 
 module.exports = {
@@ -192,7 +193,6 @@ module.exports = {
 
         var programaciones = req.body;
         var ids = [];
-        var idea = '';
 
         programaciones.forEach(function(programacion, index) {
             //console.log(programacion.id_programacion);
@@ -229,6 +229,7 @@ module.exports = {
             var servicio_cancelado = programacion.servicio_cancelado;
             var servicio_emergencia = programacion.servicio_emergencia;
             var id_usuario = programacion.id_usuario;
+            var observaciones = programacion.observaciones;
             
             if (fecha == '') {
                 fecha = null;
@@ -249,14 +250,27 @@ module.exports = {
                             'id_programacion' : id
                         });
 
-                        idea = id;
+                        // Insertamos las observaciones
+                        programaciones.forEach(function(programacion) {
+
+                            //var id_programacion = req.body.id_programacion;
+                            var observacion = req.body.observacion;
+                            var origen = req.body.origen;
+                            var ruta_foto = '';//req.body.ruta_foto;
+                            var ruta_audio = '';//req.body.ruta_audio;
+                            //var id_usuario = req.body.id_usuario;
+                    
+                            observacion_model.registro(id_programacion, observacion, origen, 
+                                            ruta_foto, ruta_audio, id_usuario, function(msg, data, item, fecha){
+                                                
+                            });
+                        });
 
                         if (programaciones.length == index + 1){
                             var response = {
                                 'ws_code' : '0',
                                 'mensaje' : 'OK',
-                                'programaciones' : ids,
-                                'idea' : idea
+                                'programaciones' : ids
                             };
                     
                             res.json(response);
