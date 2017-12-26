@@ -1,3 +1,4 @@
+/*
 window.appConfig = { 
     apiRoot: "http://localhost:3000/api/", debug: 0 
 }; 
@@ -13,6 +14,7 @@ window.notify = function (n, t) { t === undefined && (t = "inverse"); $.growl({ 
 }, 
 
 function () { 
-    var n = angular.module("webRestApp", []); 
+    var n = angular.module("FarbisWebApp", []); 
     n.constant("appConfig", window.appConfig) 
 }()
+*/

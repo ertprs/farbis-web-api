@@ -1,4 +1,4 @@
-
+/*
     //Create a Controller
     angular.module('webApp', [])
     .controller('ProgramacionController', function ($scope, $http) {  // here $scope is used for share data between view and controller
@@ -109,3 +109,23 @@
         };
 
     });
+*/
+
+angular.module('FarbisWebApp.controllers', []).
+  controller('ProgramacionController', function($scope, ProgramacionService) {
+    $scope.programacionFiltro = null;
+    $scope.programacionLista = [];
+    $scope.operario = {
+        'id_operario' : 'OP0001'
+    };
+
+    $scope.init = function () {
+    console.log('init');
+    //cargarDatos();
+  };
+
+    ProgramacionService.listaPorOperario($scope.operario).then(function (response) {
+        $scope.programacionLista = response.data.programaciones;
+    });
+
+});

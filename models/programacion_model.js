@@ -55,7 +55,7 @@ module.exports = {
 
         var cnx = connection.get_connection();
 
-        cnx.query('CALL ssp_ope_programacion_registro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,@output);select @output', 
+        cnx.query('CALL ssp_ope_programacion_registro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,@output,@id);select @output,@id', 
                 [ id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
                 telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, secordino, 
                 celular_secordino, atendera, personal, producto, personal_encargado, correo, nombre_vendedor,
@@ -65,14 +65,16 @@ module.exports = {
         {
             var data = null;
             var msg = '';
+            var id = '';
             
             if (err) {
                 msg = err.message;
             }else{
                 msg = functions.get_msg(rows);
+                id = functions.get_output(rows, '@id');
             }
 
-            callback(msg, data);
+            callback(msg, data, id);
         });
 
         cnx.end(function () {});
