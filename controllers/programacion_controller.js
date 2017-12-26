@@ -193,7 +193,7 @@ module.exports = {
         var programaciones = req.body;
         var ids = [];
 
-        programaciones.forEach(function(programacion) {
+        programaciones.forEach(function(programacion, index) {
             //console.log(programacion.id_programacion);
             var id_programacion = programacion.id_programacion;
             var id_empresa = programacion.id_empresa;
@@ -248,15 +248,17 @@ module.exports = {
                             'id_programacion' : id
                         });
             });
+
+            if (programaciones.length == index + 1){
+                var response = {
+                    'ws_code' : '0',
+                    'mensaje' : 'OK',
+                    'programaciones' : ids
+                };
+        
+                res.json(response);
+            }
         });
-
-        var response = {
-            'ws_code' : '0',
-            'mensaje' : 'OK',
-            'programaciones' : ids
-        };
-
-        res.json(response);
     },
 
     post_cambio : function(req, res, next)
