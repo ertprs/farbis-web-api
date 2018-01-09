@@ -51,6 +51,44 @@ module.exports = {
         });
     },
 
+    post_registro_multiple : function(req, res, next)
+    {
+        functions.print_console('rest method observacion: post_registro_multiple');
+
+        var observaciones = req.body;
+        var ids = [];
+
+        observaciones.forEach(function(obs, index) {
+
+            var id_programacion = obs.id_programacion;
+            var observacion = obs.observacion;
+            var origen = obs.origen;
+            var ruta_foto = '';//obs.ruta_foto;
+            var ruta_audio = '';//obs.ruta_audio;
+            var id_usuario = obs.id_usuario;
+    
+            observacion_model.registro(id_programacion, observacion, origen, 
+                            ruta_foto, ruta_audio, id_usuario, function(msg, data, item, fecha){
+
+                ids.push({
+                    'mensaje' : msg,
+                    'item' : item,
+                    'fecha_hora' : fecha
+                });
+
+                if (observaciones.length == index + 1){
+                    var response = {
+                        'ws_code' : '0',
+                        'mensaje' : 'OK',
+                        'observaciones' : ids
+                    };
+            
+                    res.json(response);
+                }
+            });
+        });
+    },
+
     post_actualiza : function(req, res, next)
     {
         functions.print_console('rest method observacion: post_actualiza');

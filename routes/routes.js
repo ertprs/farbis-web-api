@@ -55,6 +55,7 @@ router.post(sub_path + 'rws_programacion_actualiza_descargado', controllers.prog
 
 router.post(sub_path + 'rws_observacion_lista_por_programacion', controllers.observacion_controller.post_lista_por_programacion);
 router.post(sub_path + 'rws_observacion_registro', controllers.observacion_controller.post_registro);
+router.post(sub_path + 'rws_observacion_registro_multiple', controllers.observacion_controller.post_registro_multiple);
 router.post(sub_path + 'rws_observacion_actualiza', controllers.observacion_controller.post_actualiza);
 router.post(sub_path + 'rws_observacion_elimina', controllers.observacion_controller.post_elimina);
 
