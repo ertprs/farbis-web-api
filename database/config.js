@@ -2,7 +2,7 @@ var functions = require('.././util/functions');
 
 var env = process.env.NODE_ENV || 'developer';
 var config = {};
-
+ 
 functions.print_console('database env: '+env);
 
 if (env == 'developer')

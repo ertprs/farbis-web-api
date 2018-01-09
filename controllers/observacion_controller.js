@@ -75,7 +75,7 @@ module.exports = {
                     'item' : item,
                     'fecha_hora' : fecha
                 });
-
+                print_console('index: '+index);
                 if (observaciones.length == index + 1){
                     var response = {
                         'ws_code' : '0',
