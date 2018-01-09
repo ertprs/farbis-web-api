@@ -217,6 +217,8 @@ class functions {
             callback(msg);
         });
     }
+
+
 }
 
 module.exports = functions;

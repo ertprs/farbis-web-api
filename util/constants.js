@@ -1,7 +1,7 @@
 
 
 var constants = {
-    dirname: __dirname,
+    dirname: __dirname.replace('util', ''),
     user: 'sireis_root',
     password: 'sireis',
     database: 'sireis'
@@ -13,3 +13,4 @@ var messages = {
 
 //module.exports = constants;
 module.exports = messages;
+module.exports = constants;

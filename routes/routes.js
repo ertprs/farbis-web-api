@@ -52,6 +52,7 @@ router.post(sub_path + 'rws_programacion_envia_mensaje_whatsapp', controllers.pr
 router.post(sub_path + 'rws_programacion_obtiene_personal', controllers.programacion_controller.post_obtiene_personal);
 router.post(sub_path + 'rws_programacion_lista_sin_descargar', controllers.programacion_controller.post_lista_sin_descargar);
 router.post(sub_path + 'rws_programacion_actualiza_descargado', controllers.programacion_controller.post_actualiza_descargado);
+router.get(sub_path + 'rws_programacion_descarga/:id_programacion', controllers.programacion_controller.get_descarga);
 
 router.post(sub_path + 'rws_observacion_lista_por_programacion', controllers.observacion_controller.post_lista_por_programacion);
 router.post(sub_path + 'rws_observacion_registro', controllers.observacion_controller.post_registro);

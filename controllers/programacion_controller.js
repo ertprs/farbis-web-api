@@ -5,6 +5,7 @@ var programacion_model = require('.././models/programacion_model');
 var usuario_model = require('.././models/usuario_model');
 var observacion_model = require('.././models/observacion_model');
 var fs = require('fs');
+var constants = require('.././util/constants');
 
 module.exports = {
     
@@ -249,7 +250,7 @@ module.exports = {
                             'mensaje' : msg,
                             'id_programacion' : id
                         });
-                        functions.print_console(observaciones);
+                        
                         // Insertamos las observaciones
                         observaciones.forEach(function(obs) {
 
@@ -466,6 +467,64 @@ module.exports = {
             };
 
             res.json(response);
+        });
+    },
+
+    get_descarga : function(req, res, next)
+    {
+        functions.print_console('rest method programacion: post_actualiza_descargado');
+
+        var id_programacion = req.params.id_programacion;
+
+        programacion_model.obtener(id_programacion, function(msg, programacion){
+
+            var directory = programacion.fecha.getFullYear() + '-' + programacion.nro_orden + '-' +  programacion.id_programacion;
+            var full_directory = 'public/files/' + directory + '/';
+            var filename = '';
+            var file = constants.dirname + 'public/zip/' + directory + '.zip';
+            var fileFolder = constants.dirname + 'public/files/' + directory + '/';
+            var currentPath = full_directory;
+            fs.exists(file, function(exists) {
+                if (exists) {
+                    fs.unlinkSync(file); // Delete file
+                } else {
+                }
+            });
+
+            fs.exists(fileFolder, function(exists) {
+                if (exists) {
+                    // Contamos los archivos en la carpeta
+                    var path = require('path');
+                    var files = fs.readdirSync(currentPath);
+                    if (files.length > 0) {
+                        var options = {
+                            excludeParentFolder: false, //Default : false. if true, the content will be zipped excluding parent folder.
+                            parentFolderName: directory //if specified, the content will be zipped, within the 'v1.0' folder
+                        };
+                        
+                        //zip a folder and change folder destination name
+                        var FolderZip = require('folder-zip');
+                        var zip = new FolderZip();
+                        zip.zipFolder(full_directory, options, function(){
+                            zip.writeToFile('public/zip/' + directory + '.zip');
+
+                            setTimeout(function() {
+                                fs.exists(file, function(exists) {
+                                    if (exists) {
+                                        res.download(file);
+                                    } else {
+                                        res.write('El archivo ' + directory + '.zip no existe');
+                                        res.end();
+                                    }
+                                });
+                            }, 3000);
+                        });
+                    }
+                } else {
+                    res.write('La carpeta ' + directory + ' no existe');
+                    res.end();
+                }
+            });
         });
     },
 

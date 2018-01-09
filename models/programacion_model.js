@@ -252,4 +252,26 @@ module.exports = {
         cnx.end(function () {});
     },
 
+    obtener : function(id_programacion, callback) {
+
+        var cnx = connection.get_connection();
+
+        cnx.query('CALL ssp_ope_programacion_obtener(?)', [ id_programacion ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                data = functions.get_datarow(rows);
+                msg = functions.get_msg(rows);
+            }
+
+            callback(msg, data);
+        });
+
+        cnx.end(function () {});
+    },
+
 };
