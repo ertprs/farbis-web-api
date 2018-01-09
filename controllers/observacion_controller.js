@@ -76,6 +76,7 @@ module.exports = {
                     'fecha_hora' : fecha
                 });
                 console.log('index: '+index);
+                console.log('length: '+observaciones.length);
                 if (observaciones.length == index + 1){
                     var response = {
                         'ws_code' : '0',
