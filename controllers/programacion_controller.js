@@ -230,7 +230,7 @@ module.exports = {
             var servicio_cancelado = programacion.servicio_cancelado;
             var servicio_emergencia = programacion.servicio_emergencia;
             var id_usuario = programacion.id_usuario;
-            var observaciones = programacion.observaciones;
+            //var observaciones = programacion.observaciones;
             
             if (fecha == '') {
                 fecha = null;
@@ -250,7 +250,7 @@ module.exports = {
                             'mensaje' : msg,
                             'id_programacion' : id
                         });
-                        
+                        /*
                         // Insertamos las observaciones
                         observaciones.forEach(function(obs) {
 
@@ -266,7 +266,7 @@ module.exports = {
 
                             });
                         });
-
+                        */
                         if (programaciones.length == index + 1){
                             var response = {
                                 'ws_code' : '0',
