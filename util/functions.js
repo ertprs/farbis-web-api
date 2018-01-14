@@ -134,7 +134,8 @@ class functions {
         var year_index = format_items.indexOf("yyyy");
         var month = parseInt(date_items[month_index]);
         
-        var date = date_items[year_index]+"/"+month+"/"+date_items[day_index];
+        //var date = date_items[year_index]+"/"+month+"/"+date_items[day_index];
+        var date = date_items[year_index]+"/"+date_items[day_index]+"/"+month;
 
         month -= 1;
         var formated_date = new Date(date+" "+time);
