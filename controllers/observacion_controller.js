@@ -59,7 +59,7 @@ module.exports = {
         var ids = [];
         var arr_observaciones = [];
         //var values = "('0000032546','SE REALIZO EL SE RVICIO DE LIMPIEZA DE 01 POZO SEPTICO DE 5 M3 Y 20 M LINEALES DE LA RED DE DESAGUE. SE ENCONTRO PAPELES EN UNO DE LOS REGISTROS DE DESAGUE. ATENDIO EL SR. PABLO RODRIGUEZ','P','','','999999','','')";
-        var contador = 0;
+        //var contador = 0;
         observaciones.forEach(function(obs, index) {
             var id_programacion = obs.id_programacion;
             var item = obs.item;
@@ -68,7 +68,7 @@ module.exports = {
             var ruta_foto = '';//obs.ruta_foto;
             var ruta_audio = '';//obs.ruta_audio;
             var id_usuario = obs.id_usuario;
-            contador += 1;
+            //contador += 1;
             arr_observaciones.push([
                 id_programacion, item, observacion, origen, ruta_foto, ruta_audio, '1', id_usuario, 'NOW()'
             ]);
