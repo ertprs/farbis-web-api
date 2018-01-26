@@ -124,9 +124,9 @@ module.exports = {
 
         var cnx = connection.get_connection();
 
-        let stmt = 'SELECT idprogramacion FROM ope_programacion where idprogramacion in  ' + ids;
+        let stmt = 'SELECT idprogramacion FROM ope_programacion where idprogramacion in  ' + ids + ';';
         console.log(stmt);
-        
+
         cnx.query(stmt, [  ], function(err, rows, fields)
         {
             var data = null;
