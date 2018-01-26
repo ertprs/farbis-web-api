@@ -59,7 +59,7 @@ module.exports = {
         console.log(observaciones);
         
         //cnx.query('CALL ssp_ope_observacion_registro(?,?,?,?,?,?,?,?)', [ observaciones ], function(err, rows, fields)
-        cnx.query('CALL ssp_ope_observacion_registro(?)', [ observaciones ], function(err, rows, fields)
+        cnx.query('CALL ssp_ope_observacion_registro(?)', observaciones, function(err, rows, fields)
         {
             var data = null;
             var msg = '';
