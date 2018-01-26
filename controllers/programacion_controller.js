@@ -195,6 +195,7 @@ module.exports = {
         var programaciones = req.body;
         var ids = [];
         var arr_programaciones = [];
+        var arr_ids = [];
 
         programaciones.forEach(function(programacion, index) {
             //console.log(programacion.id_programacion);
@@ -248,9 +249,12 @@ module.exports = {
                 celular_programadora1, nombre_programadora2, celular_programadora2, nombre_programadora3, 
                 celular_programadora3, 'N', servicio_emergencia, id_usuario, 'NOW()'
             ]);
+            arr_ids.push([
+                id_programacion, 
+            ]);
         });
 
-        programacion_model.registro_multiple(arr_programaciones, 
+        programacion_model.registro_multiple(arr_ids, arr_programaciones, 
             function(msg, data, id){
             
             var response = {
