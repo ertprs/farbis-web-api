@@ -83,20 +83,16 @@ module.exports = {
 
     registro_multiple : function(programaciones, 
                 callback) {
-        //id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
-        //telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, secordino,
-        //celular_secordino, atendera, personal, producto, personal_encargado, correo, nombre_vendedor,
-        //celular_vendedor, nombre_programadora1, celular_programadora1, nombre_programadora2, 
-        //celular_programadora2, nombre_programadora3, celular_programadora3, servicio_emergencia, id_usuario
         var cnx = connection.get_connection();
-        console.log(programaciones);
+        //console.log(programaciones);
         let stmt = 'INSERT INTO  ope_programacion (IdProgramacion, IdEmpresa, Fecha, NroOrden, Cliente, GiroComercial, ';
         stmt += 'Direccion, Referencia, Telefonos, Logo, GeoLatitud, GeoLongitud, Servicio, AreaTrabajar, Coordino, ';
         stmt += 'SeCordino, TelefonoCelularSeCordino, Atendera, Personal, Producto, PersonalEncargado, ';
         stmt += 'Estado, FlgEnvioFoto, FlgEnvioAudio, FlgEnvioVideo, ServicioPendiente, ';
         stmt += 'CambioDeProgramacion, Correo, NombreVendedor, TelefonoCelularVendedor, NombreProgramadora1,';
         stmt += 'TelefonoCelularProgramadora1, NombreProgramadora2, TelefonoCelularProgramadora2,';
-        stmt += 'NombreProgramadora3, TelefonoCelularProgramadora3, ServicioCancelado, ServicioEmergencia, IdUsuario, FechaRegistro)';
+        stmt += 'NombreProgramadora3, TelefonoCelularProgramadora3, ServicioCancelado, ServicioEmergencia, ';
+        stmt += 'IdUsuario, FechaRegistro, Descargado) ';
         stmt += 'VALUES   ?  ';
 
         cnx.query(stmt, [ programaciones ], function(err, rows, fields)
@@ -138,7 +134,8 @@ module.exports = {
             }else{
                 //msg = functions.get_output(rows, '@output');
                 //id = functions.get_output(rows, '@id');
-                data = functions.get_datatable(rows);
+                console.log(rows);
+                data = rows;//functions.get_datatable(rows);
                 msg = 'OK';
                 id = '';
             }

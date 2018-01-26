@@ -1,3 +1,4 @@
+
 var mysql = require('mysql');
 var views = require('.././routes/views');
 var functions = require('.././util/functions');
@@ -197,7 +198,7 @@ module.exports = {
         var arr_programaciones = [];
         var arr_ids = [];
         var str_ids = "(";
-
+        
         programaciones.forEach(function(programacion, index) {
             //console.log(programacion.id_programacion);
             var id_programacion = programacion.id_programacion;
@@ -246,9 +247,9 @@ module.exports = {
                 id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
                 telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, secordino,
                 celular_secordino, atendera, personal, producto, personal_encargado, 'PEN', 
-                'N', 'N', 'N', '', 'T', correo, nombre_vendedor, celular_vendedor, nombre_programadora1, 
+                'N', 'N', 'N', ' ', 'T', correo, nombre_vendedor, celular_vendedor, nombre_programadora1, 
                 celular_programadora1, nombre_programadora2, celular_programadora2, nombre_programadora3, 
-                celular_programadora3, 'N', servicio_emergencia, id_usuario, 'NOW()'
+                celular_programadora3, 'N', servicio_emergencia, id_usuario, new Date(), ' '
             ]);
             arr_ids.push([
                 id_programacion, 
@@ -259,6 +260,7 @@ module.exports = {
         str_ids += "'')";
 
         programacion_model.valida_multiple(str_ids, function(msg, data, id){
+            /*
             var response = {
                 'ws_code' : '0',
                 'mensaje' : msg,
@@ -266,13 +268,27 @@ module.exports = {
             };
         
             res.json(response);
-            /*
-            data.forEach(function(programacion, index) {
+            */
+            var arr_programaciones_final = [];
+            var id_programacion = "";
+            var existe = false;
 
+            arr_programaciones.forEach(function(programacion, index) {
+                id_programacion = programaciones[index].id_programacion;
+                existe = false;
 
+                data.forEach(function(prog, index) {
+                    if (id_programacion == prog.id_programacion) {
+                        existe = true;
+                    }
+                });
+
+                if (existe == false) {
+                    arr_programaciones_final.push(programacion);
+                }
             });
-
-            programacion_model.registro_multiple(str_ids, function(msg, data, id){
+            
+            programacion_model.registro_multiple(arr_programaciones_final, function(msg, data, id){
 
                 var response = {
                     'ws_code' : '0',
@@ -282,7 +298,7 @@ module.exports = {
             
                 res.json(response);
             });
-            */
+            
         });
     },
 
