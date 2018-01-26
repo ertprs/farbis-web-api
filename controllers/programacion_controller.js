@@ -258,17 +258,23 @@ module.exports = {
 
         str_ids += "'')";
 
-        console.log(str_ids);
         programacion_model.valida_multiple(str_ids, function(msg, data, id){
+            /*
+            data.forEach(function(programacion, index) {
+
+
+            });
+*/
+            programacion_model.registro_multiple(str_ids, function(msg, data, id){
+
+                var response = {
+                    'ws_code' : '0',
+                    'mensaje' : msg,
+                    'programaciones' : data
+                };
             
-            var response = {
-                'ws_code' : '0',
-                'mensaje' : msg,
-                'programaciones' : data
-            };
-        
-            res.json(response);
-            
+                res.json(response);
+            });
         });
     },
 
