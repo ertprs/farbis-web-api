@@ -196,6 +196,7 @@ module.exports = {
         var ids = [];
         var arr_programaciones = [];
         var arr_ids = [];
+        var str_ids = "(";
 
         programaciones.forEach(function(programacion, index) {
             //console.log(programacion.id_programacion);
@@ -252,9 +253,13 @@ module.exports = {
             arr_ids.push([
                 id_programacion, 
             ]);
+            str_ids += id_programacion;
         });
 
-        programacion_model.valida_multiple(arr_ids, function(msg, data, id){
+        str_ids += "'')";
+
+        console.log(str_ids);
+        programacion_model.valida_multiple(str_ids, function(msg, data, id){
             
             var response = {
                 'ws_code' : '0',
