@@ -58,6 +58,7 @@ module.exports = {
         var observaciones = req.body;
         var ids = [];
         var arr_observaciones = [];
+        var values = "('0000032546','SE REALIZO EL SE RVICIO DE LIMPIEZA DE 01 POZO SEPTICO DE 5 M3 Y 20 M LINEALES DE LA RED DE DESAGUE. SE ENCONTRO PAPELES EN UNO DE LOS REGISTROS DE DESAGUE. ATENDIO EL SR. PABLO RODRIGUEZ','P','','','999999','','')";
 
         observaciones.forEach(function(obs, index) {
 
@@ -71,6 +72,8 @@ module.exports = {
             arr_observaciones.push([
                 id_programacion, observacion, origen, ruta_foto, ruta_audio, id_usuario,'',''
             ]);
+            //values += "('demian', 'demian@gmail.com', 1,2),"
+            //('john', 'john@gmail.com', 2,4)
             /*
             observacion_model.registro(id_programacion, observacion, origen, 
                             ruta_foto, ruta_audio, id_usuario, function(msg, data, item, fecha){
@@ -94,7 +97,7 @@ module.exports = {
             */
         });
 
-        observacion_model.registro_multiple(arr_observaciones, function(msg, data, item, fecha){
+        observacion_model.registro_multiple(values, function(msg, data, item, fecha){
 
             var response = {
                 'ws_code' : '0',
