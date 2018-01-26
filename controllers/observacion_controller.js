@@ -70,7 +70,7 @@ module.exports = {
             var id_usuario = obs.id_usuario;
             contador += 1;
             arr_observaciones.push([
-                id_programacion, contador, observacion, origen, ruta_foto, ruta_audio, '1', id_usuario, 'NOW()'
+                id_programacion, item, observacion, origen, ruta_foto, ruta_audio, '1', id_usuario, 'NOW()'
             ]);
             //values += "('demian', 'demian@gmail.com', 1,2),"
             //('john', 'john@gmail.com', 2,4)
