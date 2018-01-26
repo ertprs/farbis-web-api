@@ -42,10 +42,11 @@ else if (env == 'qa')
         user: 'bb6c696855162d',
         password: '638896cc',
         database: 'heroku_973be16846cc7c4',
-        connectionLimit: 400,
+        connectionLimit: 100,
         queueLimit: 0,
         waitForConnection: true,
-        multipleStatements: true
+        multipleStatements: true,
+        debug:  false
     };
 }
 else

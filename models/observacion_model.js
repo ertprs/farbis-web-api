@@ -29,12 +29,46 @@ module.exports = {
                         ruta_foto, ruta_audio, id_usuario, callback) {
 
         //var cnx = connection.get_connection();
-        var cnx = connection.get_pool();
+        var pool = connection.get_pool();
 
+        pool.getConnection(function(err,connection){
+            if (err) {
+              connection.release();
+              res.json({"code" : 100, "status" : "Error in connection database"});
+              return;
+            }   
+    
+            console.log('connected as id ' + connection.threadId);
+
+            connection.query('CALL ssp_ope_observacion_registro(?,?,?,?,?,?,@item,@fecha);select @item,@fecha', [ id_programacion, 
+                observacion, origen, ruta_foto, ruta_audio, id_usuario ], function(err, rows, fields)
+            {
+                connection.release();
+                var data = null;
+                var msg = '';
+                var item = '';
+                var fecha = '';
+                
+                if (err) {
+                    msg = err.message;
+                }else{
+                    msg = functions.get_msg(rows);
+                    item = functions.get_output(rows, '@item');
+                    fecha = functions.get_output(rows, '@fecha');
+                }
+
+                callback(msg, data, item, fecha);
+            });
+    
+            connection.on('error', function(err) {      
+                  res.json({"code" : 100, "status" : "Error in connection database"});
+                  return;     
+            });
+      });
+      /*
         cnx.query('CALL ssp_ope_observacion_registro(?,?,?,?,?,?,@item,@fecha);select @item,@fecha', [ id_programacion, 
                     observacion, origen, ruta_foto, ruta_audio, id_usuario ], function(err, rows, fields)
         {
-            cnx.release();
             var data = null;
             var msg = '';
             var item = '';
@@ -51,7 +85,8 @@ module.exports = {
             callback(msg, data, item, fecha);
         });
         
-        //cnx.end(function () {});
+        cnx.end(function () {});
+        */
     },
 
     actualiza : function(id_programacion, item, observacion,  
