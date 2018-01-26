@@ -243,57 +243,24 @@ module.exports = {
             arr_programaciones.push([
                 id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
                 telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, secordino,
-                celular_secordino, atendera, personal, producto, personal_encargado, null, null, null, 'PEN', 
+                celular_secordino, atendera, personal, producto, personal_encargado, 'PEN', 
                 'N', 'N', 'N', '', 'T', correo, nombre_vendedor, celular_vendedor, nombre_programadora1, 
                 celular_programadora1, nombre_programadora2, celular_programadora2, nombre_programadora3, 
                 celular_programadora3, 'N', servicio_emergencia, id_usuario, 'NOW()'
             ]);
+        });
 
-            programacion_model.registro_multiple(arr_programaciones, 
-                    function(msg, data, id){
-                        /*
-                        ids.push({
-                            'mensaje' : msg,
-                            'id_programacion' : id
-                        });
-                        */
-                        /*
-                        // Insertamos las observaciones
-                        observaciones.forEach(function(obs) {
-
-                            //var id_programacion = obs.id_programacion;
-                            var observacion = obs.observacion;
-                            var origen = obs.origen;
-                            var ruta_foto = '';//obs.ruta_foto;
-                            var ruta_audio = '';//obs.ruta_audio;
-                            //var id_usuario = obs.id_usuario;
-                    
-                            observacion_model.registro(id_programacion, observacion, origen, 
-                                            ruta_foto, ruta_audio, id_usuario, function(msg, data, item, fecha){
-
-                            });
-                        });
-                        */
-                        /*
-                        if (programaciones.length == index + 1){
-                            var response = {
-                                'ws_code' : '0',
-                                'mensaje' : 'OK',
-                                'programaciones' : ids
-                            };
-                    
-                            res.json(response);
-                        }
-                        */
-                    var response = {
-                        'ws_code' : '0',
-                        'mensaje' : 'OK',
-                        'programaciones' : []
-                    };
-                
-                    res.json(response);
-                    
-            });
+        programacion_model.registro_multiple(arr_programaciones, 
+            function(msg, data, id){
+            
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : 'OK',
+                'programaciones' : []
+            };
+        
+            res.json(response);
+            
         });
     },
 

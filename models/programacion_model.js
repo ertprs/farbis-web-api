@@ -92,8 +92,8 @@ module.exports = {
         console.log(programaciones);
         let stmt = 'INSERT INTO  ope_programacion (IdProgramacion, IdEmpresa, Fecha, NroOrden, Cliente, GiroComercial, '
         stmt += 'Direccion, Referencia, Telefonos, Logo, GeoLatitud, GeoLongitud, Servicio, AreaTrabajar, Coordino, '
-        stmt += 'SeCordino, TelefonoCelularSeCordino, Atendera, Personal, Producto, PersonalEncargado, HoraLlegada, '
-        stmt += 'HoraInicio, HoraTermino, Estado, FlgEnvioFoto, FlgEnvioAudio, FlgEnvioVideo, ServicioPendiente, '
+        stmt += 'SeCordino, TelefonoCelularSeCordino, Atendera, Personal, Producto, PersonalEncargado, '
+        stmt += 'Estado, FlgEnvioFoto, FlgEnvioAudio, FlgEnvioVideo, ServicioPendiente, '
         stmt += 'CambioDeProgramacion, Correo, NombreVendedor, TelefonoCelularVendedor, NombreProgramadora1,'
         stmt += 'TelefonoCelularProgramadora1, NombreProgramadora2, TelefonoCelularProgramadora2,'
         stmt += 'NombreProgramadora3, TelefonoCelularProgramadora3, ServicioCancelado, ServicioEmergencia, IdUsuario, FechaRegistro)'
