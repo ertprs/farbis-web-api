@@ -120,7 +120,7 @@ module.exports = {
 
         var cnx = connection.get_connection();
 
-        let stmt = 'SELECT idprogramacion FROM ope_programacion where idprogramacion in  ' + ids + ';';
+        let stmt = 'SELECT idprogramacion as id_programacion FROM ope_programacion where idprogramacion in  ' + ids + ';';
         console.log(stmt);
 
         cnx.query(stmt, [  ], function(err, rows, fields)
@@ -134,8 +134,8 @@ module.exports = {
             }else{
                 //msg = functions.get_output(rows, '@output');
                 //id = functions.get_output(rows, '@id');
-                console.log(rows);
-                data = rows;//functions.get_datatable(rows);
+                //console.log(rows);
+                data = rows; //functions.get_datatable(rows);
                 msg = 'OK';
                 id = '';
             }

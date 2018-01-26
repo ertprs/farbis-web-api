@@ -269,36 +269,48 @@ module.exports = {
         
             res.json(response);
             */
-            var arr_programaciones_final = [];
-            var id_programacion = "";
-            var existe = false;
-
-            arr_programaciones.forEach(function(programacion, index) {
-                id_programacion = programaciones[index].id_programacion;
-                existe = false;
-
-                data.forEach(function(prog, index) {
-                    if (id_programacion == prog.id_programacion) {
-                        existe = true;
+            if (data != null) {
+                console.log(data);
+                var arr_programaciones_final = [];
+                var id_programacion = "";
+                var existe = false;
+    
+                arr_programaciones.forEach(function(programacion, index) {
+                    id_programacion = programaciones[index].id_programacion;
+                    existe = false;
+                    
+                    data.forEach(function(prog, index) {
+                        if (id_programacion == prog.id_programacion) {
+                            existe = true;
+                        }
+                    });
+    
+                    if (existe == false) {
+                        arr_programaciones_final.push(programacion);
                     }
                 });
-
-                if (existe == false) {
-                    arr_programaciones_final.push(programacion);
+                
+                if (arr_programaciones_final.length > 0) {
+                    programacion_model.registro_multiple(arr_programaciones_final, function(msg, data, id){
+    
+                        var response = {
+                            'ws_code' : '0',
+                            'mensaje' : msg,
+                            'programaciones' : data
+                        };
+                    
+                        res.json(response);
+                    });
+                } else {
+                    var response = {
+                        'ws_code' : '0',
+                        'mensaje' : 'No hay programaciones nuevas.',
+                        'programaciones' : []
+                    };
+                
+                    res.json(response);
                 }
-            });
-            
-            programacion_model.registro_multiple(arr_programaciones_final, function(msg, data, id){
-
-                var response = {
-                    'ws_code' : '0',
-                    'mensaje' : msg,
-                    'programaciones' : data
-                };
-            
-                res.json(response);
-            });
-            
+            }
         });
     },
 
