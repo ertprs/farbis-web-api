@@ -56,6 +56,11 @@ module.exports = {
         });
         */
         return db;
+    },
+
+    get_pool : function ()
+    {
+        var pool = mysql.createPool(config);
     }
     
 };
