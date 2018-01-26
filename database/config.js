@@ -46,8 +46,8 @@ else if (env == 'qa')
         connectionLimit: 50,
         queueLimit: 0,
         waitForConnection: true,
-        multipleStatements: true,
-        timezone: 'utc'
+        multipleStatements: true
+        //timezone: 'utc'
     };
 }
 else
