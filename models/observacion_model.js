@@ -64,6 +64,7 @@ module.exports = {
                   res.json({"code" : 100, "status" : "Error in connection database"});
                   return;     
             });
+            connection.end(function () {});
       });
       /*
         cnx.query('CALL ssp_ope_observacion_registro(?,?,?,?,?,?,@item,@fecha);select @item,@fecha', [ id_programacion, 
