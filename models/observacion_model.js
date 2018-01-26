@@ -51,7 +51,7 @@ module.exports = {
             callback(msg, data, item, fecha);
         });
         
-        cnx.end(function () {});
+        //cnx.end(function () {});
     },
 
     actualiza : function(id_programacion, item, observacion,  
