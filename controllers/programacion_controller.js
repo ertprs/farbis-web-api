@@ -253,7 +253,7 @@ module.exports = {
             arr_ids.push([
                 id_programacion, 
             ]);
-            str_ids += id_programacion;
+            str_ids += "'" + id_programacion + "',";
         });
 
         str_ids += "'')";
