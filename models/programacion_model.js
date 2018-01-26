@@ -81,7 +81,7 @@ module.exports = {
         cnx.end(function () {});
     },
 
-    registro_multiple : function(ids, programaciones, 
+    registro_multiple : function(programaciones, 
                 callback) {
         //id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
         //telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, secordino,
@@ -99,7 +99,7 @@ module.exports = {
         stmt += 'NombreProgramadora3, TelefonoCelularProgramadora3, ServicioCancelado, ServicioEmergencia, IdUsuario, FechaRegistro)';
         stmt += 'VALUES   ?  ';
 
-        cnx.query(stmt, [ programaciones, ids ], function(err, rows, fields)
+        cnx.query(stmt, [ programaciones ], function(err, rows, fields)
         {
             var data = null;
             var msg = '';
@@ -124,9 +124,9 @@ module.exports = {
 
         var cnx = connection.get_connection();
 
-        let stmt = 'SELECT idprogramacion FROM ope_programacion where idprogramacion in  ? ';
+        let stmt = 'SELECT idprogramacion FROM ope_programacion where idprogramacion in  ' + ids;
 
-        cnx.query(stmt, [ ids ], function(err, rows, fields)
+        cnx.query(stmt, [  ], function(err, rows, fields)
         {
             var data = null;
             var msg = '';
