@@ -126,7 +126,7 @@ module.exports = {
 
         let stmt = 'SELECT idprogramacion FROM ope_programacion where idprogramacion in  ? ';
 
-        cnx.query(stmt, [ programaciones, ids ], function(err, rows, fields)
+        cnx.query(stmt, [ ids ], function(err, rows, fields)
         {
             var data = null;
             var msg = '';
