@@ -61,6 +61,7 @@ module.exports = {
     get_pool : function ()
     {
         var pool = mysql.createPool(config);
+        return pool;
     }
     
 };
