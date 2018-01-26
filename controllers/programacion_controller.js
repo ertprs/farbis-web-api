@@ -194,7 +194,6 @@ module.exports = {
 
         var programaciones = req.body;
         var ids = [];
-        var str_fechas = '';
 
         programaciones.forEach(function(programacion, index) {
             //console.log(programacion.id_programacion);
@@ -239,7 +238,6 @@ module.exports = {
             else{
                 fecha = functions.string_todatetime(fecha, 'dd/MM/yyyy', '/');
             }
-            str_fechas += fecha + '@@';
             
             programacion_model.registro(id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
                     telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, secordino, 
@@ -273,8 +271,7 @@ module.exports = {
                             var response = {
                                 'ws_code' : '0',
                                 'mensaje' : 'OK',
-                                'programaciones' : ids,
-                                'fechas': str_fechas
+                                'programaciones' : ids
                             };
                     
                             res.json(response);

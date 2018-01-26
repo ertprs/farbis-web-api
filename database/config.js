@@ -17,8 +17,7 @@ if (env == 'developer')
         connectionLimit: 50,
         queueLimit: 0,
         waitForConnection: true,
-        multipleStatements: true,
-        timezone: 'utc'
+        multipleStatements: true
     };
 }
 /*
@@ -47,7 +46,6 @@ else if (env == 'qa')
         queueLimit: 0,
         waitForConnection: true,
         multipleStatements: true
-        //timezone: 'utc'
     };
 }
 else
@@ -56,8 +54,7 @@ else
         host: 'db4free.net',
         user: 'sireis_root',
         password: 'sireis',
-        database: 'sireis',
-        timezone: 'utc'
+        database: 'sireis'
     };
 }
 
