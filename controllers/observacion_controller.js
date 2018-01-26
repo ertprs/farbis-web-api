@@ -57,6 +57,7 @@ module.exports = {
 
         var observaciones = req.body;
         var ids = [];
+        var arr_observaciones = [];
 
         observaciones.forEach(function(obs, index) {
 
@@ -66,7 +67,11 @@ module.exports = {
             var ruta_foto = '';//obs.ruta_foto;
             var ruta_audio = '';//obs.ruta_audio;
             var id_usuario = obs.id_usuario;
-    
+
+            arr_observaciones.push([
+                id_programacion, observacion, origen, ruta_foto, ruta_audio, id_usuario
+            ]);
+            /*
             observacion_model.registro(id_programacion, observacion, origen, 
                             ruta_foto, ruta_audio, id_usuario, function(msg, data, item, fecha){
 
@@ -86,6 +91,18 @@ module.exports = {
                     res.json(response);
                 }
             });
+            */
+        });
+
+        observacion_model.registro_multiple(arr_observaciones, function(msg, data, item, fecha){
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : 'OK',
+                'observaciones' : []
+            };
+    
+            res.json(response);
         });
     },
 

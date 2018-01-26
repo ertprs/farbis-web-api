@@ -28,6 +28,61 @@ module.exports = {
     registro : function(id_programacion, observacion, origen, 
                         ruta_foto, ruta_audio, id_usuario, callback) {
 
+        var cnx = connection.get_connection();
+        
+        cnx.query('CALL ssp_ope_observacion_registro(?,?,?,?,?,?,@item,@fecha);select @item,@fecha', [ id_programacion, 
+                    observacion, origen, ruta_foto, ruta_audio, id_usuario ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            var item = '';
+            var fecha = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                msg = functions.get_msg(rows);
+                item = functions.get_output(rows, '@item');
+                fecha = functions.get_output(rows, '@fecha');
+            }
+
+            callback(msg, data, item, fecha);
+        });
+        
+        cnx.end(function () {});
+    },
+
+    registro_multiple : function(observaciones, callback) {
+        //id_programacion, observacion, origen, ruta_foto, ruta_audio, id_usuario
+        var cnx = connection.get_connection();
+        //id_programacion, observacion, origen, ruta_foto, ruta_audio, id_usuario
+        cnx.query('CALL ssp_ope_observacion_registro(?,?,?,?,?,?,@item,@fecha);select @item,@fecha', [ observaciones ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            var item = '';
+            var fecha = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                //msg = functions.get_msg(rows);
+                //item = functions.get_output(rows, '@item');
+                //fecha = functions.get_output(rows, '@fecha');
+                msg = 'OK';
+                item = '';
+                fecha = '';
+            }
+
+            callback(msg, data, item, fecha);
+        });
+        
+        cnx.end(function () {});
+    },
+
+    registro_bk : function(id_programacion, observacion, origen, 
+                        ruta_foto, ruta_audio, id_usuario, callback) {
+
         //var cnx = connection.get_connection();
         var pool = connection.get_pool();
 
@@ -64,8 +119,7 @@ module.exports = {
                   res.json({"code" : 100, "status" : "Error in connection database"});
                   return;     
             });
-            connection.end(function () {});
-      });
+        });
       /*
         cnx.query('CALL ssp_ope_observacion_registro(?,?,?,?,?,?,@item,@fecha);select @item,@fecha', [ id_programacion, 
                     observacion, origen, ruta_foto, ruta_audio, id_usuario ], function(err, rows, fields)
