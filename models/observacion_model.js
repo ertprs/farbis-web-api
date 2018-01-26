@@ -57,9 +57,9 @@ module.exports = {
         var cnx = connection.get_connection();
         //id_programacion, observacion, origen, ruta_foto, ruta_audio, id_usuario
         console.log(observaciones);
-        
+        let stmt = 'INSERT INTO  ope_observacion (IdProgramacion, Item, Observacion, Origen, RutaFoto, RutaAudio, Estado, IdUsuario, FechaRegistro) VALUES  ?  ';
         //cnx.query('CALL ssp_ope_observacion_registro(?,?,?,?,?,?,?,?)', [ observaciones ], function(err, rows, fields)
-        cnx.query('CALL ssp_ope_observacion_registro(?)', observaciones, function(err, rows, fields)
+        cnx.query(stmt, [ observaciones ], function(err, rows, fields)
         {
             var data = null;
             var msg = '';
