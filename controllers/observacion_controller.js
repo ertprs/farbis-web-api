@@ -97,7 +97,7 @@ module.exports = {
             */
         });
 
-        observacion_model.registro_multiple(values, function(msg, data, item, fecha){
+        observacion_model.registro_multiple(arr_observaciones, function(msg, data, item, fecha){
 
             var response = {
                 'ws_code' : '0',
