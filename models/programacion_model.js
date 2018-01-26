@@ -63,6 +63,7 @@ module.exports = {
                 celular_programadora2, nombre_programadora3, celular_programadora3, servicio_emergencia, id_usuario ], 
                 function(err, rows, fields)
         {
+            cnx.release();
             var data = null;
             var msg = '';
             var id = '';
