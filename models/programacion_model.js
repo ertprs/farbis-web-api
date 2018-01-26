@@ -90,8 +90,7 @@ module.exports = {
         //celular_programadora2, nombre_programadora3, celular_programadora3, servicio_emergencia, id_usuario
         var cnx = connection.get_connection();
         console.log(programaciones);
-        let stmt = '';
-        stmt += 'INSERT INTO  ope_programacion (IdProgramacion, IdEmpresa, Fecha, NroOrden, Cliente, GiroComercial, ';
+        let stmt = 'INSERT INTO  ope_programacion (IdProgramacion, IdEmpresa, Fecha, NroOrden, Cliente, GiroComercial, ';
         stmt += 'Direccion, Referencia, Telefonos, Logo, GeoLatitud, GeoLongitud, Servicio, AreaTrabajar, Coordino, ';
         stmt += 'SeCordino, TelefonoCelularSeCordino, Atendera, Personal, Producto, PersonalEncargado, ';
         stmt += 'Estado, FlgEnvioFoto, FlgEnvioAudio, FlgEnvioVideo, ServicioPendiente, ';
@@ -99,7 +98,6 @@ module.exports = {
         stmt += 'TelefonoCelularProgramadora1, NombreProgramadora2, TelefonoCelularProgramadora2,';
         stmt += 'NombreProgramadora3, TelefonoCelularProgramadora3, ServicioCancelado, ServicioEmergencia, IdUsuario, FechaRegistro)';
         stmt += 'VALUES   ?  ';
-        stmt += 'WHERE NOT EXISTS ( SELECT IdProgramacion FROM ope_programacion WHERE IdProgramacion = ? ) ';
 
         cnx.query(stmt, [ programaciones, ids ], function(err, rows, fields)
         {
@@ -112,6 +110,34 @@ module.exports = {
             }else{
                 //msg = functions.get_output(rows, '@output');
                 //id = functions.get_output(rows, '@id');
+                msg = 'OK';
+                id = '';
+            }
+
+            callback(msg, data, id);
+        });
+        
+        cnx.end(function () {});
+    },
+
+    valida_multiple : function(ids, callback) {
+
+        var cnx = connection.get_connection();
+
+        let stmt = 'SELECT idprogramacion FROM ope_programacion where idprogramacion in  ? ';
+
+        cnx.query(stmt, [ programaciones, ids ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            var id = '';
+
+            if (err) {
+                msg = err.message;
+            }else{
+                //msg = functions.get_output(rows, '@output');
+                //id = functions.get_output(rows, '@id');
+                data = functions.get_datatable(rows);
                 msg = 'OK';
                 id = '';
             }

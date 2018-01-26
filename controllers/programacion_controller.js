@@ -254,13 +254,12 @@ module.exports = {
             ]);
         });
 
-        programacion_model.registro_multiple(arr_ids, arr_programaciones, 
-            function(msg, data, id){
+        programacion_model.valida_multiple(arr_ids, function(msg, data, id){
             
             var response = {
                 'ws_code' : '0',
                 'mensaje' : msg,
-                'programaciones' : []
+                'programaciones' : data
             };
         
             res.json(response);
