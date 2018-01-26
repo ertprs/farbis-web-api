@@ -42,7 +42,7 @@ else if (env == 'qa')
         user: 'bb6c696855162d',
         password: '638896cc',
         database: 'heroku_973be16846cc7c4',
-        connectionLimit: 100,
+        connectionLimit: 400,
         queueLimit: 0,
         waitForConnection: true,
         multipleStatements: true

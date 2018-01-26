@@ -33,8 +33,6 @@ module.exports = {
         cnx.query('CALL ssp_ope_observacion_registro(?,?,?,?,?,?,@item,@fecha);select @item,@fecha', [ id_programacion, 
                     observacion, origen, ruta_foto, ruta_audio, id_usuario ], function(err, rows, fields)
         {
-            cnx.release();
-            
             var data = null;
             var msg = '';
             var item = '';
@@ -50,7 +48,7 @@ module.exports = {
 
             callback(msg, data, item, fecha);
         });
-
+        cnx.release();
         cnx.end(function () {});
     },
 
