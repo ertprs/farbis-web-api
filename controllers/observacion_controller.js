@@ -69,7 +69,7 @@ module.exports = {
             var id_usuario = obs.id_usuario;
 
             arr_observaciones.push([
-                id_programacion, observacion, origen, ruta_foto, ruta_audio, id_usuario
+                id_programacion, observacion, origen, ruta_foto, ruta_audio, id_usuario,'',''
             ]);
             /*
             observacion_model.registro(id_programacion, observacion, origen, 
