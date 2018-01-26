@@ -5,6 +5,7 @@ var functions = require('.././util/functions');
 var programacion_model = require('.././models/programacion_model');
 var usuario_model = require('.././models/usuario_model');
 var observacion_model = require('.././models/observacion_model');
+var ficha_model = require('.././models/ficha_model');
 var fs = require('fs');
 var constants = require('.././util/constants');
 
@@ -272,11 +273,12 @@ module.exports = {
             if (data != null) {
                 console.log(data);
                 var arr_programaciones_final = [];
+                var arr_fichas = [];
                 var id_programacion = "";
                 var existe = false;
     
-                arr_programaciones.forEach(function(programacion, index) {
-                    id_programacion = programaciones[index].id_programacion;
+                programaciones.forEach(function(programacion, index) {
+                    id_programacion = programacion.id_programacion;
                     existe = false;
                     
                     data.forEach(function(prog, index) {
@@ -286,20 +288,30 @@ module.exports = {
                     });
     
                     if (existe == false) {
-                        arr_programaciones_final.push(programacion);
+                        arr_programaciones_final.push(arr_programaciones[index]);
+
+                        arr_fichas.push([
+                            programacion.id_programacion, '', null, '',
+                            null, '', null, null, 0, 
+                            '', '', 0, '', 0, '', 
+                            '', 'N', 'N', 'N', 'N', programacion.id_usuario, new Date(), '', ''
+                        ]);
                     }
                 });
                 
                 if (arr_programaciones_final.length > 0) {
                     programacion_model.registro_multiple(arr_programaciones_final, function(msg, data, id){
     
-                        var response = {
-                            'ws_code' : '0',
-                            'mensaje' : msg,
-                            'programaciones' : data
-                        };
-                    
-                        res.json(response);
+                        ficha_model.registro_multiple(arr_fichas, function(msg){
+                            var response = {
+                                'ws_code' : '0',
+                                'mensaje' : msg,
+                                'programaciones' : []
+                            };
+                        
+                            res.json(response);
+                        });
+                        
                     });
                 } else {
                     var response = {

@@ -35,6 +35,41 @@ module.exports = {
         cnx.end(function () {});
     },
 
+    registro_multiple : function(fichas, callback) {
+        /*id_programacion, numero, fecha_llegada, foto_llegada,
+        fecha_inicio, foto_inicio, fecha_fin, fecha_salida, diagnostico_codigo,
+        diagnostico_nombre, diagnostico_foto, condicion_sanitaria_codigo, 
+        condicion_sanitaria_nombre, trabajo_realizado_codigo, trabajo_realizado_nombre,
+        ficha_fisica_foto, flg_envio_foto, flg_envio_audio, flg_envio_video,
+        es_descargado, id_usuario*/
+        var cnx = connection.get_connection();
+
+        let stmt = 'INSERT INTO  ope_ficha (IdProgramacion, Numero, FechaLlegada, FotoLlegada, ';
+        stmt += 'FechaInicio, FotoInicio, FechaFin, FechaSalida, DiagnosticoCodigo, ';
+        stmt += 'DiagnosticoNombre, DiagnosticoFoto, CondicionSanitariaCodigo, ';
+        stmt += 'CondicionSanitariaNombre, TrabajoRealizadoCodigo, TrabajoRealizadoNombre, ';
+        stmt += 'FichaFisicaFoto, FlgEnvioFoto, FlgEnvioAudio, FlgEnvioVideo, ';
+        stmt += 'EsDescargado, IdUsuario, FecRegistro, GeoLatitud, GeoLongitud) ';
+        stmt += 'VALUES  ?  ';
+
+        cnx.query(stmt, [ fichas ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                //msg = functions.get_msg(rows);
+                msg = 'OK';
+            }
+
+            callback(msg);
+        });
+
+        cnx.end(function () {});
+    },
+
     lista_por_programacion : function(id_programacion, callback) {
 
         var cnx = connection.get_connection();
