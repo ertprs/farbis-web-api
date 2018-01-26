@@ -56,6 +56,7 @@ module.exports = {
         //id_programacion, observacion, origen, ruta_foto, ruta_audio, id_usuario
         var cnx = connection.get_connection();
         //id_programacion, observacion, origen, ruta_foto, ruta_audio, id_usuario
+        console.log(observaciones);
         cnx.query('CALL ssp_ope_observacion_registro(?,?,?,?,?,?,@item,@fecha);select @item,@fecha', [ observaciones ], function(err, rows, fields)
         {
             var data = null;
@@ -73,7 +74,7 @@ module.exports = {
                 item = '';
                 fecha = '';
             }
-
+            console.log(msg);
             callback(msg, data, item, fecha);
         });
         
