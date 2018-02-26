@@ -77,7 +77,6 @@ module.exports = {
             callback(msg, data, id);
         });
 
-        cnx.release();
         cnx.end(function () {});
     },
 
