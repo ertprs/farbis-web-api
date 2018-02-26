@@ -43,14 +43,14 @@ module.exports = {
         var ruta_audio = req.body.ruta_audio;
         var ruta_video = req.body.ruta_video;
         var id_usuario = req.body.id_usuario;
-
+        /*
         if (fecha_vcto == '') {
             fecha_vcto = null;
         }
         else{
-            //fecha_vcto = functions.string_todate(fecha_vcto, 'dd/MM/yyyy', '/');
+            fecha_vcto = functions.string_todate(fecha_vcto, 'dd/MM/yyyy', '/');
         }
-
+        */
         proceso_model.registro(id_programacion, tipo, descripcion, nombre, telefono, area, 
                         fecha_vcto, ruta_foto, ruta_audio, ruta_video, id_usuario, function(msg, data, item, fecha){
 
@@ -81,14 +81,14 @@ module.exports = {
         var ruta_audio = req.body.ruta_audio;
         var ruta_video = req.body.ruta_video;
         var id_usuario = req.body.id_usuario;
-
+        /*
         if (fecha_vcto == '') {
             fecha_vcto = null;
         }
         else{
-            //fecha_vcto = functions.string_todate(fecha_vcto, 'dd/MM/yyyy', '/');
+            fecha_vcto = functions.string_todate(fecha_vcto, 'dd/MM/yyyy', '/');
         }
-
+        */
         proceso_model.actualiza(id_programacion, tipo, item, descripcion, nombre, telefono, area, 
                         fecha_vcto, ruta_foto, ruta_audio, ruta_video, id_usuario, function(msg, data){
 
