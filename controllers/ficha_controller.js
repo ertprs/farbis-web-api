@@ -39,25 +39,25 @@ module.exports = {
             fecha_llegada = null;
         }
         else{
-            fecha_llegada = functions.string_todatetime(fecha_llegada, 'dd/MM/yyyy', '/');
+            //fecha_llegada = functions.string_todatetime(fecha_llegada, 'dd/MM/yyyy', '/');
         }
         if (fecha_inicio == '') {
             fecha_inicio = null;
         }
         else{
-            fecha_inicio = functions.string_todatetime(fecha_inicio, 'dd/MM/yyyy', '/');
+            //fecha_inicio = functions.string_todatetime(fecha_inicio, 'dd/MM/yyyy', '/');
         }
         if (fecha_fin == '') {
             fecha_fin = null;
         }
         else{
-            fecha_fin = functions.string_todatetime(fecha_fin, 'dd/MM/yyyy', '/');
+            //fecha_fin = functions.string_todatetime(fecha_fin, 'dd/MM/yyyy', '/');
         }
         if (fecha_salida == '') {
             fecha_salida = null;
         }
         else{
-            fecha_salida = functions.string_todatetime(fecha_salida, 'dd/MM/yyyy', '/');
+            //fecha_salida = functions.string_todatetime(fecha_salida, 'dd/MM/yyyy', '/');
         }
 
         ficha_model.registro(id_programacion, numero, fecha_llegada, foto_llegada,
