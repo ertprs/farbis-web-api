@@ -48,7 +48,7 @@ module.exports = {
             fecha_vcto = null;
         }
         else{
-            fecha_vcto = functions.string_todate(fecha_vcto, 'dd/MM/yyyy', '/');
+            //fecha_vcto = functions.string_todate(fecha_vcto, 'dd/MM/yyyy', '/');
         }
 
         proceso_model.registro(id_programacion, tipo, descripcion, nombre, telefono, area, 
@@ -86,7 +86,7 @@ module.exports = {
             fecha_vcto = null;
         }
         else{
-            fecha_vcto = functions.string_todate(fecha_vcto, 'dd/MM/yyyy', '/');
+            //fecha_vcto = functions.string_todate(fecha_vcto, 'dd/MM/yyyy', '/');
         }
 
         proceso_model.actualiza(id_programacion, tipo, item, descripcion, nombre, telefono, area, 

@@ -68,9 +68,11 @@ module.exports = {
             var ruta_foto = '';//obs.ruta_foto;
             var ruta_audio = '';//obs.ruta_audio;
             var id_usuario = obs.id_usuario;
+            var fecha = new Date();
+
             //contador += 1;
             arr_observaciones.push([
-                id_programacion, item, observacion, origen, ruta_foto, ruta_audio, '1', id_usuario, 'NOW()'
+                id_programacion, item, observacion, origen, ruta_foto, ruta_audio, '1', id_usuario, fecha
             ]);
             //values += "('demian', 'demian@gmail.com', 1,2),"
             //('john', 'john@gmail.com', 2,4)
