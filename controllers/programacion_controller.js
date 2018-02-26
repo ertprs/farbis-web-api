@@ -171,6 +171,7 @@ module.exports = {
         }
         else{
             fecha = functions.string_todatetime(fecha, 'dd/MM/yyyy', '/');
+            console.log(fecha);
         }
         
         programacion_model.registro(id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
