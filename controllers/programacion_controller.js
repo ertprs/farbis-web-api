@@ -170,7 +170,7 @@ module.exports = {
             fecha = null;
         }
         else{
-            fecha = functions.string_todatetime(fecha, 'dd/MM/yyyy', '/');
+            //fecha = functions.string_todatetime(fecha, 'dd/MM/yyyy', '/');
             console.log(fecha);
         }
         
