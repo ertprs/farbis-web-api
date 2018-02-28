@@ -170,8 +170,7 @@ module.exports = {
             fecha = null;
         }
         else{
-            //fecha = functions.string_todatetime(fecha, 'dd/MM/yyyy', '/');
-            console.log(fecha);
+            fecha = functions.string_todatetime(fecha, 'MM/dd/yyyy', '/');
         }
         
         programacion_model.registro(id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
