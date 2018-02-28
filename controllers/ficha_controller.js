@@ -39,8 +39,9 @@ module.exports = {
             fecha_llegada = null;
         }
         else{
-            fecha_llegada = functions.string_todatetime(fecha_llegada, 'dd/MM/yyyy', '/');
             console.log('fecha_llegada');
+            console.log(fecha_llegada);
+            fecha_llegada = functions.string_todatetime(fecha_llegada, 'dd/MM/yyyy', '/');
             console.log(fecha_llegada);
         }
         if (fecha_inicio == '') {
