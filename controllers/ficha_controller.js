@@ -40,6 +40,8 @@ module.exports = {
         }
         else{
             fecha_llegada = functions.string_todatetime(fecha_llegada, 'dd/MM/yyyy', '/');
+            console.log('fecha_llegada');
+            console.log(fecha_llegada);
         }
         if (fecha_inicio == '') {
             fecha_inicio = null;
