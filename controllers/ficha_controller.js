@@ -29,6 +29,7 @@ module.exports = {
         var trabajo_realizado_codigo = req.body.trabajo_realizado_codigo; 
         var trabajo_realizado_nombre = req.body.trabajo_realizado_nombre;
         var ficha_fisica_foto = req.body.ficha_fisica_foto; 
+        var productos = req.body.productos; 
         var flg_envio_foto = req.body.flg_envio_foto; 
         var flg_envio_audio = req.body.flg_envio_audio; 
         var flg_envio_video = req.body.flg_envio_video;
@@ -64,7 +65,7 @@ module.exports = {
                             fecha_inicio, foto_inicio, fecha_fin, fecha_salida, diagnostico_codigo,
                             diagnostico_nombre, diagnostico_foto, condicion_sanitaria_codigo, 
                             condicion_sanitaria_nombre, trabajo_realizado_codigo, trabajo_realizado_nombre,
-                            ficha_fisica_foto, flg_envio_foto, flg_envio_audio, flg_envio_video,
+                            ficha_fisica_foto, productos, flg_envio_foto, flg_envio_audio, flg_envio_video,
                             es_descargado, id_usuario, function(msg, data){
 
             var response = {

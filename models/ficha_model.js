@@ -7,17 +7,17 @@ module.exports = {
                         fecha_inicio, foto_inicio, fecha_fin, fecha_salida, diagnostico_codigo,
                         diagnostico_nombre, diagnostico_foto, condicion_sanitaria_codigo, 
                         condicion_sanitaria_nombre, trabajo_realizado_codigo, trabajo_realizado_nombre,
-                        ficha_fisica_foto, flg_envio_foto, flg_envio_audio, flg_envio_video,
+                        ficha_fisica_foto, productos, flg_envio_foto, flg_envio_audio, flg_envio_video,
                         es_descargado, id_usuario, callback) {
 
         var cnx = connection.get_connection();
 
-        cnx.query('CALL ssp_ope_ficha_registro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', 
+        cnx.query('CALL ssp_ope_ficha_registro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', 
                 [ id_programacion, numero, fecha_llegada, foto_llegada,
                 fecha_inicio, foto_inicio, fecha_fin, fecha_salida, diagnostico_codigo,
                 diagnostico_nombre, diagnostico_foto, condicion_sanitaria_codigo, 
                 condicion_sanitaria_nombre, trabajo_realizado_codigo, trabajo_realizado_nombre,
-                ficha_fisica_foto, flg_envio_foto, flg_envio_audio, flg_envio_video,
+                ficha_fisica_foto, productos, flg_envio_foto, flg_envio_audio, flg_envio_video,
                 es_descargado, id_usuario ], function(err, rows, fields)
         {
             var data = null;
