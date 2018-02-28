@@ -172,6 +172,13 @@ module.exports = {
         else{
             fecha = functions.string_todatetime(fecha, 'MM/dd/yyyy', '/');
         }
+
+        if (personal == '') {
+            personal = personal_encargado;
+        }
+        if (personal_encargado == '') {
+            personal_encargado = personal;
+        }
         
         programacion_model.registro(id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
                 telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, secordino, 
