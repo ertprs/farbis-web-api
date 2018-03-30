@@ -1,7 +1,7 @@
 {
   "name": "sireis-web",
   "version": "1.0.0",
-  "description": "App academy.",
+  "description": "App for farbis apps.",
   "engines": {
     "node": "6.9.2",
     "npm": "3.10.9"

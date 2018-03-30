@@ -116,7 +116,7 @@ angular.module('FarbisWebApp.controllers', []).
     $scope.programacionFiltro = null;
     $scope.programacionLista = [];
     $scope.operario = {
-        'id_operario' : 'OP0001'
+        'id_operario' : '00001'
     };
 
     $scope.init = function () {
