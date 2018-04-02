@@ -126,7 +126,6 @@ module.exports = {
         });
     },
 
-
     post_validar_programador : function(req, res, next)
     {
         functions.print_console('rest method: post_validar_programador');
@@ -151,6 +150,24 @@ module.exports = {
                 'ws_code' : '0',
                 'mensaje' : msg, 
                 'usuario' : data
+            };
+
+            res.json(response);
+        });
+    },
+
+    post_lista_por_tipo : function(req, res, next)
+    {
+        functions.print_console('rest method programacion: post_lista_por_tipo');
+
+        var tipo = req.body.tipo;
+
+        usuario_model.lista_por_tipo(tipo, function(msg, data){
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : msg, 
+                'usuarios' : data
             };
 
             res.json(response);

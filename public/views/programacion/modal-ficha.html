@@ -1,0 +1,231 @@
+<div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Ficha Técnica</h4>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-sm-5 col-sm-offset-1">
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">1</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Nº Ficha técnica</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ ficha.numero }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">2</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Razón Social</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ programacion.cliente }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">3</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Fecha de Servicio</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ programacion.fecha_format }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">4</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Dirección</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ programacion.direccion }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">5</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Giro Comercial</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ programacion.giro_comercial }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">6</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Hora de inicio</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ ficha.hora_inicio_format }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">7</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Hora de llegada</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ ficha.hora_llegada_format }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">8</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Diagnóstico</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ ficha.diagnostico_nombre }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">9</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Condición sanitaria de la zona circuncidante</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ ficha.condicion_sanitaria_nombre }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">10</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Trabajos realizados</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ ficha.trabajo_realizado_nombre }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">11</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Productos químicos o biológicos</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ ficha.productos }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">12</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Observaciones</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ ficha.diagnostico_nombre }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-5">
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">13</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Recomendaciones</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ ficha.diagnostico_nombre }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">14</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Incidencias</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ ficha.diagnostico_nombre }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">15</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Personas que supervisaron</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ ficha.diagnostico_nombre }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-icon waves-circle text-bold">16</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label class="c-blue text-bold">Ficha física</label>
+                                <br>
+                                <label class="text-bold c-darkgray">{{ ficha.ficha_fisica_foto }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="$dismiss()">CERRAR</button>
+        </div>
+    </div>

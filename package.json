@@ -23,6 +23,7 @@
   "homepage": "https://github.com/jcarlosverase/AppAcademia-MEAN#readme",
   "dependencies": {
     "angular": "^1.6.0",
+    "angularjs-datepicker": "^2.1.23",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
     "cors": "^2.8.4",

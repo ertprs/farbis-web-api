@@ -17,7 +17,7 @@
                                 <div class="col-sm-4">
 									<div class="input-group form-group fg-line">
 										<div class="dtp-container fg-line">
-											<input type='text' class="form-control date-picker" placeholder="dd/mm/aaaa">
+											<input id="inp-fecha" type='text' class="form-control date-picker" placeholder="dd/mm/aaaa" ng-model="filtro.fecha">
 										</div>
 										<span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
 									</div>
@@ -25,20 +25,18 @@
 								<div class="col-sm-6">
 									<div class="form-group">
 										<div class="dtp-container fg-line">
-											<select class="selectpicker" data-live-search="true">
-												<option>Buscar por operario</option>
-												<option>Nombre de operario 1</option>
-												<option>Nombre de operario 2</option>
-												<option>Nombre de operario 3</option>
-												<option>Nombre de operario 4</option>
-												<option>Nombre de operario 5</option>							
+											<select id="sel-operario" class="selectpicker" data-live-search="true" ng-model="filtro.id_operario">
+												<option value="" selected hidden>Buscar por operario</option>
+												<option ng-repeat="item in operarioLista" value="{{ item.id_usuario }}">
+													{{ item.nombres }} {{ item.apellidos }}
+												</option>						
 											</select>
 										</div>
 									</div>
 								</div>
 								
                                 <div class="col-sm-2">
-                                    <button class="btn btn-primary btn-sm m-t-5 waves-effect">BUSCAR</button>
+                                    <button class="btn btn-primary btn-sm m-t-5 waves-effect" ng-click="cargarProgramacion()">BUSCAR</button>
 								</div>
 								
                             </form>
@@ -53,22 +51,70 @@
 						<tr>
 							<th style="width: 10px;">#</th>
 							<th style="width: 80px;">HORA</th>
-							<th>SERVICIO</th>
+							<th style="width: 300px;">SERVICIO</th>
 							<th>OPERARIO</th>
-							<th>CLIENTE</th>
+							<th style="width: 250px;">CLIENTE</th>
 							<th style="width: 100px;">ESTADO</th>
 							<th style="width: 40px;">FICHA</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr ng-repeat="item in programacionLista">
-							<td>{{ $index + 1 }}</td>
-							<td>{{ item.fecha }}</td>
-							<td>{{ item.servicio }}</td>
-							<td>{{ item.personal }}</td>
-							<td>{{ item.cliente }}</td>
-							<td>{{ item.estado }}</td>
-							<td><a href="#" class="btn btn-primary waves-effect">VER</a></td>
+							<td style="width: 10px;">{{ $index + 1 }}</td>
+							<td class="text-primary" style="width: 80px;">{{ item.hora_format }}</td>
+							<td style="width: 300px;">{{ item.servicio }}</td>
+							<td><ul style="list-style-type:none;padding:0px;margin:0px;">
+								<li ng-repeat="p in item.personal_format">- {{ p }}</li>
+							</ul></td>
+							<td style="width: 250px;">{{ item.cliente }}</td>
+							<td ng-switch on="item.estado">
+								<div ng-switch-when="PEN">No iniciado<br>
+									<div style="margin-top: 3px; display: inline-block;">
+										<div class="bgm-lightgray" style="width: 35px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div class="bgm-lightgray" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div class="bgm-lightgray" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+									</div>
+								</div>
+								<div ng-switch-when="LLE">En ejecución<br>
+									<div style="margin-top: 3px; display: inline-block;">
+										<div class="bgm-amber" style="width: 35px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div class="bgm-lightgray" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div class="bgm-lightgray" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+									</div>
+								</div>
+								<div ng-switch-when="INI">En ejecución<br>
+									<div style="margin-top: 3px; display: inline-block;">
+										<div class="bgm-amber" style="width: 35px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div ng-if="item.incidencia_cantidad == 0" class="bgm-lightgray" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div ng-if="item.incidencia_cantidad != 0" class="bgm-orange" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div ng-if="item.venta_cantidad == 0" class="bgm-lightgray" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div ng-if="item.venta_cantidad != 0" class="bgm-blue" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+									</div>
+								</div>
+								<div ng-switch-when="FIN">Terminado<br>
+									<div style="margin-top: 3px; display: inline-block;">
+										<div class="bgm-green" style="width: 35px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div ng-if="item.incidencia_cantidad == 0" class="bgm-lightgray" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div ng-if="item.incidencia_cantidad != 0" class="bgm-orange" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div ng-if="item.venta_cantidad == 0" class="bgm-lightgray" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div ng-if="item.venta_cantidad != 0" class="bgm-blue" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+									</div>
+								</div>
+								<div ng-switch-when="CAN">Cancelado<br>
+									<div style="margin-top: 3px; display: inline-block;">
+										<div class="bgm-red" style="width: 35px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div ng-if="item.incidencia_cantidad == 0" class="bgm-lightgray" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div ng-if="item.incidencia_cantidad != 0" class="bgm-orange" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div ng-if="item.venta_cantidad == 0" class="bgm-lightgray" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+										<div ng-if="item.venta_cantidad != 0" class="bgm-blue" style="width: 5px;height: 5px;border-radius: 5px;display: inline-block;"></div>
+									</div>
+								</div>
+								
+							</td>
+							<td style="width: 40px;"><a href="#" class="btn btn-primary waves-effect">VER</a></td>
+						</tr>
+						<tr ng-if="(programacionLista.length == 0)">
+							<td colspan="7" class="text-center">No se encontró información</td>
 						</tr>
 						<!--
 						<tr data-id="PROG001">
@@ -217,7 +263,6 @@
 	<%- include('../masterpage/main-scripts') -%>
 
 	<!--<script src="/js/views/programacion/index.js"></script>-->
-	<script src="/js/services/programacion_service.js"></script>
 	<script src="/js/controllers/programacion_controller.js"></script>
 	
 	<%- include('../masterpage/main-footer') -%>

@@ -1,0 +1,67 @@
+<div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Programación - Detalle</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-2">
+                    <button class="btn btn-primary btn-icon waves-circle text-bold">{{ programacion.index + 1 }}</button>
+                </div>
+                <div class="col-sm-5">
+                    <div class="form-group fg-line">
+                        <label class="c-blue text-bold">CLIENTE</label><br>
+                        <label class="form-control label-md text-bold c-darkgray">{{ programacion.cliente }}</label>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="form-group fg-line">
+                        <label class="c-blue text-bold">SERVICIO</label><br>
+                        <label class="form-control label-md text-bold c-darkgray">{{ programacion.servicio }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group fg-line">
+                        <label class="c-blue text-bold">FECHA</label><br>
+                        <label class="form-control input-md text-bold c-darkgray text-center">{{ programacion.fecha_format }}</label>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group fg-line">
+                        <label class="c-blue text-bold">HORA LLEGADA</label><br>
+                        <label class="form-control input-md text-bold c-darkgray text-center">{{ ficha.hora_llegada_format }}</label>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group fg-line">
+                        <label class="c-blue text-bold">HORA INICIO</label><br>
+                        <label class="form-control input-md text-bold c-darkgray text-center">{{ ficha.hora_inicio_format }}</label>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group fg-line">
+                        <label class="c-blue text-bold">HORA TERMINO</label><br>
+                        <label class="form-control input-md text-bold c-darkgray text-center">{{ ficha.hora_fin_format }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group fg-line">
+                        <label class="c-blue text-bold">OPERARIOS</label><br>
+                        <table id="tab-operario" class="table table-condensed">
+                            <tbody>
+                                <tr class="borderless" ng-repeat="p in programacion.personal_format">
+                                    <td>{{ p }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="$dismiss()">CERRAR</button>
+        </div>
+    </div>

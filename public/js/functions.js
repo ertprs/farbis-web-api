@@ -11,8 +11,9 @@ $(window).load(function () {
      -----------------------------------------------------------*/
     if(!$('html').hasClass('ismobile')) {
         if($('.page-loader')[0]) {
+            $('.page-loader').hide();
             setTimeout (function () {
-                $('.page-loader').fadeOut();
+                //$('.page-loader').fadeOut();
             }, 500);
 
         }

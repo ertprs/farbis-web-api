@@ -37,6 +37,109 @@ module.exports = {
         });
     },
 
+    post_lista_por_operario_fecha : function(req, res, next)
+    {
+        functions.print_console('rest method programacion: post_lista_por_operario_fecha');
+
+        var id_operario = req.body.id_operario;
+        var fecha = req.body.fecha;
+
+        programacion_model.lista_por_operario_fecha(id_operario, fecha, function(msg, data_programacion){
+
+            if (data_programacion.length > 0) {
+                data_programacion.forEach(function(programacion, index_programacion) {
+                    var personal = programacion.personal;
+                    var personal_ids_arr = personal.split("-");
+                    var personal_arr = [];
+                    
+                    if (personal_ids_arr.length > 0) {
+                        var str_ids = "(";
+                        personal_ids_arr.forEach(function(id_usuario, index_personal) {
+                            str_ids += "'" + id_usuario + "',";
+                        });
+
+                        str_ids += "'')";
+
+                        /*
+                        personal_ids_arr.forEach(function(id, index_personal) {
+                            usuario_model.obtiene_por_id(id, function(msg, data_usuario){
+                                
+                                if (data_usuario) {
+                                    personal_arr.push(data_usuario.nombres + " " + data_usuario.apellidos);
+                                }
+                                
+                                if (personal_ids_arr.length == index_personal + 1) {
+                                    programacion.personal_format = personal_arr;
+                                }
+        
+                                if (data_programacion.length == index_programacion + 1) {
+                                    var response = {
+                                        'ws_code' : '0',
+                                        'mensaje' : msg,
+                                        'mensaje2' : "aqui",
+                                        'programaciones' : data_programacion
+                                    };
+                        
+                                    res.json(response);
+                                }
+                                
+                            });
+
+                        });
+                        */
+
+                        usuario_model.obtiene_por_id_multiple(str_ids, function(msg, data_usuario){
+                            
+                            if (data_usuario) {
+                                data_usuario.forEach(function(usuario, index_usuario) {
+                                    personal_arr.push(usuario.nombres + " " + usuario.apellidos);
+                                });                                
+                            }
+                            
+                            programacion.personal_format = personal_arr;
+
+                            if (data_programacion.length == index_programacion + 1) {
+                                var response = {
+                                    'ws_code' : '0',
+                                    'mensaje' : msg,
+                                    'mensaje2' : "aqui",
+                                    'programaciones' : data_programacion
+                                };
+                    
+                                res.json(response);
+                            }
+                            
+                        });
+
+                    } else {
+                        programacion.personal_format = personal_arr;
+    
+                        if (data_programacion.length == index_programacion + 1) {
+                            var response = {
+                                'ws_code' : '0',
+                                'mensaje' : msg,
+                                'mensaje2' : "aqui111",
+                                'programaciones' : data_programacion
+                            };
+                
+                            res.json(response);
+                        }
+                    }
+                    
+                });
+            } else {
+                var response = {
+                    'ws_code' : '0',
+                    'mensaje' : msg,
+                    'programaciones' : data_programacion
+                };
+    
+                res.json(response);
+            }
+            
+        });
+    },
+
     post_actualiza_estado : function(req, res, next)
     {
         functions.print_console('rest method programacion: post_actualizar_estado');
@@ -576,6 +679,24 @@ module.exports = {
                     res.end();
                 }
             });
+        });
+    },
+
+    post_obtener_por_id : function(req, res, next)
+    {
+        functions.print_console('rest method: post_obtener_por_id');
+
+        var id_programacion = req.body.id_programacion;
+
+        programacion_model.obtener(id_programacion, function(msg, data){
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : msg, 
+                'programacion' : data
+            };
+
+            res.json(response);
         });
     },
 

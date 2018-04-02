@@ -20,26 +20,24 @@ app.set('port', port);
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 //app.use(express.static(__dirname + '/public'));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'views')));
+
+//app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'views')));
+
+//  Serve frontend view
+app.use(express.static('public'));
 
 app.use(upload());
 
-//app.engine('ejs', engine);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+//app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'ejs');
 
-app.use('/', routes);
+//app.use('/', routes);
+app.use(routes);
 
-
-
+/*
 app.use(function(req, res, next)
 {
-    /*
-    var err = new Error('Not found');
-    err.status = 404;
-    next(err);
-    */
     var response = {
         'ws_code' : '0',
         'mensaje' : 'Archivo no encontrado'
@@ -47,7 +45,7 @@ app.use(function(req, res, next)
 
     res.json(response);
 });
-
+*/
 
 server.listen(port, function(){
 

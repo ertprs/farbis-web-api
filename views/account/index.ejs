@@ -1,12 +1,17 @@
 <!DOCTYPE html>
     <!--[if IE 9 ]><html class="ie9"><![endif]-->
-    
+<html>
 <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Farbis - WebApp</title>
+        <title>SIREIS ::.. Login</title>
         
+        <script src="/js/angular/angular.min.js"></script>
+        <script src="/js/angular/angular-resource.min.js"></script>
+        <script src="/js/angular/angular-route.min.js"></script>
+        <script src="/js/angular/angular-config.js"></script>
+
         <!-- Vendor CSS -->
         <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
         <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
@@ -18,24 +23,24 @@
     
     <body class="login-content">
         <!-- Login -->
-        <div class="lc-block toggled" id="l-login">
+        <div class="lc-block toggled" id="l-login" ng-controller="UsuarioController" >
 
             <div class="input-group m-b-20">
                 <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
                 <div class="fg-line">
-                    <input id="inp-usuario" type="text" class="form-control" placeholder="Usuario">
+                    <input id="inp-usuario" type="text" class="form-control" placeholder="Usuario" ng-model="usuario">
                 </div>
             </div>
             
             <div class="input-group m-b-20">
                 <span class="input-group-addon"><i class="zmdi zmdi-male"></i></span>
                 <div class="fg-line">
-                    <input id="inp-contrasenia" type="password" class="form-control" placeholder="Contraseña">
+                    <input id="inp-contrasenia" type="password" class="form-control" placeholder="Contraseña" ng-model="contrasenia">
                 </div>
             </div>
             
             <div class="clearfix"></div>
-            
+            <!--
             <div class="checkbox">
                 <label>
                     <input type="checkbox" value="">
@@ -43,9 +48,9 @@
                     Recordarme
                 </label>
             </div>
-            
+            -->
             <div class="text-right">
-                <a id="lnk-ingresar" href="#" class="btn bgm-amber c-blue">INGRESAR</a>
+                <a id="lnk-ingresar" href="#" class="btn bgm-amber c-blue" ng-click="validarUsuario()">INGRESAR</a>
             </div>
             
         </div>
@@ -164,8 +169,12 @@
             <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
         <![endif]-->
         
+        
+        
         <script src="js/functions.js"></script>
-        <script src="js/views/account/index.js"></script>
+        <script src="/js/angular/app.js"></script>
+        <!--<script src="js/views/account/index.js"></script>-->
+        <script src="/js/controllers/usuario_controller.js"></script>
         
     </body>
 

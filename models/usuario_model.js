@@ -1,5 +1,6 @@
 var connection = require('.././database/connection');
 var functions = require('.././util/functions');
+var sync = require('synchronize');
 
 module.exports = {
 
@@ -137,4 +138,61 @@ module.exports = {
         cnx.end(function () {});
     },
 
+    obtiene_por_id_async : function(id_usuario) {
+
+        var cnx = connection.get_connection();
+
+        var query = sync.await(cnx.query('CALL ssp_adm_usuario_obtiene_por_id(?)', [ id_usuario ], sync.defer()));
+        
+        console.log(query);
+
+        cnx.end(function () {});
+    },
+
+    obtiene_por_id_multiple : function(ids, callback) {
+
+        var cnx = connection.get_connection();
+
+        let stmt = 'SELECT Nombres as nombres, Apellidos as apellidos FROM adm_usuario WHERE IdUsuario in  ' + ids + ';';
+        console.log(stmt);
+
+        cnx.query(stmt, [  ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                data = rows;
+                msg = 'OK';
+            }
+            
+            callback(msg, data);
+        });
+
+        cnx.end(function () {});
+    },
+
+    lista_por_tipo : function(tipo, callback) {
+
+        var cnx = connection.get_connection();
+
+        cnx.query('CALL ssp_adm_usuario_lista_por_tipo(?)', [ tipo ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                data = functions.get_datatable(rows);
+                msg = functions.get_msg(rows);
+            }
+
+            callback(msg, data);
+        });
+
+        cnx.end(function () {});
+    },
 };

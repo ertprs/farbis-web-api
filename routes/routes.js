@@ -2,19 +2,19 @@ var express = require('express');
 var router = express.Router();
 var views = require('.././routes/views');
 var controllers = require('.././controllers');
-
+/*
 router.get('/', function(req, res, next)
 {
     res.sendFile(views.viewFile('index.html'));
 });
-
+*/
 /**
  * MÓDULOS
  */
-router.get('/login', controllers.account_controller.login);
-router.get('/logout', controllers.account_controller.logout);
+//router.get('/login', controllers.account_controller.login);
+//router.get('/logout', controllers.account_controller.logout);
 
-router.get('/programacion/index', controllers.programacion_controller.index);
+//router.get('/programacion/index', controllers.programacion_controller.index);
 
 /**
  * API REST
@@ -52,6 +52,7 @@ router.post(sub_path + 'rws_programacion_envia_mensaje_whatsapp', controllers.pr
 router.post(sub_path + 'rws_programacion_obtiene_personal', controllers.programacion_controller.post_obtiene_personal);
 router.post(sub_path + 'rws_programacion_lista_sin_descargar', controllers.programacion_controller.post_lista_sin_descargar);
 router.post(sub_path + 'rws_programacion_actualiza_descargado', controllers.programacion_controller.post_actualiza_descargado);
+router.post(sub_path + 'rws_programacion_obtener_por_id', controllers.programacion_controller.post_obtener_por_id);
 router.get(sub_path + 'rws_programacion_descarga/:id_programacion', controllers.programacion_controller.get_descarga);
 
 router.post(sub_path + 'rws_observacion_lista_por_programacion', controllers.observacion_controller.post_lista_por_programacion);
@@ -74,7 +75,8 @@ router.post(sub_path + 'rws_ficha_lista_por_programacion', controllers.ficha_con
 
 // Servidor Web - App Web
 router.post(sub_path + 'rws_programador_valida', controllers.usuario_controller.post_validar_programador);
-
+router.post(sub_path + 'rws_programacion_lista_por_operario_fecha', controllers.programacion_controller.post_lista_por_operario_fecha);
+router.post(sub_path + 'rws_usuario_lista_por_tipo', controllers.usuario_controller.post_lista_por_tipo);
 
 var fs = require('fs');
 var path = require('path');

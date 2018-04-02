@@ -25,6 +25,28 @@ module.exports = {
         cnx.end(function () {});
     },
 
+    lista_por_operario_fecha : function(id_operario, fecha, callback) {
+
+        var cnx = connection.get_connection();
+
+        cnx.query('CALL ssp_ope_programacion_lista_por_operario_fecha(?,?)', [ id_operario, fecha ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                data = functions.get_datatable(rows);
+                msg = functions.get_msg(rows);
+            }
+
+            callback(msg, data);
+        });
+
+        cnx.end(function () {});
+    },
+
     actualiza_estado : function(id_programacion, estado, hora, latitud, longitud, callback) {
 
         var cnx = connection.get_connection();
@@ -134,7 +156,7 @@ module.exports = {
                 //msg = functions.get_output(rows, '@output');
                 //id = functions.get_output(rows, '@id');
                 //console.log(rows);
-                data = rows; //functions.get_datatable(rows);
+                data = functions.get_datarow(rows); //functions.get_datatable(rows);
                 msg = 'OK';
                 id = '';
             }

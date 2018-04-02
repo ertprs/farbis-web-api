@@ -1,0 +1,53 @@
+<div class="container" ng-controller="ProgramacionController" data-ng-init="init()">
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <h4>Programaciones - Mapa</h4>
+                </div>
+
+                <div class="col-sm-6">
+                    <form name="searchform" class="row" role="form" ng-submit="submit()">
+                        <div class="col-sm-4">
+                            <div class="input-group form-group fg-line">
+                                <div class="dtp-container fg-line">
+                                    <input id="inp-fecha" type='text' class="form-control date-picker" placeholder="dd/mm/aaaa" ng-model="filtro.fecha">
+                                </div>
+                                <span class="input-group-addon">
+                                    <i class="zmdi zmdi-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="dtp-container fg-line">
+                                    <select id="sel-operario" class="selectpicker" data-live-search="true" ng-model="filtro.id_operario">
+                                        <option value="" selected hidden>Buscar por operario</option>
+                                        <option ng-repeat="item in operarioLista" value="{{ item.id_usuario }}">
+                                            {{ item.nombres }} {{ item.apellidos }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary btn-sm m-t-5 waves-effect" ng-click="cargarProgramacion()">BUSCAR</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-body">
+
+        </div>
+    </div>
+
+</div>

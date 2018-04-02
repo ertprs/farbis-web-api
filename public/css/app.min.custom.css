@@ -1,3 +1,24 @@
+
+html, body
+{
+    height: 100%;
+}
+
+.login-content {
+  text-align: center;
+  background-color: #3a619b;
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+.login-content:after {
+  content: "";
+  vertical-align: middle;
+  display: inline-block;
+  width: 1px;
+  height: 100%;
+}
+
 .text-bold {
     font-weight: bold;
 }
@@ -10,6 +31,21 @@
   border-radius: 2px;
 }
 
+.label-md {
+  padding: 5px 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 2px;
+}
+
+.bgm-lightgray {
+  background-color: #e6e6e6 !important;
+}
+
+.c-lightgray {
+  color: #e6e6e6 !important;
+}
+
 .bgm-darkgray {
   background-color: #4f4f4f !important;
 }
@@ -18,6 +54,24 @@
   color: #4f4f4f !important;
 }
 
+.bgm-orange {
+  background-color: #f15a24 !important;
+}
+
+.c-orange {
+  color: #f15a24 !important;
+}
+
 .borderless tr, .borderless td, .borderless th {
     border: none !important;
+}
+
+
+.table > tbody > tr:last-child > td,
+.table > tfoot > tr:last-child > td {
+  padding-bottom: 7px;
+}
+
+.table > tbody > tr.row-select {
+  cursor: pointer;
 }
