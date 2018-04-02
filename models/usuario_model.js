@@ -143,8 +143,6 @@ module.exports = {
         var cnx = connection.get_connection();
 
         var query = sync.await(cnx.query('CALL ssp_adm_usuario_obtiene_por_id(?)', [ id_usuario ], sync.defer()));
-        
-        console.log(query);
 
         cnx.end(function () {});
     },
@@ -154,7 +152,6 @@ module.exports = {
         var cnx = connection.get_connection();
 
         let stmt = 'SELECT Nombres as nombres, Apellidos as apellidos FROM adm_usuario WHERE IdUsuario in  ' + ids + ';';
-        console.log(stmt);
 
         cnx.query(stmt, [  ], function(err, rows, fields)
         {

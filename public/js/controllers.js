@@ -31,12 +31,13 @@ angular.module('FarbisWebApp')
             $(".page-loader").show();
             UsuarioService.validar(params).then(function (response) {
                 
+                $(".page-loader").fadeOut();
                 if (response.data.ws_code == "0" && response.data.mensaje == "OK") {
                     localStorage.setItem('userData', JSON.stringify(response.data.usuario));
                     //$location.path("/home/home");
                     $location.path("/programacion/lista");
                 } else {
-                    $(".page-loader").fadeOut();
+                    
                     $scope.validacion = {
                         error: true,
                         mensaje: response.data.mensaje
@@ -69,6 +70,7 @@ angular.module('FarbisWebApp')
 
     $scope.init = function () {
         console.log('init');
+        $('body').addClass('sw-toggled');
         //cargarProgramacion();
         cargarOperario();
     };
@@ -108,9 +110,10 @@ angular.module('FarbisWebApp')
             tipo: "1"
         };
 
+        $(".page-loader").show();
         UsuarioService.listaPorTipo(filtro).then(function (response) {
-            console.log(response);
             $scope.operarioLista = response.data.usuarios;
+            $(".page-loader").fadeOut();
         });
     }
 

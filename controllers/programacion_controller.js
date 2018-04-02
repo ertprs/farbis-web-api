@@ -381,7 +381,7 @@ module.exports = {
             res.json(response);
             */
             if (data != null) {
-                console.log(data);
+                
                 var arr_programaciones_final = [];
                 var arr_fichas = [];
                 var id_programacion = "";
