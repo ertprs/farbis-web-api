@@ -20,12 +20,24 @@ if (env == 'developer')
         waitForConnection: true,
         multipleStatements: true
     };
-    */
+    
     config = {
         host: 'us-cdbr-iron-east-05.cleardb.net',
         user: 'bb6c696855162d',
         password: '638896cc',
         database: 'heroku_973be16846cc7c4',
+        connectionLimit: 100,
+        queueLimit: 0,
+        waitForConnection: true,
+        multipleStatements: true,
+        debug:  false
+    };
+    */
+    config = {
+        host: '104.131.88.247',
+        user: 'root',
+        password: 'abcDEF123',
+        database: 'farbisdb',
         connectionLimit: 100,
         queueLimit: 0,
         waitForConnection: true,

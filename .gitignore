@@ -1,5 +1,5 @@
 # Ignore folder files
-public/files/
+public/files/*
 
 # Ignore folder pdfs
-public/pdfs/
+public/pdfs/*
