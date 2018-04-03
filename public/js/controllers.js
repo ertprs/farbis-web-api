@@ -113,6 +113,7 @@ angular.module('FarbisWebApp')
         $(".page-loader").show();
         UsuarioService.listaPorTipo(filtro).then(function (response) {
             $scope.operarioLista = response.data.usuarios;
+            $('.selectpicker').selectpicker('render');
             $(".page-loader").fadeOut();
         });
     }
