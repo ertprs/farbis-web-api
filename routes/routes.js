@@ -77,6 +77,7 @@ router.post(sub_path + 'rws_ficha_lista_por_programacion', controllers.ficha_con
 router.post(sub_path + 'rws_programador_valida', controllers.usuario_controller.post_validar_programador);
 router.post(sub_path + 'rws_programacion_lista_por_operario_fecha', controllers.programacion_controller.post_lista_por_operario_fecha);
 router.post(sub_path + 'rws_usuario_lista_por_tipo', controllers.usuario_controller.post_lista_por_tipo);
+router.post(sub_path + 'rws_ficha_lista_por_programacion_completa', controllers.ficha_controller.post_lista_por_programacion_completa);
 
 var fs = require('fs');
 var path = require('path');

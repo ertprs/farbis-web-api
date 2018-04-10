@@ -1,4 +1,4 @@
-<div class="container" ng-controller="ProgramacionController" data-ng-init="init()">
+<div class="container" ng-controller="ProgramacionController" data-ng-init="init('mapa')">
 
     <div class="card">
 
@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <form name="searchform" class="row" role="form" ng-submit="submit()">
                         <div class="col-sm-4">
-                            <div class="input-group form-group fg-line">
+                            <div class="input-group form-group fg-line m-b-0">
                                 <div class="dtp-container fg-line">
                                     <input id="inp-fecha" type='text' class="form-control date-picker" placeholder="dd/mm/aaaa" ng-model="filtro.fecha">
                                 </div>
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="form-group">
+                            <div class="form-group m-b-0">
                                 <div class="dtp-container fg-line">
                                     <select id="sel-operario" class="selectpicker" data-live-search="true" ng-model="filtro.id_operario">
                                         <option value="" selected hidden>Buscar por operario</option>
@@ -46,7 +46,7 @@
         </div>
 
         <div class="card-body">
-
+            <div my-map=""></div>
         </div>
     </div>
 

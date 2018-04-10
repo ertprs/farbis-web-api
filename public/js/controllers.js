@@ -59,6 +59,7 @@ angular.module('FarbisWebApp')
         id_operario: "",
         fecha : new Date().toLocaleDateString("es-PE")
     }
+    $scope.opcion = "";
     //console.log($scope.filtro.fecha);
     //$scope.filtro_fecha = new Date().toLocaleDateString("es-PE");
     //$scope.filtro_operario = "";
@@ -68,10 +69,11 @@ angular.module('FarbisWebApp')
     })
     .datetimepicker('setDate', $scope.filtro.fecha);
 
-    $scope.init = function () {
+    $scope.init = function (opcion) {
         console.log('init');
         $('body').addClass('sw-toggled');
-        //cargarProgramacion();
+
+        $scope.opcion = opcion;
         cargarOperario();
     };
 
@@ -82,6 +84,11 @@ angular.module('FarbisWebApp')
     $scope.verDetalle = function(programacion) {
         $scope.programacion = angular.copy(programacion);
         $scope.programacion.index = $scope.programacionLista.indexOf(programacion);
+        verDetalle();
+    };
+
+    $scope.verDetalleMapa = function(programacion) {
+        $scope.programacion = angular.copy(programacion);
         verDetalle();
     };
 
@@ -99,9 +106,12 @@ angular.module('FarbisWebApp')
 
         $(".page-loader").show();
         ProgramacionService.listaPorOperario(filtro).then(function (response) {
-            
             $scope.programacionLista = response.data.programaciones;
             $(".page-loader").fadeOut();
+            //verMapa();
+            if ($scope.opcion == "mapa"){
+                verMapa();
+            }
         });
     }
     
@@ -119,6 +129,8 @@ angular.module('FarbisWebApp')
             $timeout(function() {
                 $('.selectpicker').selectpicker('refresh');
                 $('.selectpicker').selectpicker('render');
+
+                cargarProgramacion();
             });
         });
     }
@@ -152,15 +164,28 @@ angular.module('FarbisWebApp')
 
             if (response.data.ws_code == "0" && response.data.mensaje == "OK") {
                 $scope.ficha = response.data.ficha;
+                //console.log($scope.programacion);
+                //console.log($scope.ficha);
                 abrirFichaModal();
             }
         });
     }
 
+    function verMapa() {
+        $scope.clearMarkers();
+        
+        angular.forEach($scope.programacionLista,function(programacion, index){
+            programacion.index = index + 1;
+            if  (programacion.geolatitud != "" && programacion.geolongitud != ""){
+                $scope.setMarkerCustom(new google.maps.LatLng(programacion.geolatitud, programacion.geolongitud), programacion.cliente, programacion);
+            }
+        });
+    }
     function abrirDetalleModal() {
         var modalInstance = $uibModal.open({
             templateUrl: 'views/programacion/modal-detalle.html',
             controller: 'FichaController',
+            backdrop: 'static',
             scope: $scope
         }).result.finally(function() {
 
@@ -172,6 +197,7 @@ angular.module('FarbisWebApp')
             templateUrl: 'views/programacion/modal-ficha.html',
             controller: 'FichaController',
             size: "lg",
+            backdrop: 'static',
             scope: $scope
         }).result.finally(function() {
 
@@ -181,12 +207,12 @@ angular.module('FarbisWebApp')
 })
 .controller('FichaController', function($scope, $rootScope, $window, $stateParams, ProgramacionService, FichaService) {
 
-    $scope.id_programacion = $stateParams.id;
-    console.log($scope.id_programacion);
+    //$scope.id_programacion = $stateParams.id;
+    //console.log($scope.id_programacion);
 
     $scope.init = function () {
-        console.log('init');
-        cargarProgramacion();
+        //console.log('init');
+        //cargarProgramacion();
     };
 
     function cargarProgramacion() {

@@ -29,7 +29,7 @@ angular.module('FarbisWebApp')
   fichaService.obtenerPorPorgramacion = function(data) {
     return $http({
       method: 'POST', 
-      url: '/sireis/api/v1/rws_ficha_lista_por_programacion',
+      url: '/sireis/api/v1/rws_ficha_lista_por_programacion_completa',
       data: data
     });
   }

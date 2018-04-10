@@ -2,6 +2,8 @@ var mysql = require('mysql');
 var views = require('.././routes/views');
 var functions = require('.././util/functions');
 var ficha_model = require('.././models/ficha_model');
+var observacion_model = require('.././models/observacion_model');
+var proceso_model = require('.././models/proceso_model');
 
 module.exports = {
 
@@ -123,4 +125,77 @@ module.exports = {
         });
     },
 
+    post_lista_por_programacion_completa : function(req, res, next)
+    {
+        functions.print_console('rest method: post_lista_por_programacion_completa');
+
+        var id_programacion = req.body.id_programacion;
+
+        ficha_model.lista_por_programacion(id_programacion, function(msg, data){
+            if (data != null) {
+                // 7. Listamos los diagnosticos
+                var diagnostico_arr = data.diagnostico_nombre.split(";");
+                data.diagnostico_lista = [];
+                diagnostico_arr.forEach(function(diagnostico) {
+                    if (diagnostico != "") {
+                        data.diagnostico_lista.push(diagnostico);
+                    }
+                });
+
+                // 10. Listamos los trabajos realizados
+                var trabajos_arr = data.trabajo_realizado_nombre.split(";");
+                data.trabajo_realizado_lista = [];
+                trabajos_arr.forEach(function(trabajo) {
+                    if (trabajo != "") {
+                        data.trabajo_realizado_lista.push(trabajo);
+                    }
+                });
+
+                // 11. Listamos los productos quimicos
+
+
+                // 12. Listamos las observaciones
+                observacion_model.lista_por_programacion_origen(id_programacion, 'O', function(msg, data_observacion){
+                    data.observacion_lista = data_observacion;
+
+                    // 13. Listamos las recomendaciones
+                    proceso_model.lista_por_programacion(id_programacion, '06', function(msg, data_recomendacion){
+                        data.recomendacion_lista = data_recomendacion;
+
+                        // 14. Listamos las incidencias
+                        proceso_model.lista_por_programacion(id_programacion, '02',  function(msg, data_incidencias){
+                            data.incidencia_lista = data_incidencias;
+
+                            // 15. Listamos las personas que supervisaron
+                            proceso_model.lista_por_programacion(id_programacion, '05', function(msg, data_supervisores){
+                                data.supervisor_lista = data_supervisores;
+
+                                var response = {
+                                    'ws_code' : '0',
+                                    'mensaje' : msg, 
+                                    'ficha' : data
+                                };
+                
+                                res.json(response);
+                            });
+                        });
+                        // 15. Listamos las personas que supervisaron
+    
+                    });
+
+                });
+
+                
+            } else {
+                var response = {
+                    'ws_code' : '0',
+                    'mensaje' : msg, 
+                    'ficha' : data
+                };
+
+                res.json(response);
+            }
+            
+        });
+    },
 };

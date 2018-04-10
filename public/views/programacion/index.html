@@ -1,5 +1,5 @@
 
-	<div class="container" ng-controller="ProgramacionController" data-ng-init="init()">
+	<div class="container" ng-controller="ProgramacionController" data-ng-init="init('')">
 
 		<div class="card">
 
@@ -14,7 +14,7 @@
 					<div class="col-sm-6">
 						<form name="searchform" class="row" role="form" ng-submit="submit()">
                                 <div class="col-sm-4">
-									<div class="input-group form-group fg-line">
+									<div class="input-group form-group fg-line m-b-0">
 										<div class="dtp-container fg-line">
 											<input id="inp-fecha" type='text' class="form-control date-picker" placeholder="dd/mm/aaaa" ng-model="filtro.fecha">
 										</div>
@@ -22,7 +22,7 @@
 									</div>
                                 </div>
 								<div class="col-sm-6">
-									<div class="form-group">
+									<div class="form-group m-b-0">
 										<div class="dtp-container fg-line">
 											<select id="sel-operario" class="selectpicker" data-live-search="true" ng-model="filtro.id_operario">
 												<option value="" selected hidden>Buscar por operario</option>
@@ -51,7 +51,7 @@
 							<th style="width: 10px;">#</th>
 							<th style="width: 80px;">HORA</th>
 							<th style="width: 300px;">SERVICIO</th>
-							<th>OPERARIO</th>
+							<th>ENCARGADO / OPERARIO</th>
 							<th style="width: 250px;">CLIENTE</th>
 							<th style="width: 100px;">ESTADO</th>
 							<th style="width: 40px;">FICHA</th>
@@ -62,9 +62,12 @@
 							<td style="width: 10px;">{{ $index + 1 }}</td>
 							<td class="text-primary" style="width: 80px;">{{ item.hora_format }}</td>
 							<td style="width: 300px;">{{ item.servicio }}</td>
-							<td><ul style="list-style-type:none;padding:0px;margin:0px;">
-								<li ng-repeat="p in item.personal_format">- {{ p }}</li>
-							</ul></td>
+							<td>
+								<ul style="list-style-type:none;padding:0px;margin:0px;">
+									<li class="text-primary">- {{ item.personal_encargado_nombre }}</li>
+									<li ng-repeat="p in item.personal_format">- {{ p }}</li>
+								</ul>
+							</td>
 							<td style="width: 250px;">{{ item.cliente }}</td>
 							<td ng-switch on="item.estado">
 								<div ng-switch-when="PEN">No iniciado<br>

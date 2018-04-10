@@ -45,7 +45,6 @@ module.exports = {
         var fecha = req.body.fecha;
 
         programacion_model.lista_por_operario_fecha(id_operario, fecha, function(msg, data_programacion){
-
             if (data_programacion.length > 0) {
                 data_programacion.forEach(function(programacion, index_programacion) {
                     var personal = programacion.personal;

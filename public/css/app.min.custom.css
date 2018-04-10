@@ -75,3 +75,9 @@ html, body
 .table > tbody > tr.row-select {
   cursor: pointer;
 }
+
+
+#gmaps {
+  width: 100%;
+  height: 550px;
+}

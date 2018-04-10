@@ -25,6 +25,28 @@ module.exports = {
         cnx.end(function () {});
     },
 
+    lista_por_programacion_origen : function(id_programacion, origen, callback) {
+
+        var cnx = connection.get_connection();
+
+        cnx.query('CALL ssp_ope_observacion_lista_por_programacion_origen(?,?)', [ id_programacion, origen ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                data = functions.get_datatable(rows);
+                msg = functions.get_msg(rows);
+            }
+
+            callback(msg, data);
+        });
+
+        cnx.end(function () {});
+    },
+
     registro : function(id_programacion, observacion, origen, 
                         ruta_foto, ruta_audio, id_usuario, callback) {
 
