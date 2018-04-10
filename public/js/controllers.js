@@ -84,6 +84,7 @@ angular.module('FarbisWebApp')
     $scope.verDetalle = function(programacion) {
         $scope.programacion = angular.copy(programacion);
         $scope.programacion.index = $scope.programacionLista.indexOf(programacion);
+        console.log(programacion);
         verDetalle();
     };
 
@@ -164,7 +165,7 @@ angular.module('FarbisWebApp')
 
             if (response.data.ws_code == "0" && response.data.mensaje == "OK") {
                 $scope.ficha = response.data.ficha;
-                //console.log($scope.programacion);
+                console.log($scope.programacion);
                 //console.log($scope.ficha);
                 abrirFichaModal();
             }

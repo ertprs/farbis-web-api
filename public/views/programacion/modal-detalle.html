@@ -49,9 +49,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group fg-line">
-                        <label class="c-blue text-bold">OPERARIOS</label><br>
+                        <label class="c-blue text-bold">ENCARGADO / OPERARIOS</label><br>
                         <table id="tab-operario" class="table table-condensed">
                             <tbody>
+                                <tr class="borderless">
+                                    <td class="text-primary">{{ programacion.personal_encargado_nombre }}</td>
+                                </tr>
                                 <tr class="borderless" ng-repeat="p in programacion.personal_format">
                                     <td>{{ p }}</td>
                                 </tr>
