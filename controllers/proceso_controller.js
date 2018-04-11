@@ -161,5 +161,103 @@ module.exports = {
         });
     },
 
-    
+    post_archivos_guarda : function(req, res, next)
+    {
+        functions.print_console('rest method proceso: post_archivos_guarda');
+
+        var id_programacion = req.body.id_programacion;
+        var nro_orden = req.body.nro_orden;
+        var anio = req.body.anio;
+        var tipo = req.body.tipo;
+        var item = req.body.item;
+        
+        if (req.files) {
+            
+            var file = req.files.imagen;
+            var mensaje = '';
+            var directory = 'public/files/' + anio + '-' + nro_orden + '-' +  id_programacion + '/';
+            
+            functions.check_directory(directory, function(err) {  
+                if (err) {
+                    mensaje = err;
+
+                    var response = {
+                        'ws_code' : '0',
+                        'mensaje' : mensaje,
+                        'ruta_archivo' : ''
+                    };
+
+                    res.json(response);
+
+                } else {
+                    //Carry on, all good, directory exists / created.
+                    var ruta_archivo = directory + file.name;
+
+                    file.mv(ruta_archivo, function(err) {
+
+                        if (err) {
+                            mensaje = err;
+                        }
+                        else {
+                            mensaje = 'OK';
+                        }
+
+                        var full_address = req.protocol + "://" + req.headers.host;
+                        var ruta_foto = '';
+                        var ruta_audio = '';
+                        var ruta_video = '';
+
+                        if (full_address.indexOf(".jpg") > -1) {
+                            ruta_foto = full_address;
+                        }
+                        if (full_address.indexOf(".png") > -1) {
+                            ruta_foto = full_address;
+                        }
+                        if (full_address.indexOf(".wma") > -1) {
+                            ruta_audio = full_address;
+                        }
+                        if (full_address.indexOf(".wmv") > -1) {
+                            ruta_video = full_address;
+                        }
+
+                        // Actualizamos el registro
+                        proceso_model.actualiza_archivos(id_programacion, tipo, item, ruta_foto, 
+                            ruta_audio, ruta_video, id_usuario, function(msg, data){
+                
+                            var response = {
+                                'ws_code' : '0',
+                                'mensaje' : mensaje,
+                                'ruta_archivo' : full_address + '/' + ruta_archivo.replace('public/', '')
+                            };
+        
+                            res.json(response);
+                        });
+                        /*
+                        var response = {
+                            'ws_code' : '0',
+                            'mensaje' : mensaje,
+                            'ruta_archivo' : full_address + '/' + ruta_archivo.replace('public/', '')
+                        };
+
+                        res.json(response);
+                        */
+                    });
+            
+                }
+            });
+        }
+        else {
+
+            mensaje = 'No existen archivos.';
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : mensaje,
+                'ruta_archivo' : ''
+            };
+
+            res.json(response);
+        }
+
+    },
 };

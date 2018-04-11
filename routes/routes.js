@@ -67,6 +67,7 @@ router.post(sub_path + 'rws_proceso_actualiza', controllers.proceso_controller.p
 router.post(sub_path + 'rws_proceso_confirma', controllers.proceso_controller.post_confirma);
 router.post(sub_path + 'rws_proceso_elimina', controllers.proceso_controller.post_elimina);
 router.post(sub_path + 'rws_proceso_lista_pendientes', controllers.proceso_controller.post_lista_pendientes);
+router.post(sub_path + 'rws_proceso_archivos_guarda', controllers.proceso_controller.post_archivos_guarda);
 
 router.post(sub_path + 'rws_ficha_registro', controllers.ficha_controller.post_registro);
 router.post(sub_path + 'rws_ficha_enviar_por_email', controllers.ficha_controller.post_enviar_por_email); //F.

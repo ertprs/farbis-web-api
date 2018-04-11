@@ -165,6 +165,14 @@
                                 <div class="row text-bold c-darkgray" ng-repeat="observacion in ficha.observacion_lista">
                                     <div class="col-sm-12">{{ observacion.observacion }}</div>
                                     <div class="col-sm-12 m-t-5" ng-if="observacion.ruta_foto != ''"><img width="200" height="200" src="{{ observacion.ruta_foto }}" /></div>
+                                    <div class="col-sm-12 m-t-5" ng-if="observacion.ruta_audio != ''">
+                                        <audio src="{{ observacion.ruta_audio }}" controls></audio>
+                                    </div>
+                                    <div class="col-sm-12 m-t-5" ng-if="observacion.ruta_video != ''">
+                                        <video controls>
+                                            <source src="{{ observacion.ruta_video }}" type="video/wmv">
+                                        </video>
+                                    </div>
                                 </div>
                                 <div ng-if="(ficha.observacion_lista.length == 0)">
                                     <label class="text-bold c-darkgray">Ninguna</label>
@@ -188,6 +196,14 @@
                                 <div class="row text-bold c-darkgray" ng-repeat="recomendacion in ficha.recomendacion_lista">
                                     <div class="col-sm-12">{{ recomendacion.descripcion }}</div>
                                     <div class="col-sm-12 m-t-5" ng-if="recomendacion.ruta_foto != ''"><img width="200" height="200" src="{{ recomendacion.ruta_foto }}" /></div>
+                                    <div class="col-sm-12 m-t-5" ng-if="recomendacion.ruta_audio != ''">
+                                        <audio src="{{ recomendacion.ruta_audio }}" controls></audio>
+                                    </div>
+                                    <div class="col-sm-12 m-t-5" ng-if="recomendacion.ruta_video != ''">
+                                        <video controls>
+                                            <source src="{{ recomendacion.ruta_video }}" type="video/wmv">
+                                        </video>
+                                    </div>
                                 </div>
                                 <div ng-if="(ficha.recomendacion_lista.length == 0)">
                                     <label class="text-bold c-darkgray">Ninguna</label>
@@ -207,6 +223,14 @@
                                 <div class="row text-bold c-darkgray" ng-repeat="incidencia in ficha.incidencia_lista">
                                     <div class="col-sm-12">{{ incidencia.descripcion }}</div>
                                     <div class="col-sm-12 m-t-5" ng-if="incidencia.ruta_foto != ''"><img width="200" height="200" src="{{ incidencia.ruta_foto }}" /></div>
+                                    <div class="col-sm-12 m-t-5" ng-if="incidencia.ruta_audio != ''">
+                                        <audio src="{{ incidencia.ruta_audio }}" controls></audio>
+                                    </div>
+                                    <div class="col-sm-12 m-t-5" ng-if="incidencia.ruta_video != ''">
+                                        <video controls>
+                                            <source src="{{ incidencia.ruta_video }}" type="video/wmv">
+                                        </video>
+                                    </div>
                                 </div>
                                 <div ng-if="(ficha.incidencia_lista.length == 0)">
                                     <label class="text-bold c-darkgray">Ninguna</label>

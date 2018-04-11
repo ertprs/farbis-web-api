@@ -76,6 +76,28 @@ module.exports = {
         cnx.end(function () {});
     },
 
+    actualiza_archivos : function(id_programacion, tipo, item, ruta_foto, ruta_audio, ruta_video, id_usuario, callback) {
+
+        var cnx = connection.get_connection();
+
+        cnx.query('CALL ssp_ope_proceso_actualiza_archivos(?,?,?,?,?,?,?)', [ id_programacion, 
+                        tipo, item, ruta_foto, ruta_audio, ruta_video, id_usuario ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                msg = functions.get_msg(rows);
+            }
+
+            callback(msg, data);
+        });
+
+        cnx.end(function () {});
+    },
+
     confirma : function(id_programacion, tipo, item, id_usuario, callback) {
 
         var cnx = connection.get_connection();
