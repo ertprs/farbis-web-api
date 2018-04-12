@@ -91,7 +91,7 @@ module.exports = {
             }else{
                 msg = functions.get_msg(rows);
             }
-
+            console.log(msg);
             callback(msg, data);
         });
 
