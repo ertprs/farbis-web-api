@@ -76,12 +76,12 @@ module.exports = {
         cnx.end(function () {});
     },
 
-    actualiza_archivos : function(id_programacion, tipo, item, ruta_foto, ruta_audio, ruta_video, id_usuario, callback) {
+    actualiza_archivos : function(id_programacion, tipo, item, ruta_foto, ruta_audio, ruta_video, callback) {
 
         var cnx = connection.get_connection();
 
-        cnx.query('CALL ssp_ope_proceso_actualiza_archivos(?,?,?,?,?,?,?)', [ id_programacion, 
-                        tipo, item, ruta_foto, ruta_audio, ruta_video, id_usuario ], function(err, rows, fields)
+        cnx.query('CALL ssp_ope_proceso_actualiza_archivos(?,?,?,?,?,?)', [ id_programacion, 
+                        tipo, item, ruta_foto, ruta_audio, ruta_video ], function(err, rows, fields)
         {
             var data = null;
             var msg = '';

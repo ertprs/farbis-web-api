@@ -216,13 +216,19 @@ module.exports = {
                         if (full_address.indexOf(".wma") > -1) {
                             ruta_audio = full_address;
                         }
+                        if (full_address.indexOf(".mp3") > -1) {
+                            ruta_audio = full_address;
+                        }
                         if (full_address.indexOf(".wmv") > -1) {
+                            ruta_video = full_address;
+                        }
+                        if (full_address.indexOf(".mp4") > -1) {
                             ruta_video = full_address;
                         }
 
                         // Actualizamos el registro
                         proceso_model.actualiza_archivos(id_programacion, tipo, item, ruta_foto, 
-                            ruta_audio, ruta_video, id_usuario, function(msg, data){
+                            ruta_audio, ruta_video, function(msg, data){
                 
                             var response = {
                                 'ws_code' : '0',
