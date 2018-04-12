@@ -79,7 +79,7 @@ module.exports = {
     actualiza_archivos : function(id_programacion, tipo, item, ruta_foto, ruta_audio, ruta_video, callback) {
 
         var cnx = connection.get_connection();
-
+        console.log(ruta_foto);
         cnx.query('CALL ssp_ope_proceso_actualiza_archivos(?,?,?,?,?,?)', [ id_programacion, 
                         tipo, item, ruta_foto, ruta_audio, ruta_video ], function(err, rows, fields)
         {
