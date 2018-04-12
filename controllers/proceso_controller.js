@@ -208,22 +208,22 @@ module.exports = {
                         var ruta_audio = '';
                         var ruta_video = '';
 
-                        if (ruta_archivo.indexOf(".jpg") > -1) {
+                        if (path_archivo.indexOf(".jpg") > -1) {
                             ruta_foto = path_archivo;
                         }
-                        if (ruta_archivo.indexOf(".png") > -1) {
+                        if (path_archivo.indexOf(".png") > -1) {
                             ruta_foto = path_archivo;
                         }
-                        if (ruta_archivo.indexOf(".wma") > -1) {
+                        if (path_archivo.indexOf(".wma") > -1) {
                             ruta_audio = path_archivo;
                         }
-                        if (ruta_archivo.indexOf(".mp3") > -1) {
+                        if (path_archivo.indexOf(".mp3") > -1) {
                             ruta_audio = path_archivo;
                         }
-                        if (ruta_archivo.indexOf(".wmv") > -1) {
+                        if (path_archivo.indexOf(".wmv") > -1) {
                             ruta_video = path_archivo;
                         }
-                        if (ruta_archivo.indexOf(".mp4") > -1) {
+                        if (path_archivo.indexOf(".mp4") > -1) {
                             ruta_video = path_archivo;
                         }
 
