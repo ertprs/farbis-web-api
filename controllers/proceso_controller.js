@@ -203,28 +203,28 @@ module.exports = {
                         }
 
                         var full_address = req.protocol + "://" + req.headers.host;
-                        var ruta_archivo= full_address + '/' + ruta_archivo.replace('public/', '');
+                        var path_archivo= full_address + '/' + ruta_archivo.replace('public/', '');
                         var ruta_foto = '';
                         var ruta_audio = '';
                         var ruta_video = '';
 
                         if (ruta_archivo.indexOf(".jpg") > -1) {
-                            ruta_foto = ruta_archivo;
+                            ruta_foto = path_archivo;
                         }
                         if (ruta_archivo.indexOf(".png") > -1) {
-                            ruta_foto = ruta_archivo;
+                            ruta_foto = path_archivo;
                         }
                         if (ruta_archivo.indexOf(".wma") > -1) {
-                            ruta_audio = ruta_archivo;
+                            ruta_audio = path_archivo;
                         }
                         if (ruta_archivo.indexOf(".mp3") > -1) {
-                            ruta_audio = ruta_archivo;
+                            ruta_audio = path_archivo;
                         }
                         if (ruta_archivo.indexOf(".wmv") > -1) {
-                            ruta_video = ruta_archivo;
+                            ruta_video = path_archivo;
                         }
                         if (ruta_archivo.indexOf(".mp4") > -1) {
-                            ruta_video = ruta_archivo;
+                            ruta_video = path_archivo;
                         }
 
                         // Actualizamos el registro
@@ -234,7 +234,7 @@ module.exports = {
                             var response = {
                                 'ws_code' : '0',
                                 'mensaje' : mensaje,
-                                'ruta_archivo' : ruta_archivo,
+                                'ruta_archivo' : path_archivo,
                                 'tipo' : tipo,
                                 'item' : item,
                                 'ruta_foto' : ruta_foto,
