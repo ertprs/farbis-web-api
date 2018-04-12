@@ -233,7 +233,12 @@ module.exports = {
                             var response = {
                                 'ws_code' : '0',
                                 'mensaje' : mensaje,
-                                'ruta_archivo' : full_address + '/' + ruta_archivo.replace('public/', '')
+                                'ruta_archivo' : full_address + '/' + ruta_archivo.replace('public/', ''),
+                                'tipo' : tipo,
+                                'item' : item,
+                                'ruta_foto' : ruta_foto,
+                                'ruta_audio' : ruta_audio,
+                                'ruta_video' : ruta_video
                             };
         
                             res.json(response);
