@@ -92,8 +92,10 @@ module.exports = {
             if (err) {
                 msg = err.message;
             }else{
-                msg = functions.get_output(rows, '@output');
-                id = functions.get_output(rows, '@id');
+                //msg = functions.get_output(rows, '@output');
+                //id = functions.get_output(rows, '@id');
+                msg = 'OK';
+                id = '0';
             }
 
             callback(msg, data, id);
