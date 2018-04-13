@@ -158,6 +158,7 @@ module.exports = {
                 console.log(rows);
                 data = functions.get_datarow(rows);
                 //data = functions.get_datatable(rows);
+                console.log(data);
                 msg = 'OK';
                 id = '';
             }
