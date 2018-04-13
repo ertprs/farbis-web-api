@@ -92,10 +92,8 @@ module.exports = {
             if (err) {
                 msg = err.message;
             }else{
-                //msg = functions.get_output(rows, '@output');
-                //id = functions.get_output(rows, '@id');
-                msg = 'OK';
-                id = '0';
+                msg = functions.get_output(rows, '@output');
+                id = functions.get_output(rows, '@id');
             }
 
             callback(msg, data, id);
@@ -157,7 +155,7 @@ module.exports = {
             }else{
                 //msg = functions.get_output(rows, '@output');
                 //id = functions.get_output(rows, '@id');
-                //console.log(rows);
+                console.log(rows);
                 data = functions.get_datarow(rows); //functions.get_datatable(rows);
                 msg = 'OK';
                 id = '';
