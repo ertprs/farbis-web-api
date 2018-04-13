@@ -21,15 +21,19 @@ class functions {
 
         var data = {};
         
-        data = rows[0][0];
+        if (rows.length > 0) {
+            data = rows[0][0];
 
-        if (data == undefined) {
-            data = null;
-            //console.log(data);
+            if (data == undefined) {
+                data = null;
+                //console.log(data);
+            } else {
+                //msg = rows[0];
+            }
         } else {
-            //msg = rows[0];
+            data = null;
         }
-
+        
         return data;
     }
 
