@@ -155,13 +155,13 @@ module.exports = {
             }else{
                 //msg = functions.get_output(rows, '@output');
                 //id = functions.get_output(rows, '@id');
-                console.log(rows);
+                //console.log(rows);
                 data = functions.get_datarow(rows);
                 //data = functions.get_datatable(rows);
                 if (data == null) {
                     data = [];
                 }
-                console.log(data);
+                //console.log(data);
                 msg = 'OK';
                 id = '';
             }
