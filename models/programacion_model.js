@@ -121,7 +121,6 @@ module.exports = {
             var data = null;
             var msg = '';
             var id = '';
-        cnx.query(stmt, [ programaciones ], function(err, rows, fields) {
             console.log(err);
             console.log(rows);
             console.log(fields);
