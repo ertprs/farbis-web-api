@@ -121,7 +121,7 @@ module.exports = {
             var data = null;
             var msg = '';
             var id = '';
-
+            console.log(rows);
             if (err) {
                 msg = err.message;
             }else{
