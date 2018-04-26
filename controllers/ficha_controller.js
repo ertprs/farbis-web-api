@@ -91,7 +91,7 @@ module.exports = {
 
         phantom.create().then(function(ph) {
             ph.createPage().then(function(page) {
-                page.open("https://farbis.herokuapp.com/").then(function(status) {
+                page.open("http://104.131.88.247/").then(function(status) {
                     page.render('public/pdfs/' + id_programacion + '.pdf').then(function() {
                         ph.exit();
 
