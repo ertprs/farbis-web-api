@@ -91,6 +91,7 @@ module.exports = {
         console.log('paso 1');
         phantom.create().then(function(ph) {
             console.log('paso 2');
+            console.log(ph);
             ph.createPage().then(function(page) {
                 console.log('paso 3');
                 page.open("http://104.131.88.247/").then(function(status) {
@@ -107,6 +108,9 @@ module.exports = {
                         res.json(response);
                     });
                 });
+            }).catch(error => {
+                console.log(error);
+                phInstance.exit();
             });
         });
     },
