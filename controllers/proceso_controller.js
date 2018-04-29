@@ -39,6 +39,7 @@ module.exports = {
         var telefono = req.body.telefono;
         var area = req.body.area;
         var fecha_vcto = req.body.fecha_vcto;
+        var gravedad = req.body.gravedad;
         var ruta_foto = req.body.ruta_foto;
         var ruta_audio = req.body.ruta_audio;
         var ruta_video = req.body.ruta_video;
@@ -52,7 +53,7 @@ module.exports = {
         }
         */
         proceso_model.registro(id_programacion, tipo, descripcion, nombre, telefono, area, 
-                        fecha_vcto, ruta_foto, ruta_audio, ruta_video, id_usuario, function(msg, data, item, fecha){
+                        fecha_vcto, gravedad, ruta_foto, ruta_audio, ruta_video, id_usuario, function(msg, data, item, fecha){
 
             var response = {
                 'ws_code' : '0',
@@ -77,6 +78,7 @@ module.exports = {
         var telefono = req.body.telefono;
         var area = req.body.area;
         var fecha_vcto = req.body.fecha_vcto;
+        var gravedad = req.body.gravedad;
         var ruta_foto = req.body.ruta_foto;
         var ruta_audio = req.body.ruta_audio;
         var ruta_video = req.body.ruta_video;
@@ -90,7 +92,7 @@ module.exports = {
         }
         */
         proceso_model.actualiza(id_programacion, tipo, item, descripcion, nombre, telefono, area, 
-                        fecha_vcto, ruta_foto, ruta_audio, ruta_video, id_usuario, function(msg, data){
+                        fecha_vcto, gravedad, ruta_foto, ruta_audio, ruta_video, id_usuario, function(msg, data){
 
             var response = {
                 'ws_code' : '0',

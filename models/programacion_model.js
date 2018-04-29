@@ -69,7 +69,7 @@ module.exports = {
     },
 
     registro : function(id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
-                telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, secordino,
+                telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, celular_coordino, secordino,
                 celular_secordino, atendera, personal, producto, personal_encargado, correo, nombre_vendedor,
                 celular_vendedor, nombre_programadora1, celular_programadora1, nombre_programadora2, 
                 celular_programadora2, nombre_programadora3, celular_programadora3, servicio_emergencia, id_usuario, 
@@ -77,9 +77,9 @@ module.exports = {
 
         var cnx = connection.get_connection();
 
-        cnx.query('CALL ssp_ope_programacion_registro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,@output,@id);select @output,@id', 
+        cnx.query('CALL ssp_ope_programacion_registro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,@output,@id);select @output,@id', 
                 [ id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
-                telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, secordino, 
+                telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, celular_coordino, secordino, 
                 celular_secordino, atendera, personal, producto, personal_encargado, correo, nombre_vendedor,
                 celular_vendedor, nombre_programadora1, celular_programadora1, nombre_programadora2, 
                 celular_programadora2, nombre_programadora3, celular_programadora3, servicio_emergencia, id_usuario ], 
@@ -88,7 +88,7 @@ module.exports = {
             var data = null;
             var msg = '';
             var id = '';
-            console.log(rows);
+            
             if (err) {
                 msg = err.message;
             }else{
@@ -107,7 +107,7 @@ module.exports = {
         var cnx = connection.get_connection();
         //console.log(programaciones);
         let stmt = 'INSERT INTO  ope_programacion (IdProgramacion, IdEmpresa, Fecha, NroOrden, Cliente, GiroComercial, ';
-        stmt += 'Direccion, Referencia, Telefonos, Logo, GeoLatitud, GeoLongitud, Servicio, AreaTrabajar, Coordino, ';
+        stmt += 'Direccion, Referencia, Telefonos, Logo, GeoLatitud, GeoLongitud, Servicio, AreaTrabajar, Coordino, CelularCoordino, ';
         stmt += 'SeCordino, TelefonoCelularSeCordino, Atendera, Personal, Producto, PersonalEncargado, ';
         stmt += 'Estado, FlgEnvioFoto, FlgEnvioAudio, FlgEnvioVideo, ServicioPendiente, ';
         stmt += 'CambioDeProgramacion, Correo, NombreVendedor, TelefonoCelularVendedor, NombreProgramadora1,';
@@ -121,9 +121,9 @@ module.exports = {
             var data = null;
             var msg = '';
             var id = '';
-            console.log(err);
-            console.log(rows);
-            console.log(fields);
+            //console.log(err);
+            //console.log(rows);
+            //console.log(fields);
             if (err) {
                 msg = err.message;
             }else{
@@ -144,7 +144,7 @@ module.exports = {
         var cnx = connection.get_connection();
 
         let stmt = 'SELECT idprogramacion as id_programacion FROM ope_programacion where idprogramacion in  ' + ids + ';';
-        console.log(stmt);
+        //console.log(stmt);
 
         cnx.query(stmt, [  ], function(err, rows, fields)
         {

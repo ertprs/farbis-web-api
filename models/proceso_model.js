@@ -26,12 +26,12 @@ module.exports = {
     },
 
     registro : function(id_programacion, tipo, descripcion, nombre, telefono, area, 
-                        fecha_vcto, ruta_foto, ruta_audio, ruta_video, id_usuario, callback) {
+                        fecha_vcto, gravedad, ruta_foto, ruta_audio, ruta_video, id_usuario, callback) {
 
         var cnx = connection.get_connection();
 
-        cnx.query('CALL ssp_ope_proceso_registro(?,?,?,?,?,?,?,?,?,?,?,@item,@fecha);select @item,@fecha', [ id_programacion, tipo, descripcion,
-	                    nombre, telefono, area, fecha_vcto, ruta_foto, ruta_audio, 
+        cnx.query('CALL ssp_ope_proceso_registro(?,?,?,?,?,?,?,?,?,?,?,?,@item,@fecha);select @item,@fecha', [ id_programacion, tipo, descripcion,
+	                    nombre, telefono, area, fecha_vcto, gravedad, ruta_foto, ruta_audio, 
                         ruta_video, id_usuario ], function(err, rows, fields)
         {
             var data = null;
@@ -53,13 +53,13 @@ module.exports = {
     },
 
     actualiza : function(id_programacion, tipo, item, descripcion, nombre, telefono, area, 
-                        fecha_vcto, ruta_foto, ruta_audio, ruta_video, id_usuario, callback) {
+                        fecha_vcto, gravedad, ruta_foto, ruta_audio, ruta_video, id_usuario, callback) {
 
         var cnx = connection.get_connection();
 
-        cnx.query('CALL ssp_ope_proceso_actualiza(?,?,?,?,?,?,?,?,?,?,?,?)', [ id_programacion, 
+        cnx.query('CALL ssp_ope_proceso_actualiza(?,?,?,?,?,?,?,?,?,?,?,?,?)', [ id_programacion, 
                         tipo, item, descripcion, nombre, telefono, area, 
-                        fecha_vcto, ruta_foto, ruta_audio, ruta_video, id_usuario ], function(err, rows, fields)
+                        fecha_vcto, gravedad, ruta_foto, ruta_audio, ruta_video, id_usuario ], function(err, rows, fields)
         {
             var data = null;
             var msg = '';

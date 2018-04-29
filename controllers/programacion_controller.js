@@ -249,6 +249,7 @@ module.exports = {
         var servicio = req.body.servicio;
         var area_trabajar = req.body.area_trabajar;
         var coordino = req.body.coordino;
+        var celular_coordino = req.body.celular_coordino;
         var secordino = req.body.secordino;
         var celular_secordino = req.body.celular_secordino;
         var atendera = req.body.atendera;
@@ -276,6 +277,9 @@ module.exports = {
             fecha = functions.string_todatetime(fecha, 'MM/dd/yyyy', '/');
         }
 
+        if (celular_coordino == null) {
+            celular_coordino = '';
+        }
         if (personal == '') {
             personal = personal_encargado;
         }
@@ -284,7 +288,7 @@ module.exports = {
         }
         
         programacion_model.registro(id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
-                telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, secordino, 
+                telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, celular_coordino, secordino, 
                 celular_secordino, atendera, personal, producto, personal_encargado, correo, nombre_vendedor,
                 celular_vendedor, nombre_programadora1, celular_programadora1, nombre_programadora2, 
                 celular_programadora2, nombre_programadora3, celular_programadora3, servicio_emergencia, id_usuario, 
@@ -371,6 +375,7 @@ module.exports = {
             var servicio = programacion.servicio;
             var area_trabajar = programacion.area_trabajar;
             var coordino = programacion.coordino;
+            var celular_coordino = req.body.celular_coordino;
             var secordino = programacion.secordino;
             var celular_secordino = programacion.celular_secordino;
             var atendera = programacion.atendera;
@@ -397,10 +402,13 @@ module.exports = {
             else{
                 fecha = functions.string_todatetime(fecha, 'dd/MM/yyyy', '/');
             }
+            if (celular_coordino == null) {
+                celular_coordino = '';
+            }
             
             arr_programaciones.push([
                 id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
-                telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, secordino,
+                telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, celular_coordino, secordino,
                 celular_secordino, atendera, personal, producto, personal_encargado, 'PEN', 
                 'N', 'N', 'N', ' ', 'T', correo, nombre_vendedor, celular_vendedor, nombre_programadora1, 
                 celular_programadora1, nombre_programadora2, celular_programadora2, nombre_programadora3, 
@@ -415,15 +423,7 @@ module.exports = {
         str_ids += "'')";
 
         programacion_model.valida_multiple(str_ids, function(msg, data, id){
-            /*
-            var response = {
-                'ws_code' : '0',
-                'mensaje' : msg,
-                'programaciones' : data
-            };
-        
-            res.json(response);
-            */
+
             if (data != null) {
                 
                 var arr_programaciones_final = [];
@@ -452,8 +452,8 @@ module.exports = {
                         ]);
                     }
                 });
-                console.log(arr_programaciones_final.length);
-                console.log(arr_fichas.length);
+                //console.log(arr_programaciones_final.length);
+                //console.log(arr_fichas.length);
                 if (arr_programaciones_final.length > 0) {
                     programacion_model.registro_multiple(arr_programaciones_final, function(msg, data, id){
     
