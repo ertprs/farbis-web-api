@@ -268,7 +268,6 @@ module.exports = {
         var servicio_emergencia = req.body.servicio_emergencia;
         var id_usuario = req.body.id_usuario;
         var indicaciones = req.body.indicaciones;
-        console.log(indicaciones);
         
         if (fecha == '') {
             fecha = null;
@@ -291,13 +290,57 @@ module.exports = {
                 celular_programadora2, nombre_programadora3, celular_programadora3, servicio_emergencia, id_usuario, 
                 function(msg, data, id){
 
-            var response = {
-                'ws_code' : '0',
-                'mensaje' : msg,
-                'id_programacion' : id
-            };
 
-            res.json(response);
+
+            if (indicaciones != null) {
+                var arr_indicaciones = [];
+                indicaciones.forEach(function(indica, index) {
+                
+                    var id_programacion = id;
+                    var item = index + 1;
+                    var observacion = indica;
+                    var origen = 'P';
+                    var ruta_foto = '';//obs.ruta_foto;
+                    var ruta_audio = '';//obs.ruta_audio;
+                    //var id_usuario = obs.id_usuario;
+                    var fecha = new Date();
+
+                    arr_indicaciones.push([
+                        id_programacion, item, observacion, origen, ruta_foto, ruta_audio, '1', id_usuario, fecha
+                    ]);
+                });
+
+                if (arr_indicaciones.length > 0) {
+                    observacion_model.registro_multiple(arr_indicaciones, function(msg, data, item, fecha){
+
+                        var response = {
+                            'ws_code' : '0',
+                            'mensaje' : 'OK',
+                            'id_programacion' : id
+                        };
+                
+                        res.json(response);
+                    });
+                } else {
+                    var response = {
+                        'ws_code' : '0',
+                        'mensaje' : 'OK',
+                        'id_programacion' : id
+                    };
+            
+                    res.json(response);
+                }
+
+            } else {
+                var response = {
+                    'ws_code' : '0',
+                    'mensaje' : msg,
+                    'id_programacion' : id
+                };
+    
+                res.json(response);
+            }
+
         });
     },
 
