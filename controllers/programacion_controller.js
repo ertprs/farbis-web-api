@@ -267,6 +267,8 @@ module.exports = {
         var servicio_cancelado = req.body.servicio_cancelado;
         var servicio_emergencia = req.body.servicio_emergencia;
         var id_usuario = req.body.id_usuario;
+        var indicaciones = req.body.indicaciones;
+        console.log(indicaciones);
         
         if (fecha == '') {
             fecha = null;
