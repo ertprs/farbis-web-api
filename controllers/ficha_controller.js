@@ -88,16 +88,11 @@ module.exports = {
         var id_usuario = req.body.id_usuario;
 
         var phantom = require('phantom'); 
-        console.log('paso 1');
+        
         phantom.create().then(function(ph) {
-            console.log('paso 2');
-            //console.log(ph);
             ph.createPage().then(function(page) {
-                console.log('paso 3');
                 page.open("http://104.131.88.247/archivos").then(function(status) {
-                    console.log('paso 4');
                     page.render('public/pdfs/' + id_programacion + '.pdf').then(function() {
-                        console.log('paso 5');
                         ph.exit();
 
                         var response = {
