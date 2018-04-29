@@ -1,4 +1,4 @@
-<div class="container" ng-controller="FichaController" data-ng-init="init()">
+<div class="container" ng-controller="FichaController" data-ng-init="initLoad()">
 
     <div class="card">
 
@@ -7,7 +7,7 @@
             <div class="row">
 
                 <div class="col-sm-6">
-                    <h4>Programaciones - Ficha Técnica</h4>
+                    <h4>Ficha Técnica</h4>
                 </div>
 
                 <div class="col-sm-6">
@@ -121,7 +121,9 @@
                             <div class="form-group">
                                 <label class="c-blue text-bold">Diagnóstico</label>
                                 <br>
-                                <label class="text-bold c-darkgray">{{ ficha.diagnostico_nombre }}</label>
+                                <ul style="list-style-type:none;padding:0px;margin:0px;">
+                                    <li class="text-bold c-darkgray" ng-repeat="diagnostico in ficha.diagnostico_lista">{{ diagnostico }}</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -147,7 +149,9 @@
                             <div class="form-group">
                                 <label class="c-blue text-bold">Trabajos realizados</label>
                                 <br>
-                                <label class="text-bold c-darkgray">{{ ficha.trabajo_realizado_nombre }}</label>
+                                <ul style="list-style-type:none;padding:0px;margin:0px;">
+                                    <li class="text-bold c-darkgray" ng-repeat="trabajo in ficha.trabajo_realizado_lista">{{ trabajo }}</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -173,7 +177,21 @@
                             <div class="form-group">
                                 <label class="c-blue text-bold">Observaciones</label>
                                 <br>
-                                <label class="text-bold c-darkgray">{{ ficha.diagnostico_nombre }}</label>
+                                <div class="row text-bold c-darkgray" ng-repeat="observacion in ficha.observacion_lista">
+                                    <div class="col-sm-12">{{ observacion.observacion }}</div>
+                                    <div class="col-sm-12 m-t-5" ng-if="observacion.ruta_foto != ''"><img width="200" height="200" src="{{ observacion.ruta_foto }}" /></div>
+                                    <div class="col-sm-12 m-t-5" ng-if="observacion.ruta_audio != ''">
+                                        <audio src="{{ observacion.ruta_audio }}" controls></audio>
+                                    </div>
+                                    <div class="col-sm-12 m-t-5" ng-if="observacion.ruta_video != ''">
+                                        <video width="320" height="240" controls>
+                                            <source src="{{ observacion.ruta_video }}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div ng-if="(ficha.observacion_lista.length == 0)">
+                                    <label class="text-bold c-darkgray">Ninguna</label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -190,7 +208,21 @@
                             <div class="form-group">
                                 <label class="c-blue text-bold">Recomendaciones</label>
                                 <br>
-                                <label class="text-bold c-darkgray">{{ ficha.diagnostico_nombre }}</label>
+                                <div class="row text-bold c-darkgray" ng-repeat="recomendacion in ficha.recomendacion_lista">
+                                    <div class="col-sm-12">{{ recomendacion.descripcion }}</div>
+                                    <div class="col-sm-12 m-t-5" ng-if="recomendacion.ruta_foto != ''"><img width="200" height="200" src="{{ recomendacion.ruta_foto }}" /></div>
+                                    <div class="col-sm-12 m-t-5" ng-if="recomendacion.ruta_audio != ''">
+                                        <audio src="{{ recomendacion.ruta_audio }}" controls></audio>
+                                    </div>
+                                    <div class="col-sm-12 m-t-5" ng-if="recomendacion.ruta_video != ''">
+                                        <video width="320" height="240" controls>
+                                            <source src="{{ recomendacion.ruta_video }}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div ng-if="(ficha.recomendacion_lista.length == 0)">
+                                    <label class="text-bold c-darkgray">Ninguna</label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -203,7 +235,21 @@
                             <div class="form-group">
                                 <label class="c-blue text-bold">Incidencias</label>
                                 <br>
-                                <label class="text-bold c-darkgray">{{ ficha.diagnostico_nombre }}</label>
+                                <div class="row text-bold c-darkgray" ng-repeat="incidencia in ficha.incidencia_lista">
+                                    <div class="col-sm-12">{{ incidencia.descripcion }}</div>
+                                    <div class="col-sm-12 m-t-5" ng-if="incidencia.ruta_foto != ''"><img width="200" height="200" src="{{ incidencia.ruta_foto }}" /></div>
+                                    <div class="col-sm-12 m-t-5" ng-if="incidencia.ruta_audio != ''">
+                                        <audio src="{{ incidencia.ruta_audio }}" controls></audio>
+                                    </div>
+                                    <div class="col-sm-12 m-t-5" ng-if="incidencia.ruta_video != ''">
+                                        <video width="320" height="240" controls>
+                                            <source src="{{ incidencia.ruta_video }}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div ng-if="(ficha.incidencia_lista.length == 0)">
+                                    <label class="text-bold c-darkgray">Ninguna</label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -216,7 +262,17 @@
                             <div class="form-group">
                                 <label class="c-blue text-bold">Personas que supervisaron</label>
                                 <br>
-                                <label class="text-bold c-darkgray">{{ ficha.diagnostico_nombre }}</label>
+                                <div class="row" ng-repeat="supervisor in ficha.supervisor_lista">
+                                    <div class="col-sm-4" ng-if="supervisor.ruta_foto != ''"><img width="100" height="100" src="{{ supervisor.ruta_foto }}" /></div>                                    
+                                    <div class="col-sm-8 p-25">
+                                        <label class="text-bold c-darkgray">{{ supervisor.nombre }}</label>
+                                        <br>
+                                        <label class="c-darkgray">{{ supervisor.telefono }}</label>
+                                    </div>
+                                </div>
+                                <div ng-if="(ficha.supervisor_lista.length == 0)">
+                                    <label class="text-bold c-darkgray">Ninguno</label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -229,7 +285,7 @@
                             <div class="form-group">
                                 <label class="c-blue text-bold">Ficha física</label>
                                 <br>
-                                <label class="text-bold c-darkgray">{{ ficha.ficha_fisica_foto }}</label>
+                                <a class="btn btn-primary btn-sm m-t-5 waves-effect" target="_blank" href="{{ ficha.ficha_fisica_foto }}">Ver</a>
                             </div>
                         </div>
                     </div>
@@ -238,7 +294,6 @@
 
                 </div>
             </div>
-
 
         </div>
     </div>

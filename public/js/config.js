@@ -44,7 +44,16 @@ function config($stateProvider, $urlRouterProvider) {
         templateUrl: "views/ficha/index.html",
         data: { pageTitle: 'Programación - Ficha Técnica' }
       })
-  
+      .state('ficha', {
+        abstract: true,
+        url: "/ficha",
+        templateUrl: "views/masterpage/main-blank.html",
+      })
+      .state('ficha.ver', {
+        url: '/ver/:id',
+        templateUrl: "views/ficha/index.html",
+        data: { pageTitle: 'Ficha Técnica' }
+      })
   
   }
 

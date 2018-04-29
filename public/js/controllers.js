@@ -216,6 +216,13 @@ angular.module('FarbisWebApp')
         //cargarProgramacion();
     };
 
+    $scope.initLoad = function () {
+        //console.log('init');
+        $('body').removeClass('sw-toggled');
+        $scope.id_programacion = $stateParams.id;
+        cargarProgramacion();
+    };
+
     function cargarProgramacion() {
         var params = {
             id_programacion: $scope.id_programacion
