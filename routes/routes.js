@@ -100,6 +100,22 @@ router.get('/archivos', (req, res, next) => {
     res.end('</body></html>');
 });
 
+router.get('/pdfs', (req, res, next) => {
+    
+  var directory = 'public/pdfs/';
+  myhtml = '';
+
+  getFilesFromDir(directory, [""]);
+  
+  res.write('<html><head><link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">');
+  res.write("<style>html, body{font-family: 'Roboto', sans-serif;}.folder{font-size:13px;padding:3px;}.file{font-size:12px;padding:3px;}</style></head><body>");
+  res.write('<p>LISTA DE ARCHIVOS</p>');
+  //res.write('<ul>');
+  res.write(myhtml);
+  //res.write('</ul>');
+  res.end('</body></html>');
+});
+
 function getFilesFromDir(dir, fileTypes) {
   var filesToReturn = [];
   var filename = '';
