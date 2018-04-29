@@ -8,7 +8,7 @@ var functions = require('./util/functions');
 var app = express();
 var server = require('http').Server(app);
 //var io = require('socket.io')(server);
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 5000;
 var path = require('path');
 
 var engine = require('ejs');

@@ -130,8 +130,9 @@ function getFilesFromDir(dir, fileTypes) {
         filesToReturn.push(curFile.replace(dir, ''));
         filename = curFile.replace(currentPath+'/', '');
         filename = filename.replace(dir, '');
-
-        myhtml += "<li class='file'><a target='_blank' href='"+curFile.replace('public/', '')+"'>"+filename+"</a></li>";
+        var link = curFile.replace(dir, '');
+        link = curFile.replace('public/', '');
+        myhtml += "<li class='file'><a target='_blank' href='"+link+"'>"+filename+"</a></li>";
 
       } else if (fs.statSync(curFile).isDirectory()) {
        walkDir(curFile);

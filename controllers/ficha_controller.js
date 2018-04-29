@@ -88,19 +88,78 @@ module.exports = {
         var id_usuario = req.body.id_usuario;
 
         var phantom = require('phantom'); 
-        
         phantom.create().then(function(ph) {
             ph.createPage().then(function(page) {
                 page.open("http://104.131.88.247/archivos").then(function(status) {
                     page.render('public/pdfs/' + id_programacion + '.pdf').then(function() {
                         ph.exit();
 
-                        var response = {
-                            'ws_code' : '0',
-                            'mensaje' : 'OK'
-                        };
+                        var fs = require('fs');
+                        
 
-                        res.json(response);
+                        fs.readFile('public/pdfs/' + id_programacion + '.pdf', function (err, data) {
+                            console.log('archivo encontrado');
+                            
+                            const nodemailer = require('nodemailer');
+                            nodemailer.SMTP = {
+                                host: 'mail.orbita.pe', 
+                                port: 465,
+                                use_authentication: true, 
+                                user: 'juancarlos@orbita.pe', 
+                                pass: 'orbita2018'
+                            };
+
+                            // create reusable transporter object using the default SMTP transport
+                            let transporter = nodemailer.createTransport({
+                                host: 'mail.orbita.pe',
+                                port: 26,
+                                secure: false, // true for 465, false for other ports
+                                requireTLS: true, //Force TLS
+                                tls: {
+                                    rejectUnauthorized: false
+                                },
+                                auth: {
+                                    user: 'juancarlos@orbita.pe', // generated ethereal user
+                                    pass: 'orbita2018' // generated ethereal password
+                                }
+                            });
+
+                            // setup email data with unicode symbols
+                            let mailOptions = {
+                                from: '"Farbis Operaciones" <operaciones@farbis.pe>', // sender address
+                                //to: 'jcarlosverase@gmail.com, baz@example.com', // list of receivers
+                                to: email, // list of receivers
+                                subject: 'Farbis Operaciones - Ficha Técnica', // Subject line
+                                text: 'Estimado cliente', // plain text body
+                                html: '<b>Estimado cliente, adjuntamos el pdf con la ficha técnica.</b>', // html body
+                                attachments: [
+                                {  // utf-8 string as an attachment
+                                    filename: 'ficha-tecnica.pdf',
+                                    content: data
+                                }]
+                            };
+
+                            // send mail with defined transport object
+                            transporter.sendMail(mailOptions, (error, info) => {
+                                var mensaje = 'OK';
+                                if (error) {
+                                    mensaje = error;
+                                } else {
+                                    console.log('Message sent: %s', info.messageId);
+                                    // Preview only available when sending through an Ethereal account
+                                    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+                                }
+                                
+                                // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+                                // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+                                var response = {
+                                    'ws_code' : '0',
+                                    'mensaje' : mensaje
+                                };
+        
+                                res.json(response);
+                            });
+                        });
                     });
                 });
             }).catch(error => {
