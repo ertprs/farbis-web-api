@@ -3,3 +3,9 @@ public/files/*
 
 # Ignore folder pdfs
 public/pdfs/*
+
+# Ignore folder node_modules
+public/node_modules/*
+
+# Ignore server.js
+server.js
