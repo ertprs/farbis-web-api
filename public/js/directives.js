@@ -30,7 +30,17 @@ function myMap() {
             center: new google.maps.LatLng(-12.0466083, -77.0430169),
             zoom: 14,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
-            scrollwheel: false
+            scrollwheel: false,
+            styles: [
+                {
+                  "featureType": "poi",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                }
+              ]
         };
 
         // init the map
@@ -95,6 +105,14 @@ function myMap() {
 
         function setMarkerCustom(map, position, title, programacion) {
             var marker;
+            var markerIcon = {
+                url: 'img/icons/pin-red-24.svg',
+                scaledSize: new google.maps.Size(24, 24),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(32,65),
+                labelOrigin: new google.maps.Point(12,33)
+              };
+
             var markerOptions = {
                 position: position,
                 map: map,
@@ -102,17 +120,12 @@ function myMap() {
                 label: {
                     color: '#000000',
                     fontWeight: 'bold',
+                    fontSize: "12px",
                     text: title,
                 },
-                icon: {
-                    labelOrigin: new google.maps.Point(11, 50),
-                    //url: 'https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi-dotless2_hdpi.png',
-                    size: new google.maps.Size(22, 35),
-                    origin: new google.maps.Point(0, 50),
-                    anchor: new google.maps.Point(11, 40),
-                },
+                icon: markerIcon
                 //label: "Hola mundo"
-                //icon: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                //icon: 'img/icons/pin-red-24.png'
             };
             scope.programacion = programacion;
             marker = new google.maps.Marker(markerOptions);

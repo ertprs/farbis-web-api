@@ -171,16 +171,22 @@ angular.module('FarbisWebApp')
             }
         });
     }
-
+    var geocoder;
     function verMapa() {
         $scope.clearMarkers();
         
+        geocoder = new google.maps.Geocoder();
         angular.forEach($scope.programacionLista,function(programacion, index){
             programacion.index = index + 1;
             if  (programacion.geolatitud != "" && programacion.geolongitud != ""){
-                $scope.setMarkerCustom(new google.maps.LatLng(programacion.geolatitud, programacion.geolongitud), programacion.cliente, programacion);
+                //$scope.setMarkerCustom(new google.maps.LatLng(programacion.geolatitud, programacion.geolongitud), programacion.cliente, programacion);
+            }
+            if (programacion.direccion != '') {
+                geocodeAddress(programacion);
             }
         });
+
+        
     }
     function abrirDetalleModal() {
         var modalInstance = $uibModal.open({
@@ -204,6 +210,25 @@ angular.module('FarbisWebApp')
 
         });
     }
+
+    function geocodeAddress(programacion) {
+        geocoder.geocode({
+            'address': programacion.direccion
+          },
+      
+          function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                $scope.setMarkerCustom(results[0].geometry.location, programacion.cliente, programacion);
+            }
+            else if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT)
+            {      
+                setTimeout(3000);
+            }
+            else {
+              console.log("Geocode of " + programacion.direccion + " failed:" + status);
+            }
+          });
+      }
     
 })
 .controller('FichaController', function($scope, $rootScope, $window, $stateParams, ProgramacionService, FichaService) {
