@@ -280,13 +280,14 @@ module.exports = {
         if (celular_coordino == null) {
             celular_coordino = '';
         }
+        /*
         if (personal == '') {
             personal = personal_encargado;
         }
         if (personal_encargado == '') {
             personal_encargado = personal;
         }
-        
+        */
         programacion_model.registro(id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
                 telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, celular_coordino, secordino, 
                 celular_secordino, atendera, personal, producto, personal_encargado, correo, nombre_vendedor,
@@ -684,20 +685,21 @@ module.exports = {
         var id_programacion = req.params.id_programacion;
 
         programacion_model.obtener(id_programacion, function(msg, programacion){
-
+            console.log(programacion);
             var directory = programacion.fecha.getFullYear() + '-' + programacion.nro_orden + '-' +  programacion.id_programacion;
             var full_directory = 'public/files/' + directory + '/';
             var filename = '';
             var file = constants.dirname + 'public/zip/' + directory + '.zip';
             var fileFolder = constants.dirname + 'public/files/' + directory + '/';
             var currentPath = full_directory;
+            console.log('aqui -1');
             fs.exists(file, function(exists) {
                 if (exists) {
                     fs.unlinkSync(file); // Delete file
                 } else {
                 }
             });
-
+            console.log('aqui 0');
             fs.exists(fileFolder, function(exists) {
                 if (exists) {
                     // Contamos los archivos en la carpeta
@@ -708,18 +710,20 @@ module.exports = {
                             excludeParentFolder: false, //Default : false. if true, the content will be zipped excluding parent folder.
                             parentFolderName: directory //if specified, the content will be zipped, within the 'v1.0' folder
                         };
-                        
+                        console.log('aqui 1');
                         //zip a folder and change folder destination name
                         var FolderZip = require('folder-zip');
                         var zip = new FolderZip();
                         zip.zipFolder(full_directory, options, function(){
                             zip.writeToFile('public/zip/' + directory + '.zip');
-
+                            console.log('aqui 2');
                             setTimeout(function() {
                                 fs.exists(file, function(exists) {
                                     if (exists) {
+                                        console.log('aqui 3');
                                         res.download(file);
                                     } else {
+                                        console.log('aqui 4');
                                         res.write('El archivo ' + directory + '.zip no existe');
                                         res.end();
                                     }

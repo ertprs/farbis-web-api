@@ -55,9 +55,15 @@ angular.module('FarbisWebApp')
     $scope.programacionFiltro = null;
     $scope.programacionLista = [];
     $scope.operarioLista = [];
+    var fechaFiltro = window.localStorage.getItem('filterDate');
+    if (fechaFiltro == null) {
+        fechaFiltro = getDateES(); //new Date().toLocaleDateString("es-PE")
+        window.localStorage.setItem('filterDate', fechaFiltro);
+    }
+    console.log('fecha: '+fechaFiltro);
     $scope.filtro = {
         id_operario: "",
-        fecha : new Date().toLocaleDateString("es-PE")
+        fecha : fechaFiltro
     }
     $scope.opcion = "";
     //console.log($scope.filtro.fecha);
@@ -104,6 +110,8 @@ angular.module('FarbisWebApp')
             id_operario: $("#sel-operario").val(),
             fecha : $("#inp-fecha").val()
         };
+
+        window.localStorage.setItem('filterDate', filtro.fecha);
 
         $(".page-loader").show();
         ProgramacionService.listaPorOperario(filtro).then(function (response) {
