@@ -15,13 +15,14 @@ module.exports = {
 
         var id_programacion = req.body.id_programacion;
         var tipo = req.body.tipo;
+        var item = req.body.item;
         var descripcion = req.body.descripcion;
         var ruta_foto = req.body.ruta_foto;
         var ruta_audio = req.body.ruta_audio;
         var ruta_video = req.body.ruta_video;
         var id_usuario = req.body.id_usuario;
         console.log('paso 1');
-        proceso_archivo_model.registro(id_programacion, tipo, descripcion, 
+        proceso_archivo_model.registro(id_programacion, tipo, item, descripcion, 
             ruta_foto, ruta_audio, ruta_video, id_usuario, function(msg, data, id, fecha){
                 console.log('paso 2');
             var response = {
