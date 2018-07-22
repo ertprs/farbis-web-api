@@ -36,6 +36,7 @@ module.exports = {
         {
             var data = null;
             var msg = '';
+            var id = '';
             var fecha = '';
 
             if (err) {
