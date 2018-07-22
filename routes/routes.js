@@ -74,6 +74,10 @@ router.post(sub_path + 'rws_ficha_enviar_por_email', controllers.ficha_controlle
 router.post(sub_path + 'rws_ficha_lista_por_programacion', controllers.ficha_controller.post_lista_por_programacion);
 router.get('/ficha/ver/:id_programacion', controllers.ficha_controller.get_ver);
 
+router.post(sub_path + 'rws_proceso_archivo_registro', controllers.proceso_archivo_controller.post_registro);
+router.post(sub_path + 'rws_proceso_archivo_actualiza', controllers.proceso_archivo_controller.post_actualiza);
+router.post(sub_path + 'rws_proceso_archivo_elimina', controllers.proceso_archivo_controller.post_elimina);
+
 // Servidor Web - App Web
 router.post(sub_path + 'rws_programador_valida', controllers.usuario_controller.post_validar_programador);
 router.post(sub_path + 'rws_programacion_lista_por_operario_fecha', controllers.programacion_controller.post_lista_por_operario_fecha);

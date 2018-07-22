@@ -2,6 +2,7 @@ var mysql = require('mysql');
 var views = require('.././routes/views');
 var functions = require('.././util/functions');
 var proceso_model = require('.././models/proceso_model');
+var proceso_archivo_model = require('.././models/proceso_archivo_model');
 
 module.exports = {
 
@@ -15,16 +16,34 @@ module.exports = {
 
         var id_programacion = req.body.id_programacion;
         var tipo = req.body.tipo;
-
+        
         proceso_model.lista_por_programacion(id_programacion, tipo, function(msg, data){
+            if (data.length > 0) {
+                data.forEach(function(proceso, index) {
+                    // Listamos los archivos
+                    proceso_archivo_model.lista_por_programacion(id_programacion, tipo, proceso.item, function(msg, data_archivos){
+                        proceso.ruta_audios = data_archivos;
+    
+                        if (data.length == index + 1) {
+                            var response = {
+                                'ws_code' : '0',
+                                'mensaje' : msg, 
+                                'procesos' : data
+                            };
+                
+                            res.json(response);
+                        }
+                    });
+                });
+            } else {
+                var response = {
+                    'ws_code' : '0',
+                    'mensaje' : msg, 
+                    'procesos' : data
+                };
 
-            var response = {
-                'ws_code' : '0',
-                'mensaje' : msg, 
-                'procesos' : data
-            };
-
-            res.json(response);
+                res.json(response);
+            }
         });
     },
 
