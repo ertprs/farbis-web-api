@@ -250,8 +250,8 @@ angular.module('FarbisWebApp')
     };
 
     $scope.initLoad = function () {
-        //console.log('init');
-        $('body').removeClass('sw-toggled');
+        console.log('init');
+        //$('body').removeClass('sw-toggled');
         $scope.id_programacion = $stateParams.id;
         cargarProgramacion();
     };

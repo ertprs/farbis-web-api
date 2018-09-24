@@ -4,10 +4,10 @@
         </div>
         <div class="modal-body">
             <div class="row">
-                <div class="col-sm-2">
+                <div class="col-sm-1">
                     <button class="btn btn-primary btn-icon waves-circle text-bold">{{ programacion.index + 1 }}</button>
                 </div>
-                <div class="col-sm-10">
+                <div class="col-sm-11">
                     <div class="form-group fg-line">
                         <label class="c-blue text-bold">CLIENTE</label><br>
                         <label class="form-control label-md text-bold c-darkgray">{{ programacion.cliente }}</label>
@@ -27,46 +27,48 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-3">
-                    <div class="form-group fg-line">
-                        <label class="c-blue text-bold">FECHA</label><br>
-                        <label class="form-control input-md text-bold c-darkgray text-center">{{ programacion.fecha_format }}</label>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group fg-line">
-                        <label class="c-blue text-bold">HORA LLEGADA</label><br>
-                        <label class="form-control input-md text-bold c-darkgray text-center">{{ ficha.hora_llegada_format }}</label>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group fg-line">
-                        <label class="c-blue text-bold">HORA INICIO</label><br>
-                        <label class="form-control input-md text-bold c-darkgray text-center">{{ ficha.hora_inicio_format }}</label>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group fg-line">
-                        <label class="c-blue text-bold">HORA TERMINO</label><br>
-                        <label class="form-control input-md text-bold c-darkgray text-center">{{ ficha.hora_fin_format }}</label>
-                    </div>
+                <div class="col-sm-12">
+                        <table class="table table-hover table-condensed table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%; text-align: center;">FECHA</th>
+                                        <th style="width: 25%; text-align: center;">HORA LLEGADA</th>
+                                        <th style="width: 25%; text-align: center;">HORA INICIO</th>
+                                        <th style="width: 25%; text-align: center;">HORA TERMINO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="row-select">
+                                        <td style="width: 25%; text-align: center;">{{ programacion.fecha_format }}</td>
+                                        <td style="width: 25%; text-align: center;">{{ ficha.hora_llegada_format }}</td>
+                                        <td style="width: 25%; text-align: center;">{{ ficha.hora_inicio_format }}</td>
+                                        <td style="width: 25%; text-align: center;">{{ ficha.hora_fin_format }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="form-group fg-line">
-                        <label class="c-blue text-bold">ENCARGADO / OPERARIOS</label><br>
-                        <table id="tab-operario" class="table table-condensed">
-                            <tbody>
-                                <tr class="borderless">
-                                    <td class="text-primary">{{ programacion.personal_encargado_nombre }}</td>
-                                </tr>
-                                <tr class="borderless" ng-repeat="p in programacion.personal_format">
-                                    <td>{{ p }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <table id="tab-operario" class="table table-hover table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 40px; text-align: center;">#</th>
+                                <th>ENCARGADO / OPERARIO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="row-select">
+                                <td style="width: 40px; text-align: center;">1</td>
+                                <td class="text-primary">{{ programacion.personal_encargado_nombre }}</td>
+                            </tr>
+                            <tr class="row-select" ng-repeat="p in programacion.personal_format">
+                                <td style="width: 40px; text-align: center;">{{ $index + 2 }}</td>
+                                <td>{{ p }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

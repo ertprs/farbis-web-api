@@ -1,287 +1,241 @@
 <div class="modal-content">
-        <div class="modal-header">
-            <h4 class="modal-title">Ficha Técnica</h4>
-        </div>
-        <div class="modal-body">
+    <div class="modal-header">
+        <h4 class="modal-title">Ficha Técnica</h4>
+    </div>
+    <div class="modal-body">
 
-            <div class="row">
-                <div class="col-sm-5 col-sm-offset-1">
+        <div class="row">
 
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">1</button>
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Nº Ficha técnica</label>
-                                <br>
-                                <label class="text-bold c-darkgray">{{ ficha.numero }}</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">2</button>
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Razón Social</label>
-                                <br>
-                                <label class="text-bold c-darkgray">{{ programacion.cliente }}</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">3</button>
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Fecha de Servicio</label>
-                                <br>
-                                <label class="text-bold c-darkgray">{{ programacion.fecha_format }}</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">4</button>
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Dirección</label>
-                                <br>
-                                <label class="text-bold c-darkgray">{{ programacion.direccion }}</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">5</button>
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Giro Comercial</label>
-                                <br>
-                                <label class="text-bold c-darkgray">{{ programacion.giro_comercial }}</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">6</button>
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Hora de inicio</label>
-                                <br>
-                                <label class="text-bold c-darkgray">{{ ficha.hora_inicio_format }}</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">7</button>
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Hora de llegada</label>
-                                <br>
-                                <label class="text-bold c-darkgray">{{ ficha.hora_llegada_format }}</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">8</button>
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Diagnóstico</label>
-                                <br>
-                                <ul style="list-style-type:none;padding:0px;margin:0px;">
-                                    <li class="text-bold c-darkgray" ng-repeat="diagnostico in ficha.diagnostico_lista">{{ diagnostico }}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">9</button>
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Condición sanitaria de la zona circuncidante</label>
-                                <br>
-                                <label class="text-bold c-darkgray">{{ ficha.condicion_sanitaria_nombre }}</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">10</button>
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Trabajos realizados</label>
-                                <br>
-                                <ul style="list-style-type:none;padding:0px;margin:0px;">
-                                    <li class="text-bold c-darkgray" ng-repeat="trabajo in ficha.trabajo_realizado_lista">{{ trabajo }}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">11</button>
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Productos químicos o biológicos</label>
-                                <br>
-                                <label class="text-bold c-darkgray">{{ ficha.productos }}</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">12</button>
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Observaciones</label>
-                                <br>
-                                <div class="row text-bold c-darkgray" ng-repeat="observacion in ficha.observacion_lista">
-                                    <div class="col-sm-12">{{ observacion.observacion }}</div>
-                                    <div class="col-sm-12 m-t-5" ng-if="observacion.ruta_foto != ''"><img width="200" height="200" src="{{ observacion.ruta_foto }}" /></div>
-                                    <div class="col-sm-12 m-t-5" ng-if="observacion.ruta_audio != ''">
-                                        <audio src="{{ observacion.ruta_audio }}" controls></audio>
-                                    </div>
-                                    <div class="col-sm-12 m-t-5" ng-if="observacion.ruta_video != ''">
-                                        <video width="320" height="240" controls>
-                                            <source src="{{ observacion.ruta_video }}" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </div>
-                                <div ng-if="(ficha.observacion_lista.length == 0)">
-                                    <label class="text-bold c-darkgray">Ninguna</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+            <div class="col-sm-1">
+                <button class="btn btn-primary btn-icon waves-circle text-bold">1</button>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Nº Ficha técnica</label>
+                    <br>
+                    <label class="text-bold c-darkgray">{{ ficha.numero }}</label>
                 </div>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary btn-icon waves-circle text-bold">2</button>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Razón Social</label>
+                    <br>
+                    <label class="text-bold c-darkgray">{{ programacion.cliente }}</label>
+                </div>
+            </div>
 
-                <div class="col-sm-5">
+            <div class="col-sm-1">
+                <button class="btn btn-primary btn-icon waves-circle text-bold">3</button>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Fecha de Servicio</label>
+                    <br>
+                    <label class="text-bold c-darkgray">{{ programacion.fecha_format }}</label>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary btn-icon waves-circle text-bold">4</button>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Dirección</label>
+                    <br>
+                    <label class="text-bold c-darkgray">{{ programacion.direccion }}</label>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary btn-icon waves-circle text-bold">5</button>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Giro Comercial</label>
+                    <br>
+                    <label class="text-bold c-darkgray">{{ programacion.giro_comercial }}</label>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary btn-icon waves-circle text-bold">6</button>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Hora de inicio</label>
+                    <br>
+                    <label class="text-bold c-darkgray">{{ ficha.hora_inicio_format }}</label>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary btn-icon waves-circle text-bold">7</button>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Hora de llegada</label>
+                    <br>
+                    <label class="text-bold c-darkgray">{{ ficha.hora_llegada_format }}</label>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary btn-icon waves-circle text-bold">8</button>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Diagnóstico</label>
+                    <br>
+                    <ul style="list-style-type:none;padding:0px;margin:0px;">
+                        <li class="text-bold c-darkgray" ng-repeat="diagnostico in ficha.diagnostico_lista">{{
+                            diagnostico }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary btn-icon waves-circle text-bold">9</button>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Condición sanitaria de la zona circuncidante</label>
+                    <br>
+                    <label class="text-bold c-darkgray">{{ ficha.condicion_sanitaria_nombre }}</label>
+                </div>
+            </div>
 
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">13</button>
+            <div class="col-sm-1">
+                <button class="btn btn-primary btn-icon waves-circle text-bold">10</button>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Trabajos realizados</label>
+                    <br>
+                    <ul style="list-style-type:none;padding:0px;margin:0px;">
+                        <li class="text-bold c-darkgray" ng-repeat="trabajo in ficha.trabajo_realizado_lista">{{
+                            trabajo }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary btn-icon waves-circle text-bold">11</button>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Productos químicos o biológicos</label>
+                    <br>
+                    <label class="text-bold c-darkgray">{{ ficha.productos }}</label>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary btn-icon waves-circle text-bold">12</button>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Observaciones</label>
+                    <br>
+                    <div class="row text-bold c-darkgray" ng-repeat="observacion in ficha.observacion_lista">
+                        <div class="col-sm-12">{{ observacion.observacion }}</div>
+                        <div class="col-sm-12 m-t-5" ng-if="observacion.ruta_foto != ''"><img width="200" height="200"
+                                src="{{ observacion.ruta_foto }}" /></div>
+                        <div class="col-sm-12 m-t-5" ng-if="observacion.ruta_audio != ''">
+                            <audio src="{{ observacion.ruta_audio }}" controls></audio>
                         </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Recomendaciones</label>
-                                <br>
-                                <div class="row text-bold c-darkgray" ng-repeat="recomendacion in ficha.recomendacion_lista">
-                                    <div class="col-sm-12">{{ recomendacion.descripcion }}</div>
-                                    <div class="col-sm-12 m-t-5" ng-if="recomendacion.ruta_foto != ''"><img width="200" height="200" src="{{ recomendacion.ruta_foto }}" /></div>
-                                    <div class="col-sm-12 m-t-5" ng-if="recomendacion.ruta_audio != ''">
-                                        <audio src="{{ recomendacion.ruta_audio }}" controls></audio>
-                                    </div>
-                                    <div class="col-sm-12 m-t-5" ng-if="recomendacion.ruta_video != ''">
-                                        <video width="320" height="240" controls>
-                                            <source src="{{ recomendacion.ruta_video }}" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </div>
-                                <div ng-if="(ficha.recomendacion_lista.length == 0)">
-                                    <label class="text-bold c-darkgray">Ninguna</label>
-                                </div>
-                            </div>
+                        <div class="col-sm-12 m-t-5" ng-if="observacion.ruta_video != ''">
+                            <video width="320" height="240" controls>
+                                <source src="{{ observacion.ruta_video }}" type="video/mp4">
+                            </video>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">14</button>
+                    <div ng-if="(ficha.observacion_lista.length == 0)">
+                        <label class="text-bold c-darkgray">Ninguna</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary btn-icon waves-circle text-bold">13</button>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Recomendaciones</label>
+                    <br>
+                    <div class="row text-bold c-darkgray" ng-repeat="recomendacion in ficha.recomendacion_lista">
+                        <div class="col-sm-12">{{ recomendacion.descripcion }}</div>
+                        <div class="col-sm-12 m-t-5" ng-if="recomendacion.ruta_foto != ''"><img width="200" height="200"
+                                src="{{ recomendacion.ruta_foto }}" /></div>
+                        <div class="col-sm-12 m-t-5" ng-if="recomendacion.ruta_audio != ''">
+                            <audio src="{{ recomendacion.ruta_audio }}" controls></audio>
                         </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Incidencias</label>
-                                <br>
-                                <div class="row text-bold c-darkgray" ng-repeat="incidencia in ficha.incidencia_lista">
-                                    <div class="col-sm-12">{{ incidencia.descripcion }}</div>
-                                    <div class="col-sm-12 m-t-5" ng-if="incidencia.ruta_foto != ''"><img width="200" height="200" src="{{ incidencia.ruta_foto }}" /></div>
-                                    <div class="col-sm-12 m-t-5" ng-if="incidencia.ruta_audio != ''">
-                                        <audio src="{{ incidencia.ruta_audio }}" controls></audio>
-                                    </div>
-                                    <div class="col-sm-12 m-t-5" ng-if="incidencia.ruta_video != ''">
-                                        <video width="320" height="240" controls>
-                                            <source src="{{ incidencia.ruta_video }}" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </div>
-                                <div ng-if="(ficha.incidencia_lista.length == 0)">
-                                    <label class="text-bold c-darkgray">Ninguna</label>
-                                </div>
-                            </div>
+                        <div class="col-sm-12 m-t-5" ng-if="recomendacion.ruta_video != ''">
+                            <video width="320" height="240" controls>
+                                <source src="{{ recomendacion.ruta_video }}" type="video/mp4">
+                            </video>
                         </div>
                     </div>
+                    <div ng-if="(ficha.recomendacion_lista.length == 0)">
+                        <label class="text-bold c-darkgray">Ninguna</label>
+                    </div>
+                </div>
+            </div>
 
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">15</button>
+            <div class="col-sm-1">
+                <button class="btn btn-primary btn-icon waves-circle text-bold">14</button>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Incidencias</label>
+                    <br>
+                    <div class="row text-bold c-darkgray" ng-repeat="incidencia in ficha.incidencia_lista">
+                        <div class="col-sm-12">{{ incidencia.descripcion }}</div>
+                        <div class="col-sm-12 m-t-5" ng-if="incidencia.ruta_foto != ''"><img width="200" height="200"
+                                src="{{ incidencia.ruta_foto }}" /></div>
+                        <div class="col-sm-12 m-t-5" ng-if="incidencia.ruta_audio != ''">
+                            <audio src="{{ incidencia.ruta_audio }}" controls></audio>
                         </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Personas que supervisaron</label>
-                                <br>
-                                <div class="row" ng-repeat="supervisor in ficha.supervisor_lista">
-                                    <div class="col-sm-4" ng-if="supervisor.ruta_foto != ''"><img width="100" height="100" src="{{ supervisor.ruta_foto }}" /></div>                                    
-                                    <div class="col-sm-8 p-25">
-                                        <label class="text-bold c-darkgray">{{ supervisor.nombre }}</label>
-                                        <br>
-                                        <label class="c-darkgray">{{ supervisor.telefono }}</label>
-                                    </div>
-                                </div>
-                                <div ng-if="(ficha.supervisor_lista.length == 0)">
-                                    <label class="text-bold c-darkgray">Ninguno</label>
-                                </div>
-                            </div>
+                        <div class="col-sm-12 m-t-5" ng-if="incidencia.ruta_video != ''">
+                            <video width="320" height="240" controls>
+                                <source src="{{ incidencia.ruta_video }}" type="video/mp4">
+                            </video>
                         </div>
                     </div>
+                    <div ng-if="(ficha.incidencia_lista.length == 0)">
+                        <label class="text-bold c-darkgray">Ninguna</label>
+                    </div>
+                </div>
+            </div>
 
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary btn-icon waves-circle text-bold">16</button>
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="form-group">
-                                <label class="c-blue text-bold">Ficha física</label>
-                                <br>
-                                <a class="btn btn-primary btn-sm m-t-5 waves-effect" target="_blank" href="{{ ficha.ficha_fisica_foto }}">Ver</a>
-                            </div>
+            <div class="col-sm-1">
+                <button class=" btn btn-primary btn-icon waves-circle text-bold">15</button>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Personas que supervisaron</label>
+                    <br>
+                    <div class="row" ng-repeat="supervisor in ficha.supervisor_lista">
+                        <div class="col-sm-4" ng-if="supervisor.ruta_foto != ''"><img width="100" height="100" src="{{ supervisor.ruta_foto }}" /></div>
+                        <div class="col-sm-8 p-25">
+                            <label class="text-bold c-darkgray">{{ supervisor.nombre }}</label>
+                            <br>
+                            <label class="c-darkgray">{{ supervisor.telefono }}</label>
                         </div>
                     </div>
-
-                    
-
+                    <div ng-if="(ficha.supervisor_lista.length == 0)">
+                        <label class="text-bold c-darkgray">Ninguno</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary btn-icon waves-circle text-bold">16</button>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="c-blue text-bold">Ficha física</label>
+                    <br>
+                    <a class="btn btn-primary btn-sm m-t-5 waves-effect" target="_blank" href="{{ ficha.ficha_fisica_foto }}">Ver</a>
                 </div>
             </div>
 
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="$dismiss()">CERRAR</button>
-        </div>
+
     </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="$dismiss()">CERRAR</button>
+    </div>
+</div>

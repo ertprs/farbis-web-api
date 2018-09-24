@@ -1403,7 +1403,7 @@ html {
 
 body {
   font-family: roboto;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.42857143;
   color: #5e5e5e;
   background-color: #edecec;
@@ -1622,7 +1622,7 @@ h3,
 
 h4,
 .h4 {
-  font-size: 17px;
+  font-size: 15px;
 }
 
 h5,
@@ -1994,8 +1994,9 @@ pre code {
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
 }
 
 @media (min-width: 768px) {
@@ -2012,7 +2013,8 @@ pre code {
 
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    /*width: 1170px;*/
+    width: 100%;
   }
 }
 
@@ -3051,7 +3053,7 @@ th {
 }
 
 .table-hover > tbody > tr:hover {
-  background-color: #f5f5f5;
+  background-color: #fffee6;
 }
 
 table col[class*="col-"] {
@@ -10095,7 +10097,7 @@ h6 small,
 #main {
   position: relative;
   padding-bottom: 110px;
-  padding-top: 100px;
+  padding-top: 55px;
 }
 
 .container.c-alt {
@@ -10111,7 +10113,7 @@ h6 small,
 
 @media (min-width: 1200px) {
   body.sw-toggled #content {
-    padding-left: 268px;
+    padding-left: 240px;
   }
 }
 
@@ -10150,7 +10152,7 @@ h6 small,
 
 .header-inner {
   list-style: none;
-  padding: 17px 0;
+  padding: 10px 0;
   margin-bottom: 0;
   position: relative;
 }
@@ -10391,7 +10393,7 @@ h6 small,
 
 #header {
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
-  min-height: 70px;
+  min-height: 55px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -10687,7 +10689,7 @@ h6 small,
   background: #fff;
   box-shadow: 0 0 10px rgba(51, 51, 51, 0.38);
   height: calc(100% - 65px);
-  top: 65px;
+  top: 55px;
   -webkit-transition: all;
   -o-transition: all;
   transition: all;
@@ -10705,9 +10707,9 @@ h6 small,
 }
 
 #sidebar {
-  width: 268px;
-  -webkit-transform: translate3d(-268px, 0, 0);
-  transform: translate3d(-268px, 0, 0);
+  width: 240px;
+  -webkit-transform: translate3d(-240px, 0, 0);
+  transform: translate3d(-240px, 0, 0);
 }
 
 #sidebar.toggled {
@@ -10717,7 +10719,7 @@ h6 small,
 
 .profile-menu > a {
   display: block;
-  height: 129px;
+  height: 47px;
   margin-bottom: 5px;
   width: 100%;
   /*background: url(../img/profile-menu.png) no-repeat left top;
@@ -10727,6 +10729,7 @@ h6 small,
 
 .profile-menu > a .profile-pic {
   padding: 12px;
+  display: none;
 }
 
 .profile-menu > a .profile-pic > img {
@@ -10738,10 +10741,10 @@ h6 small,
 }
 
 .profile-menu > a .profile-info {
-  background: rgba(0, 0, 0, 0.37);
-  padding: 7px 14px;
-  color: #fff;
-  margin-top: 20px;
+  /*background: rgba(0, 0, 0, 0.37);*/
+  padding: 15px;
+  color: #393a3b;
+  margin-top: 0px;
   position: relative;
 }
 
@@ -10774,7 +10777,7 @@ h6 small,
 .main-menu {
   list-style: none;
   padding-left: 0;
-  margin: 20px 0 0 0;
+  margin: -5px 0 0 0;
 }
 
 .main-menu > li > a {
@@ -11555,7 +11558,7 @@ a.lv-footer:hover {
   position: relative;
   background: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .card .card-header {
@@ -11564,7 +11567,7 @@ a.lv-footer:hover {
 
 @media screen and (min-width: 768px) {
   .card .card-header:not(.ch-alt) {
-    padding: 23px 25px;
+    padding: 10px 15px;
   }
 }
 
@@ -13106,10 +13109,10 @@ a.lv-footer:hover {
 }
 
 .table > thead > tr > th {
-  background-color: #fff;
+  background-color: #f4f4f4;
   vertical-align: middle;
   font-weight: 500;
-  color: #333;
+  color: #3a619b;
   border-width: 1px;
   text-transform: uppercase;
 }
@@ -13133,7 +13136,7 @@ a.lv-footer:hover {
 .table > thead > tr > td:first-child,
 .table > tbody > tr > td:first-child,
 .table > tfoot > tr > td:first-child {
-  padding-left: 30px;
+  padding-left: 7px;
 }
 
 .table > thead > tr > th:last-child,
@@ -13142,7 +13145,7 @@ a.lv-footer:hover {
 .table > thead > tr > td:last-child,
 .table > tbody > tr > td:last-child,
 .table > tfoot > tr > td:last-child {
-  padding-right: 30px;
+  padding-right: 7px;
 }
 
 .table > tbody > tr.active > td,
@@ -13169,9 +13172,11 @@ a.lv-footer:hover {
 }
 
 .table-bordered {
+  /*
   border-bottom: 0;
   border-left: 0;
   border-right: 0;
+  */
 }
 
 .table-bordered > tbody > tr > td,

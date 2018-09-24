@@ -1,6 +1,5 @@
 var connection = require('.././database/connection');
 var functions = require('.././util/functions');
-var sync = require('synchronize');
 
 module.exports = {
 

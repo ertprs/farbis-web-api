@@ -5,7 +5,11 @@ public/files/*
 public/pdfs/*
 
 # Ignore folder node_modules
+node_modules/*
 public/node_modules/*
 
 # Ignore server.js
 server.js
+
+#
+.DS_Store
