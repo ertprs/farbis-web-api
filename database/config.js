@@ -34,7 +34,7 @@ if (env == 'developer')
     };
     */
     config = {
-        host: '142.93.77.117',
+        host: 'localhost',
         user: 'root',
         password: 'abcDEF123',
         database: 'farbisdb',
