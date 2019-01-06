@@ -187,10 +187,10 @@ angular.module('FarbisWebApp')
         angular.forEach($scope.programacionLista,function(programacion, index){
             programacion.index = index + 1;
             if  (programacion.geolatitud != "" && programacion.geolongitud != ""){
-                //$scope.setMarkerCustom(new google.maps.LatLng(programacion.geolatitud, programacion.geolongitud), programacion.cliente, programacion);
+                $scope.setMarkerCustom(new google.maps.LatLng(programacion.geolatitud, programacion.geolongitud), programacion.cliente, programacion);
             }
             if (programacion.direccion != '') {
-                geocodeAddress(programacion);
+                //geocodeAddress(programacion);
             }
         });
 

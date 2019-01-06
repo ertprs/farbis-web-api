@@ -91,7 +91,7 @@ module.exports = {
         var phantom = require('phantom'); 
         phantom.create().then(function(ph) {
             ph.createPage().then(function(page) {
-                page.open("http://104.131.88.247/ficha/ver/" + id_programacion).then(function(status) {
+                page.open("http://142.93.77.117/ficha/ver/" + id_programacion).then(function(status) {
                     page.render('public/pdfs/' + id_programacion + '.pdf').then(function() {
                         ph.exit();
 
