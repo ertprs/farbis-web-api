@@ -23,10 +23,15 @@ router.get('/', function(req, res, next)
 var sub_path = "/sireis/api/v1/";
 
 // SEGAM - Servidor Web
+
 router.post(sub_path + 'rws_usuario_registro', controllers.usuario_controller.post_registro);
 router.post(sub_path + 'rws_usuario_actualiza', controllers.usuario_controller.post_actualiza);
 router.post(sub_path + 'rws_usuario_elimina', controllers.usuario_controller.post_elimina);
 router.post(sub_path + 'rws_usuario_actualiza_token', controllers.usuario_controller.post_actualiza_token);
+router.post(sub_path + 'rws_vehiculo_registro', controllers.vehiculo_controller.post_registro);
+router.post(sub_path + 'rws_vehiculo_actualiza', controllers.vehiculo_controller.post_actualiza);
+router.post(sub_path + 'rws_vehiculo_elimina', controllers.vehiculo_controller.post_elimina);
+
 //router.post(sub_path + 'rws_programacion_registro', controllers.programacion_controller.post_registro);
 //router.post(sub_path + 'rws_programacion_actualiza_operario', controllers.programacion_controller.post_actualiza_operario);
 //rws_archivos_descarga
