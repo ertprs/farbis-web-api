@@ -75,4 +75,20 @@ module.exports = {
         });
     },
 
+    post_lista : function(req, res, next)
+    {
+        functions.print_console('rest method vehiculo: post_lista');
+
+        vehiculo_model.lista(function(msg, data){
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : msg, 
+                'vehiculos' : data
+            };
+
+            res.json(response);
+        });
+    },
+
 };

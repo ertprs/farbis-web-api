@@ -83,6 +83,8 @@ router.post(sub_path + 'rws_proceso_archivo_registro', controllers.proceso_archi
 router.post(sub_path + 'rws_proceso_archivo_actualiza', controllers.proceso_archivo_controller.post_actualiza);
 router.post(sub_path + 'rws_proceso_archivo_elimina', controllers.proceso_archivo_controller.post_elimina);
 
+router.post(sub_path + 'rws_vehiculo_lista', controllers.vehiculo_controller.post_lista);
+
 // Servidor Web - App Web
 router.post(sub_path + 'rws_programador_valida', controllers.usuario_controller.post_validar_programador);
 router.post(sub_path + 'rws_programacion_lista_por_operario_fecha', controllers.programacion_controller.post_lista_por_operario_fecha);
