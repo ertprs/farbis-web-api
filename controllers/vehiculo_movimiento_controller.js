@@ -22,6 +22,13 @@ module.exports = {
         var geo_longitud = req.body.geo_longitud;
         var usuario_registro = req.body.usuario_registro;
 
+        if (fecha == '') {
+            fecha = null;
+        }
+        else{
+            fecha = functions.string_todatetime(fecha, 'MM/dd/yyyy', '/');
+        }
+
         vehiculo_movimiento_model.registro(id_vehiculo, tipo, personal, fecha, ruta_foto, 
             geo_latitud, geo_longitud, usuario_registro, function(msg, data){
 
@@ -48,6 +55,13 @@ module.exports = {
         var geo_longitud = req.body.geo_longitud;
         var usuario_registro = req.body.usuario_registro;
 
+        if (fecha == '') {
+            fecha = null;
+        }
+        else{
+            fecha = functions.string_todatetime(fecha, 'MM/dd/yyyy', '/');
+        }
+        
         vehiculo_movimiento_model.actualiza(id_vehiculo_movimiento, id_vehiculo, tipo, personal, fecha, ruta_foto, 
             geo_latitud, geo_longitud, usuario_registro, function(msg, data){
 
