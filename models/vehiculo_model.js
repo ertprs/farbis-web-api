@@ -3,13 +3,13 @@ var functions = require('.././util/functions');
 
 module.exports = {
 
-    registro : function(id_vehiculo, tipo, marca, modelo, placa, 
+    registro : function(id_vehiculo, tipo, marca, modelo, color, placa, 
                         fecha_inicio, usuario_registro, callback) {
 
         var cnx = connection.get_connection();
 
-        cnx.query('CALL ssp_adm_vehiculo_registro(?,?,?,?,?,?,?,@output);select @output', [ id_vehiculo, 
-            tipo, marca, modelo, placa, fecha_inicio, usuario_registro ], function(err, rows, fields)
+        cnx.query('CALL ssp_adm_vehiculo_registro(?,?,?,?,?,?,?,?,@output);select @output', [ id_vehiculo, 
+            tipo, marca, modelo, color, placa, fecha_inicio, usuario_registro ], function(err, rows, fields)
         {
             var data = null;
             var msg = '';
@@ -26,13 +26,13 @@ module.exports = {
         cnx.end(function () {});
     },
 
-    actualiza : function(id_vehiculo, tipo, marca, modelo, placa, 
+    actualiza : function(id_vehiculo, tipo, marca, modelo, color, placa, 
                         fecha_inicio, usuario_registro, callback) {
 
         var cnx = connection.get_connection();
 
-        cnx.query('CALL ssp_adm_vehiculo_actualiza(?,?,?,?,?,?,?,@output);select @output', [ id_vehiculo, 
-            tipo, marca, modelo, placa, fecha_inicio, usuario_registro ], function(err, rows, fields)
+        cnx.query('CALL ssp_adm_vehiculo_actualiza(?,?,?,?,?,?,?,?,@output);select @output', [ id_vehiculo, 
+            tipo, marca, modelo, color, placa, fecha_inicio, usuario_registro ], function(err, rows, fields)
         {
             var data = null;
             var msg = '';
