@@ -19,7 +19,7 @@ module.exports = {
                 msg = functions.get_output(rows, '@output');
             }
 
-            callback(msg, data, item, fecha);
+            callback(msg, data);
         });
 
         cnx.end(function () {});
@@ -42,7 +42,7 @@ module.exports = {
                 msg = functions.get_output(rows, '@output');
             }
 
-            callback(msg, data, item, fecha);
+            callback(msg, data);
         });
 
         cnx.end(function () {});
@@ -64,7 +64,7 @@ module.exports = {
                 msg = functions.get_output(rows, '@output');
             }
 
-            callback(msg, data, item, fecha);
+            callback(msg, data);
         });
 
         cnx.end(function () {});
