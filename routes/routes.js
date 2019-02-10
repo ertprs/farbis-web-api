@@ -87,6 +87,9 @@ router.post(sub_path + 'rws_vehiculo_lista', controllers.vehiculo_controller.pos
 router.post(sub_path + 'rws_vehiculo_movimiento_registro', controllers.vehiculo_movimiento_controller.post_registro);
 router.post(sub_path + 'rws_vehiculo_movimiento_actualiza', controllers.vehiculo_movimiento_controller.post_actualiza);
 router.post(sub_path + 'rws_vehiculo_movimiento_elimina', controllers.vehiculo_movimiento_controller.post_elimina);
+router.post(sub_path + 'rws_vehiculo_observacion_registro', controllers.vehiculo_observacion_controller.post_registro);
+router.post(sub_path + 'rws_vehiculo_observacion_actualiza', controllers.vehiculo_observacion_controller.post_actualiza);
+router.post(sub_path + 'rws_vehiculo_observacion_elimina', controllers.vehiculo_observacion_controller.post_elimina);
 
 // Servidor Web - App Web
 router.post(sub_path + 'rws_programador_valida', controllers.usuario_controller.post_validar_programador);
