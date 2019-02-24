@@ -92,6 +92,22 @@ module.exports = {
         });
     },
 
+    post_lista_por_usuario : function(req, res, next)
+    {
+        functions.print_console('rest method vehiculo movimiento: post_lista_por_usuario');
 
+        var personal = req.body.personal;
+
+        vehiculo_movimiento_model.lista_por_usuario(personal, function(msg, data){
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : msg, 
+                'movimientos' : data
+            };
+
+            res.json(response);
+        });
+    },
 
 };
