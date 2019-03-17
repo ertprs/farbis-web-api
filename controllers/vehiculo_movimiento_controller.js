@@ -14,7 +14,7 @@ module.exports = {
         functions.print_console('rest method vehiculo movimiento: post_registro');
 
         var id_vehiculo = req.body.id_vehiculo;
-        var tipo = req.body.tipo;
+        var id_tipo_movimiento = req.body.id_tipo_movimiento;
         var personal = req.body.personal;
         var fecha = req.body.fecha;
         var ruta_foto = req.body.ruta_foto;
@@ -29,7 +29,7 @@ module.exports = {
             fecha = functions.string_todatetime(fecha, 'MM/dd/yyyy', '/');
         }
 
-        vehiculo_movimiento_model.registro(id_vehiculo, tipo, personal, fecha, ruta_foto, 
+        vehiculo_movimiento_model.registro(id_vehiculo, id_tipo_movimiento, personal, fecha, ruta_foto, 
             geo_latitud, geo_longitud, usuario_registro, function(msg, data){
 
             var response = {
@@ -47,7 +47,7 @@ module.exports = {
 
         var id_vehiculo_movimiento = req.body.id_vehiculo_movimiento;
         var id_vehiculo = req.body.id_vehiculo;
-        var tipo = req.body.tipo;
+        var id_tipo_movimiento = req.body.id_tipo_movimiento;
         var personal = req.body.personal;
         var fecha = req.body.fecha;
         var ruta_foto = req.body.ruta_foto;
@@ -62,7 +62,7 @@ module.exports = {
             fecha = functions.string_todatetime(fecha, 'MM/dd/yyyy', '/');
         }
         
-        vehiculo_movimiento_model.actualiza(id_vehiculo_movimiento, id_vehiculo, tipo, personal, fecha, ruta_foto, 
+        vehiculo_movimiento_model.actualiza(id_vehiculo_movimiento, id_vehiculo, id_tipo_movimiento, personal, fecha, ruta_foto, 
             geo_latitud, geo_longitud, usuario_registro, function(msg, data){
 
             var response = {
