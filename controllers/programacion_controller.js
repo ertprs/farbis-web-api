@@ -404,7 +404,8 @@ module.exports = {
                 fecha = null;
             }
             else{
-                fecha = functions.string_todatetime(fecha, 'dd/MM/yyyy', '/');
+                //fecha = functions.string_todatetime(fecha, 'dd/MM/yyyy', '/');
+                fecha = functions.string_todatetime(fecha, 'MM/dd/yyyy', '/');
             }
             if (celular_coordino == null) {
                 celular_coordino = '';
