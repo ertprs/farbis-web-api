@@ -105,7 +105,7 @@ module.exports = {
     registro_multiple : function(programaciones, 
                 callback) {
         var cnx = connection.get_connection();
-        //console.log(programaciones);
+        console.log(programaciones);
         let stmt = 'INSERT INTO  ope_programacion (IdProgramacion, IdEmpresa, Fecha, NroOrden, Cliente, GiroComercial, ';
         stmt += 'Direccion, Referencia, Telefonos, Logo, GeoLatitud, GeoLongitud, Servicio, AreaTrabajar, Coordino, CelularCoordino, ';
         stmt += 'SeCordino, TelefonoCelularSeCordino, Atendera, CelularAtendera, Personal, Producto, PersonalEncargado, ';
