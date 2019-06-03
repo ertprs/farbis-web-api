@@ -399,6 +399,7 @@ module.exports = {
             var id_usuario = programacion.id_usuario;
             //var observaciones = programacion.observaciones;
             //35
+            console.log('fecha-1: ' + fecha);
             if (fecha == '') {
                 fecha = null;
             }
@@ -408,7 +409,7 @@ module.exports = {
             if (celular_coordino == null) {
                 celular_coordino = '';
             }
-            
+            console.log('fecha-2: ' + fecha);
             arr_programaciones.push([
                 id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
                 telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, celular_coordino, secordino,
