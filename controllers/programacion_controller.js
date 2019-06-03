@@ -377,11 +377,11 @@ module.exports = {
             var servicio = programacion.servicio;
             var area_trabajar = programacion.area_trabajar;
             var coordino = programacion.coordino;
-            var celular_coordino = req.body.celular_coordino;
+            var celular_coordino = programacion.celular_coordino;
             var secordino = programacion.secordino;
             var celular_secordino = programacion.celular_secordino;
             var atendera = programacion.atendera;
-            var celular_atendera = req.body.celular_atendera;
+            var celular_atendera = programacion.celular_atendera;
             var personal = programacion.personal;
             var producto = programacion.producto;
             var personal_encargado = programacion.personal_encargado;
@@ -399,18 +399,17 @@ module.exports = {
             var id_usuario = programacion.id_usuario;
             //var observaciones = programacion.observaciones;
             //35
-            console.log('fecha-1: ' + fecha);
+            
             if (fecha == '') {
                 fecha = null;
             }
             else{
-                //fecha = functions.string_todatetime(fecha, 'dd/MM/yyyy', '/');
                 fecha = functions.string_todatetime(fecha, 'MM/dd/yyyy', '/');
             }
             if (celular_coordino == null) {
                 celular_coordino = '';
             }
-            console.log('fecha-2: ' + fecha);
+            
             arr_programaciones.push([
                 id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
                 telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, celular_coordino, secordino,
