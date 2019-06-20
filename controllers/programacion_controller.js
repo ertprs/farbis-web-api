@@ -465,17 +465,14 @@ module.exports = {
                     }
                 });
 
-                arr_result.forEach(function(result, indexA) {
-                    data.forEach(function(prog, indexB) {
+                arr_result.forEach(function(result, index) {
+                    data.forEach(function(prog, index) {
                         if (result.id_programacion == prog.id_programacion) {
                             result.mensaje = "No se registro, ya existe.";
-                            //arr_result[indexA].mensaje = "No se registro, ya existe.";
                         }
                     });
                 });
-                console.log(arr_result);
-                //console.log(arr_programaciones_final);
-                //console.log(arr_fichas);
+
                 if (arr_programaciones_final.length > 0) {
                     programacion_model.registro_multiple(arr_programaciones_final, function(msg, data, id){
                         console.log('registro_multiple: ' + msg);
@@ -493,7 +490,7 @@ module.exports = {
                             var response = {
                                 'ws_code' : '0',
                                 'mensaje' : msg,
-                                'programaciones' : []
+                                'programaciones' : arr_result
                             };
                         
                             res.json(response);
@@ -503,7 +500,7 @@ module.exports = {
                     var response = {
                         'ws_code' : '0',
                         'mensaje' : 'No hay programaciones nuevas.',
-                        'programaciones' : []
+                        'programaciones' : arr_result
                     };
                 
                     res.json(response);
@@ -512,7 +509,7 @@ module.exports = {
                 var response = {
                     'ws_code' : '0',
                     'mensaje' : 'No hay programaciones nuevas.',
-                    'programaciones' : []
+                    'programaciones' : arr_result
                 };
             
                 res.json(response);
