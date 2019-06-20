@@ -423,8 +423,10 @@ module.exports = {
                 id_programacion, 
             ]);
             arr_result.push([
-                "id_programacion" = id_programacion, 
-                "mensaje" = "OK"
+                {
+                    "id_programacion" : id_programacion, 
+                    "mensaje" : "OK"
+                }
             ]);
 
             str_ids += "'" + id_programacion + "',";
