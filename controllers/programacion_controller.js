@@ -456,8 +456,8 @@ module.exports = {
                         ]);
                     }
                 });
-                //console.log(arr_programaciones_final.length);
-                //console.log(arr_fichas.length);
+                console.log(arr_programaciones_final);
+                console.log(arr_fichas);
                 if (arr_programaciones_final.length > 0) {
                     programacion_model.registro_multiple(arr_programaciones_final, function(msg, data, id){
                         console.log('registro_multiple: ' + msg);
