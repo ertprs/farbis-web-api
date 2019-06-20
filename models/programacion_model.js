@@ -144,7 +144,8 @@ module.exports = {
         var cnx = connection.get_connection();
 
         let stmt = 'SELECT idprogramacion as id_programacion FROM ope_programacion where idprogramacion in  ' + ids + ';';
-        //console.log(stmt);
+        console.log('model: valida_multiple');
+        console.log(stmt);
 
         cnx.query(stmt, [  ], function(err, rows, fields)
         {
@@ -157,7 +158,10 @@ module.exports = {
             }else{
                 //msg = functions.get_output(rows, '@output');
                 //id = functions.get_output(rows, '@id');
-                //console.log(rows);
+                
+                console.log(err);
+                console.log(rows);
+                console.log(fields);
                 data = functions.get_datarow(rows);
                 //data = functions.get_datatable(rows);
                 if (data == null) {

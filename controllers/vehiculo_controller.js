@@ -19,10 +19,11 @@ module.exports = {
         var modelo = req.body.modelo;
         var color = req.body.color;
         var placa = req.body.placa;
+        var anio = req.body.anio;
         var fecha_inicio = req.body.fecha_inicio;
         var usuario_registro = req.body.usuario_registro;
 
-        vehiculo_model.registro(id_vehiculo, tipo, marca, modelo, color, placa, 
+        vehiculo_model.registro(id_vehiculo, tipo, marca, modelo, color, placa, anio, 
                                 fecha_inicio, usuario_registro, function(msg, data){
 
             var response = {
@@ -44,10 +45,11 @@ module.exports = {
         var modelo = req.body.modelo;
         var color = req.body.color;
         var placa = req.body.placa;
+        var anio = req.body.anio;
         var fecha_inicio = req.body.fecha_inicio;
         var usuario_registro = req.body.usuario_registro;
 
-        vehiculo_model.actualiza(id_vehiculo, tipo, marca, modelo, color, placa, 
+        vehiculo_model.actualiza(id_vehiculo, tipo, marca, modelo, color, placa, anio, 
                                 fecha_inicio, usuario_registro, function(msg, data){
 
             var response = {
