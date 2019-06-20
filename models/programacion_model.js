@@ -167,7 +167,7 @@ module.exports = {
                 if (data == null) {
                     data = [];
                 }
-                //console.log(data);
+                console.log(data);
                 msg = 'OK';
                 id = '';
             }
