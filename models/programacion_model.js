@@ -159,11 +159,16 @@ module.exports = {
                 //msg = functions.get_output(rows, '@output');
                 //id = functions.get_output(rows, '@id');
                 
-                console.log(err);
+                //console.log(err);
                 console.log(rows);
-                console.log(fields);
-                //data = functions.get_datarow(rows);
-                data = functions.get_datatable(rows);
+                //console.log(fields);
+                var data1 = rows[0];
+                var data2 = rows[0][0];
+                console.log(data1);
+                console.log(data2);
+                console.log('end test');
+                data = functions.get_datarow(rows);
+                
                 if (data == null) {
                     data = [];
                 }
