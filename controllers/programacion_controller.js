@@ -465,10 +465,11 @@ module.exports = {
                     }
                 });
 
-                arr_result.forEach(function(result, index) {
-                    data.forEach(function(prog, index) {
+                arr_result.forEach(function(result, indexA) {
+                    data.forEach(function(prog, indexB) {
                         if (result.id_programacion == prog.id_programacion) {
                             result.mensaje = "No se registro, ya existe.";
+                            arr_result[indexA].mensaje = "No se registro, ya existe.";
                         }
                     });
                 });
