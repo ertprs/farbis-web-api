@@ -162,8 +162,8 @@ module.exports = {
                 console.log(err);
                 console.log(rows);
                 console.log(fields);
-                data = functions.get_datarow(rows);
-                //data = functions.get_datatable(rows);
+                //data = functions.get_datarow(rows);
+                data = functions.get_datatable(rows);
                 if (data == null) {
                     data = [];
                 }
