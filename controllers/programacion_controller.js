@@ -359,7 +359,8 @@ module.exports = {
         var arr_programaciones = [];
         var arr_ids = [];
         var str_ids = "(";
-        
+        var arr_result = [];
+
         programaciones.forEach(function(programacion, index) {
             //console.log(programacion.id_programacion);
             var id_programacion = programacion.id_programacion;
@@ -421,6 +422,11 @@ module.exports = {
             arr_ids.push([
                 id_programacion, 
             ]);
+            arr_result.push([
+                "id_programacion" = id_programacion, 
+                "mensaje" = "OK"
+            ]);
+
             str_ids += "'" + id_programacion + "',";
         });
 
@@ -456,8 +462,17 @@ module.exports = {
                         ]);
                     }
                 });
-                console.log(arr_programaciones_final);
-                console.log(arr_fichas);
+
+                arr_result.forEach(function(result, index) {
+                    data.forEach(function(prog, index) {
+                        if (result.id_programacion == prog.id_programacion) {
+                            result.mensaje = "No se registro, ya existe.";
+                        }
+                    });
+                });
+                console.log(arr_result);
+                //console.log(arr_programaciones_final);
+                //console.log(arr_fichas);
                 if (arr_programaciones_final.length > 0) {
                     programacion_model.registro_multiple(arr_programaciones_final, function(msg, data, id){
                         console.log('registro_multiple: ' + msg);
@@ -466,7 +481,7 @@ module.exports = {
                                 var response = {
                                     'ws_code' : '0',
                                     'mensaje' : msg,
-                                    'programaciones' : []
+                                    'programaciones' : arr_result
                                 };
                             
                                 res.json(response);
