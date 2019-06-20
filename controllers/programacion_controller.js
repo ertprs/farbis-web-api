@@ -469,7 +469,7 @@ module.exports = {
                     data.forEach(function(prog, indexB) {
                         if (result.id_programacion == prog.id_programacion) {
                             result.mensaje = "No se registro, ya existe.";
-                            arr_result[indexA].mensaje = "No se registro, ya existe.";
+                            //arr_result[indexA].mensaje = "No se registro, ya existe.";
                         }
                     });
                 });
