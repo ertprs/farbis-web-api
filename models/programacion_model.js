@@ -144,8 +144,8 @@ module.exports = {
         var cnx = connection.get_connection();
 
         let stmt = 'SELECT idprogramacion as id_programacion FROM ope_programacion where idprogramacion in  ' + ids + ';';
-        console.log('model: valida_multiple');
-        console.log(stmt);
+        //console.log('model: valida_multiple');
+        //console.log(stmt);
 
         cnx.query(stmt, [  ], function(err, rows, fields)
         {
