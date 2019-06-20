@@ -167,7 +167,8 @@ module.exports = {
                 console.log(data1);
                 console.log(data2);
                 console.log('end test');
-                data = functions.get_datarow(rows);
+                //data = functions.get_datarow(rows);
+                data = rows;
                 
                 if (data == null) {
                     data = [];
