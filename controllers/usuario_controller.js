@@ -84,7 +84,7 @@ module.exports = {
 
         var usuario = req.body.usuario;
         var contrasenia = req.body.contrasenia;
-        var tipo = 'O';
+        var tipo = '1';
 
         usuario_model.valida(usuario, tipo, function(msg, data){
 
@@ -132,7 +132,7 @@ module.exports = {
 
         var usuario = req.body.usuario;
         var contrasenia = req.body.contrasenia;
-        var tipo = 'P';
+        var tipo = '4';
 
         usuario_model.valida(usuario, tipo, function(msg, data){
 

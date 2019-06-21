@@ -93,10 +93,14 @@ router.post(sub_path + 'rws_vehiculo_observacion_actualiza', controllers.vehicul
 router.post(sub_path + 'rws_vehiculo_observacion_elimina', controllers.vehiculo_observacion_controller.post_elimina);
 
 // Servidor Web - App Web
-router.post(sub_path + 'rws_programador_valida', controllers.usuario_controller.post_validar_programador);
 router.post(sub_path + 'rws_programacion_lista_por_operario_fecha', controllers.programacion_controller.post_lista_por_operario_fecha);
 router.post(sub_path + 'rws_usuario_lista_por_tipo', controllers.usuario_controller.post_lista_por_tipo);
 router.post(sub_path + 'rws_ficha_lista_por_programacion_completa', controllers.ficha_controller.post_lista_por_programacion_completa);
+
+
+// Servidor Web - App Programador
+router.post(sub_path + 'rws_programador_valida', controllers.usuario_controller.post_validar_programador);
+
 
 var fs = require('fs');
 var path = require('path');
