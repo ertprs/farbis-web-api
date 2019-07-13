@@ -80,7 +80,7 @@ module.exports = {
 
     post_validar_operario : function(req, res, next)
     {
-        functions.print_console('rest method: post_validar_operario');
+        functions.print_console('rest method usuario: post_validar_operario');
 
         var usuario = req.body.usuario;
         var contrasenia = req.body.contrasenia;
@@ -110,7 +110,7 @@ module.exports = {
 
     post_actualiza_token : function(req, res, next)
     {
-        functions.print_console('rest method: post_actualiza_token');
+        functions.print_console('rest method usuario: post_actualiza_token');
 
         var id_usuario = req.body.id_usuario;
         var token = req.body.token;
@@ -128,7 +128,7 @@ module.exports = {
 
     post_validar_programador : function(req, res, next)
     {
-        functions.print_console('rest method: post_validar_programador');
+        functions.print_console('rest method usuario: post_validar_programador');
 
         var usuario = req.body.usuario;
         var contrasenia = req.body.contrasenia;
@@ -158,11 +158,27 @@ module.exports = {
 
     post_lista_por_tipo : function(req, res, next)
     {
-        functions.print_console('rest method programacion: post_lista_por_tipo');
+        functions.print_console('rest method usuario: post_lista_por_tipo');
 
         var tipo = req.body.tipo;
 
         usuario_model.lista_por_tipo(tipo, function(msg, data){
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : msg, 
+                'usuarios' : data
+            };
+
+            res.json(response);
+        });
+    },
+
+    post_lista : function(req, res, next)
+    {
+        functions.print_console('rest method usuario: post_lista');
+
+        usuario_model.lista(function(msg, data){
 
             var response = {
                 'ws_code' : '0',
