@@ -101,6 +101,9 @@ router.post(sub_path + 'rws_ficha_lista_por_programacion_completa', controllers.
 // Servidor Web - App Programador
 router.post(sub_path + 'rws_programador_valida', controllers.usuario_controller.post_validar_programador);
 router.post(sub_path + 'rws_usuario_lista', controllers.usuario_controller.post_lista);
+router.post(sub_path + 'rws_programacion_actualiza_operarios', controllers.programacion_controller.post_actualiza_operarios);
+router.post(sub_path + 'rws_programacion_actualiza_encargados', controllers.programacion_controller.post_actualiza_encargados);
+router.post(sub_path + 'rws_programacion_actualiza_supervisores', controllers.programacion_controller.post_actualiza_supervisores);
 
 var fs = require('fs');
 var path = require('path');

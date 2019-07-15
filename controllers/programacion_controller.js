@@ -784,6 +784,168 @@ module.exports = {
         });
     },
 
+    post_actualiza_operarios : function(req, res, next)
+    {
+        functions.print_console('rest method programacion: post_actualiza_operarios');
+
+        var id_programacion = req.body.id_programacion;
+        var id_operarios = req.body.id_operarios;
+        var origen = req.body.origen;
+
+        programacion_model.actualiza_operarios(id_programacion, id_operarios, function(msg, data){
+
+            if (origen == 'SEG') {
+
+                usuario_model.obtiene_por_id(id_operarios, function(msg, data){
+
+                    var token = '';
+                    
+                    if (data != null) {
+                        token = data['token'];
+
+                        functions.send_push_notification(token, 'Cambio de Operario', 'Tienes un nuevo servicio asignado.', function(msg) {
+                            var response = {
+                                'ws_code' : '0',
+                                'mensaje' : 'OK',
+                                'token' : token,
+                                'push' : msg
+                            };
+
+                            res.json(response);
+                        });   
+                    } else {
+                        var response = {
+                            'ws_code' : '0',
+                            'mensaje' : 'OK',
+                            'token' : '',
+                            'push' : null
+                        };
+
+                        res.json(response);
+                    }
+                });
+
+            } else {
+                var response = {
+                    'ws_code' : '0',
+                    'mensaje' : msg,
+                    'token' : '',
+                    'push' : null
+                };
+
+                res.json(response);
+            }
+        });
+    },
+
+    post_actualiza_encargados : function(req, res, next)
+    {
+        functions.print_console('rest method programacion: post_actualiza_encargados');
+
+        var id_programacion = req.body.id_programacion;
+        var id_encargados = req.body.id_encargados;
+        var origen = req.body.origen;
+
+        programacion_model.actualiza_encargados(id_programacion, id_encargados, function(msg, data){
+
+            if (origen == 'SEG') {
+
+                usuario_model.obtiene_por_id(id_encargados, function(msg, data){
+
+                    var token = '';
+                    
+                    if (data != null) {
+                        token = data['token'];
+
+                        functions.send_push_notification(token, 'Cambio de Encargado', 'Tienes un nuevo servicio asignado.', function(msg) {
+                            var response = {
+                                'ws_code' : '0',
+                                'mensaje' : 'OK',
+                                'token' : token,
+                                'push' : msg
+                            };
+
+                            res.json(response);
+                        });   
+                    } else {
+                        var response = {
+                            'ws_code' : '0',
+                            'mensaje' : 'OK',
+                            'token' : '',
+                            'push' : null
+                        };
+
+                        res.json(response);
+                    }
+                });
+
+            } else {
+                var response = {
+                    'ws_code' : '0',
+                    'mensaje' : msg,
+                    'token' : '',
+                    'push' : null
+                };
+
+                res.json(response);
+            }
+        });
+    },
+
+    post_actualiza_supervisores : function(req, res, next)
+    {
+        functions.print_console('rest method programacion: post_actualiza_supervisores');
+
+        var id_programacion = req.body.id_programacion;
+        var id_supervisores = req.body.id_supervisores;
+        var origen = req.body.origen;
+
+        programacion_model.actualiza_supervisores(id_programacion, id_supervisores, function(msg, data){
+
+            if (origen == 'SEG') {
+
+                usuario_model.obtiene_por_id(id_supervisores, function(msg, data){
+
+                    var token = '';
+                    
+                    if (data != null) {
+                        token = data['token'];
+
+                        functions.send_push_notification(token, 'Cambio de Supervisores', 'Tienes un nuevo servicio asignado.', function(msg) {
+                            var response = {
+                                'ws_code' : '0',
+                                'mensaje' : 'OK',
+                                'token' : token,
+                                'push' : msg
+                            };
+
+                            res.json(response);
+                        });   
+                    } else {
+                        var response = {
+                            'ws_code' : '0',
+                            'mensaje' : 'OK',
+                            'token' : '',
+                            'push' : null
+                        };
+
+                        res.json(response);
+                    }
+                });
+
+            } else {
+                var response = {
+                    'ws_code' : '0',
+                    'mensaje' : msg,
+                    'token' : '',
+                    'push' : null
+                };
+
+                res.json(response);
+            }
+        });
+    },
+
     /**
      * WEB
      */
