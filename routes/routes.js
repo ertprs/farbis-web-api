@@ -104,6 +104,7 @@ router.post(sub_path + 'rws_usuario_lista', controllers.usuario_controller.post_
 router.post(sub_path + 'rws_programacion_actualiza_operarios', controllers.programacion_controller.post_actualiza_operarios);
 router.post(sub_path + 'rws_programacion_actualiza_encargados', controllers.programacion_controller.post_actualiza_encargados);
 router.post(sub_path + 'rws_programacion_actualiza_supervisores', controllers.programacion_controller.post_actualiza_supervisores);
+router.post(sub_path + 'rws_programacion_lista_por_fecha', controllers.programacion_controller.post_lista_por_fecha);
 
 var fs = require('fs');
 var path = require('path');

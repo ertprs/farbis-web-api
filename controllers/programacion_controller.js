@@ -946,6 +946,79 @@ module.exports = {
         });
     },
 
+    post_lista_por_fecha : function(req, res, next)
+    {
+        functions.print_console('rest method programacion: post_lista_por_fecha');
+
+        var fecha = req.body.fecha;
+
+        programacion_model.lista_por_fecha(fecha, function(msg, data_programacion){
+            if (data_programacion.length > 0) {
+                data_programacion.forEach(function(programacion, index_programacion) {
+                    var personal = programacion.personal;
+                    var personal_ids_arr = personal.split("-");
+                    var personal_arr = [];
+                    
+                    if (personal_ids_arr.length > 0) {
+                        var str_ids = "(";
+                        personal_ids_arr.forEach(function(id_usuario, index_personal) {
+                            str_ids += "'" + id_usuario + "',";
+                        });
+
+                        str_ids += "'')";
+
+                        usuario_model.obtiene_por_id_multiple(str_ids, function(msg, data_usuario){
+                            
+                            if (data_usuario) {
+                                data_usuario.forEach(function(usuario, index_usuario) {
+                                    personal_arr.push(usuario.nombres + " " + usuario.apellidos);
+                                });                                
+                            }
+                            
+                            programacion.personal_format = personal_arr;
+
+                            if (data_programacion.length == index_programacion + 1) {
+                                var response = {
+                                    'ws_code' : '0',
+                                    'mensaje' : msg,
+                                    'mensaje2' : "aqui",
+                                    'programaciones' : data_programacion
+                                };
+                    
+                                res.json(response);
+                            }
+                            
+                        });
+
+                    } else {
+                        programacion.personal_format = personal_arr;
+    
+                        if (data_programacion.length == index_programacion + 1) {
+                            var response = {
+                                'ws_code' : '0',
+                                'mensaje' : msg,
+                                'mensaje2' : "aqui111",
+                                'programaciones' : data_programacion
+                            };
+                
+                            res.json(response);
+                        }
+                    }
+                    
+                });
+            } else {
+                var response = {
+                    'ws_code' : '0',
+                    'mensaje' : msg,
+                    'programaciones' : data_programacion
+                };
+    
+                res.json(response);
+            }
+            
+        });
+    },
+
     /**
      * WEB
      */

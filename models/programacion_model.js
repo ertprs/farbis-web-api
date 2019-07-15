@@ -440,4 +440,27 @@ module.exports = {
 
         cnx.end(function () {});
     },
+
+    lista_por_fecha : function(fecha, callback) {
+
+        var cnx = connection.get_connection();
+
+        cnx.query('CALL ssp_ope_programacion_lista_por_fecha(?)', [ fecha ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                data = functions.get_datatable(rows);
+                msg = functions.get_msg(rows);
+            }
+
+            callback(msg, data);
+        });
+
+        cnx.end(function () {});
+    },
+
 };
