@@ -70,18 +70,18 @@ module.exports = {
 
     registro : function(id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
                 telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, celular_coordino, secordino,
-                celular_secordino, atendera, celular_atendera, personal, producto, personal_encargado, correo, nombre_vendedor,
-                celular_vendedor, nombre_programadora1, celular_programadora1, nombre_programadora2, 
+                celular_secordino, atendera, celular_atendera, personal, producto, personal_encargado, personal_supervisor, 
+                correo, nombre_vendedor, celular_vendedor, nombre_programadora1, celular_programadora1, nombre_programadora2, 
                 celular_programadora2, nombre_programadora3, celular_programadora3, servicio_emergencia, id_usuario, 
                 callback) {
 
         var cnx = connection.get_connection();
 
-        cnx.query('CALL ssp_ope_programacion_registro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,@output,@id);select @output,@id', 
+        cnx.query('CALL ssp_ope_programacion_registro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,@output,@id);select @output,@id', 
                 [ id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
                 telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, celular_coordino, secordino, 
-                celular_secordino, atendera, celular_atendera, personal, producto, personal_encargado, correo, nombre_vendedor,
-                celular_vendedor, nombre_programadora1, celular_programadora1, nombre_programadora2, 
+                celular_secordino, atendera, celular_atendera, personal, producto, personal_encargado, personal_supervisor,
+                correo, nombre_vendedor, celular_vendedor, nombre_programadora1, celular_programadora1, nombre_programadora2, 
                 celular_programadora2, nombre_programadora3, celular_programadora3, servicio_emergencia, id_usuario ], 
                 function(err, rows, fields)
         {
@@ -113,7 +113,7 @@ module.exports = {
         stmt += 'CambioDeProgramacion, Correo, NombreVendedor, TelefonoCelularVendedor, NombreProgramadora1,';
         stmt += 'TelefonoCelularProgramadora1, NombreProgramadora2, TelefonoCelularProgramadora2,';
         stmt += 'NombreProgramadora3, TelefonoCelularProgramadora3, ServicioCancelado, ServicioEmergencia, ';
-        stmt += 'IdUsuario, FechaRegistro, Descargado) ';
+        stmt += 'IdUsuario, FechaRegistro, Descargado, PersonalSupervisor) ';
         stmt += 'VALUES   ?  ';
 
         cnx.query(stmt, [ programaciones ], function(err, rows, fields)

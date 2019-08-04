@@ -257,6 +257,7 @@ module.exports = {
         var personal = req.body.personal;
         var producto = req.body.producto;
         var personal_encargado = req.body.personal_encargado;
+        var personal_supervisor = req.body.personal_supervisor;
         var correo = req.body.correo;
         var nombre_vendedor = req.body.nombre_vendedor;
         var celular_vendedor = req.body.celular_vendedor;
@@ -291,8 +292,8 @@ module.exports = {
         */
         programacion_model.registro(id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
                 telefonos, logo, geolatitud, geolongitud, servicio, area_trabajar, coordino, celular_coordino, secordino, 
-                celular_secordino, atendera, celular_atendera, personal, producto, personal_encargado, correo, nombre_vendedor,
-                celular_vendedor, nombre_programadora1, celular_programadora1, nombre_programadora2, 
+                celular_secordino, atendera, celular_atendera, personal, producto, personal_encargado, personal_supervisor, correo, 
+                nombre_vendedor, celular_vendedor, nombre_programadora1, celular_programadora1, nombre_programadora2, 
                 celular_programadora2, nombre_programadora3, celular_programadora3, servicio_emergencia, id_usuario, 
                 function(msg, data, id){
 
@@ -386,6 +387,7 @@ module.exports = {
             var personal = programacion.personal;
             var producto = programacion.producto;
             var personal_encargado = programacion.personal_encargado;
+            var personal_supervisor = programacion.personal_supervisor;
             var correo = programacion.correo;
             var nombre_vendedor = programacion.nombre_vendedor;
             var celular_vendedor = programacion.celular_vendedor;
@@ -417,7 +419,7 @@ module.exports = {
                 celular_secordino, atendera, celular_atendera, personal, producto, personal_encargado, 'PEN', 
                 'N', 'N', 'N', ' ', 'T', correo, nombre_vendedor, celular_vendedor, nombre_programadora1, 
                 celular_programadora1, nombre_programadora2, celular_programadora2, nombre_programadora3, 
-                celular_programadora3, 'N', servicio_emergencia, id_usuario, new Date(), ' '
+                celular_programadora3, 'N', servicio_emergencia, id_usuario, new Date(), ' ', personal_supervisor
             ]);
             arr_ids.push([
                 id_programacion, 
