@@ -98,13 +98,11 @@ module.exports = {
             });
             */
 
-            arr_result.push(
-                {
-                    "mensaje" : "OK",
-                    "item" : item,
-                    "fecha_hora" : fecha
-                }
-            );
+            arr_result.push({
+                "mensaje" : "OK",
+                "item" : item,
+                "fecha_hora" : fecha
+            });
         });
 
         observacion_model.registro_multiple(arr_observaciones, function(msg, data, item, fecha){
