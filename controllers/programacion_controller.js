@@ -968,7 +968,6 @@ module.exports = {
                         }
                     });
 
-                    console.log(personal_arr);
                     /*
                     personal_ids_arr.push(personal_ids);
                     personal_ids_arr.push(personal_encargado_ids);
@@ -1023,7 +1022,7 @@ module.exports = {
                                     //personal_arr.push(usuario.nombres + " " + usuario.apellidos);
                                     personal_arr.forEach(function(usuario, idx) {
                                         if (usuario.id_usuario == usu.id_usuario) {
-                                            usuario.nombres = usu.nombres;
+                                            personal_arr[idx].nombres = usu.nombres + " " + usu.apellidos
                                         } 
                                     });
                                 });                                
