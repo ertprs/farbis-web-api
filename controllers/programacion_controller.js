@@ -1014,7 +1014,7 @@ module.exports = {
                         });
 
                         str_ids += "'')";
-
+                        console.log(str_ids);
                         usuario_model.obtiene_por_id_multiple(str_ids, function(msg, data_usuario){
                             
                             if (data_usuario) {
