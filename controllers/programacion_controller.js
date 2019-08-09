@@ -933,35 +933,39 @@ module.exports = {
         programacion_model.lista_por_fecha(fecha, function(msg, data_programacion){
             if (data_programacion.length > 0) {
                 data_programacion.forEach(function(programacion, index_programacion) {
-                    console.log(programacion);
                     var personal_ids = programacion.personal.split("-");
                     var personal_encargado_ids = programacion.personal_encargado.split("-");
                     var personal_supervisor_ids = programacion.personal_supervisor.split("-");
-                    //var personal_ids_arr = [];
                     var personal_arr = [];
 
                     personal_ids.forEach(function(id_usuario, idx) {
-                        personal_arr.push({
-                            'id_usuario' : id_usuario,
-                            'tipo' : '1',
-                            'nombres' : ''
-                        });
+                        if (id_usuario != '') {
+                            personal_arr.push({
+                                'id_usuario' : id_usuario,
+                                'tipo' : '1',
+                                'nombres' : ''
+                            });
+                        }
                     });
 
                     personal_encargado_ids.forEach(function(id_usuario, idx) {
-                        personal_arr.push({
-                            'id_usuario' : id_usuario,
-                            'tipo' : '5',
-                            'nombres' : ''
-                        });
+                        if (id_usuario != '') {
+                            personal_arr.push({
+                                'id_usuario' : id_usuario,
+                                'tipo' : '5',
+                                'nombres' : ''
+                            });
+                        }
                     });
                     
                     personal_supervisor_ids.forEach(function(id_usuario, idx) {
-                        personal_arr.push({
-                            'id_usuario' : id_usuario,
-                            'tipo' : '2',
-                            'nombres' : ''
-                        });
+                        if (id_usuario != '') {
+                            personal_arr.push({
+                                'id_usuario' : id_usuario,
+                                'tipo' : '2',
+                                'nombres' : ''
+                            });
+                        }
                     });
 
                     console.log(personal_arr);
