@@ -1016,13 +1016,13 @@ module.exports = {
                         str_ids += "'')";
                         console.log(str_ids);
                         usuario_model.obtiene_por_id_multiple(str_ids, function(msg, data_usuario){
-                            
+                            console.log(data_usuario);
                             if (data_usuario) {
                                 data_usuario.forEach(function(usu, index_usuario) {
-                                    //personal_arr.push(usuario.nombres + " " + usuario.apellidos);
                                     personal_arr.forEach(function(usuario, idx) {
                                         if (usuario.id_usuario == usu.id_usuario) {
-                                            personal_arr[idx].nombres = usu.nombres + " " + usu.apellidos
+                                            //personal_arr[idx].nombres = usu.nombres + " " + usu.apellidos;
+                                            usuario.nombres = usu.nombres + " " + usu.apellidos;
                                         } 
                                     });
                                 });                                

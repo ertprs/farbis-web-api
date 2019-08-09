@@ -150,7 +150,7 @@ module.exports = {
 
         var cnx = connection.get_connection();
 
-        let stmt = 'SELECT Nombres as nombres, Apellidos as apellidos FROM adm_usuario WHERE IdUsuario in  ' + ids + ';';
+        let stmt = 'SELECT IdUsuario as id_usuario, Nombres as nombres, Apellidos as apellidos FROM adm_usuario WHERE IdUsuario in  ' + ids + ';';
 
         cnx.query(stmt, [  ], function(err, rows, fields)
         {
