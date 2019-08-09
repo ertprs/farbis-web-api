@@ -941,10 +941,8 @@ module.exports = {
                     personal_ids.forEach(function(id_usuario, idx) {
                         if (id_usuario != '') {
                             personal_arr.push({
-                                'id_usuario' : id_usuario,
-                                'tipo' : '1',
-                                'nombres' : '',
-                                'apellidos' : ''
+                                'id_usuario' : id_usuario, 'tipo' : '1',
+                                'nombres' : '', 'apellidos' : '', 'telefono' : ''
                             });
                         }
                     });
@@ -952,10 +950,8 @@ module.exports = {
                     personal_encargado_ids.forEach(function(id_usuario, idx) {
                         if (id_usuario != '') {
                             personal_arr.push({
-                                'id_usuario' : id_usuario,
-                                'tipo' : '5',
-                                'nombres' : '',
-                                'apellidos' : ''
+                                'id_usuario' : id_usuario, 'tipo' : '5',
+                                'nombres' : '', 'apellidos' : '', 'telefono' : ''
                             });
                         }
                     });
@@ -963,10 +959,8 @@ module.exports = {
                     personal_supervisor_ids.forEach(function(id_usuario, idx) {
                         if (id_usuario != '') {
                             personal_arr.push({
-                                'id_usuario' : id_usuario,
-                                'tipo' : '2',
-                                'nombres' : '',
-                                'apellidos' : ''
+                                'id_usuario' : id_usuario, 'tipo' : '2',
+                                'nombres' : '', 'apellidos' : '', 'telefono' : ''
                             });
                         }
                     });
@@ -1025,6 +1019,7 @@ module.exports = {
                                         if (usuario.id_usuario == usu.id_usuario) {
                                             usuario.nombres = usu.nombres;
                                             usuario.apellidos = usu.apellidos;
+                                            usuario.telefono = usu.telefono;
                                         } 
                                     });
                                 });                                
@@ -1036,7 +1031,6 @@ module.exports = {
                                 var response = {
                                     'ws_code' : '0',
                                     'mensaje' : msg,
-                                    'mensaje2' : "aqui",
                                     'programaciones' : data_programacion
                                 };
                     
@@ -1052,7 +1046,6 @@ module.exports = {
                             var response = {
                                 'ws_code' : '0',
                                 'mensaje' : msg,
-                                'mensaje2' : "aqui111",
                                 'programaciones' : data_programacion
                             };
                 
