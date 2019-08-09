@@ -48,8 +48,14 @@ module.exports = {
             if (data_programacion.length > 0) {
                 data_programacion.forEach(function(programacion, index_programacion) {
                     var personal = programacion.personal;
+                    var personal_encargado = programacion.personal_encargado;
+                    var personal_supervisor = programacion.personal_supervisor;
                     var personal_ids_arr = personal.split("-");
+                    var personal_encargado_ids_arr = personal_encargado.split("-");
+                    var personal_supervisor_ids_arr = personal_supervisor.split("-");
                     var personal_arr = [];
+                    var personal_encargado_arr = [];
+                    var personal_supervisor_arr = [];
                     
                     if (personal_ids_arr.length > 0) {
                         var str_ids = "(";
@@ -59,49 +65,20 @@ module.exports = {
 
                         str_ids += "'')";
 
-                        /*
-                        personal_ids_arr.forEach(function(id, index_personal) {
-                            usuario_model.obtiene_por_id(id, function(msg, data_usuario){
-                                
-                                if (data_usuario) {
-                                    personal_arr.push(data_usuario.nombres + " " + data_usuario.apellidos);
-                                }
-                                
-                                if (personal_ids_arr.length == index_personal + 1) {
-                                    programacion.personal_format = personal_arr;
-                                }
-        
-                                if (data_programacion.length == index_programacion + 1) {
-                                    var response = {
-                                        'ws_code' : '0',
-                                        'mensaje' : msg,
-                                        'mensaje2' : "aqui",
-                                        'programaciones' : data_programacion
-                                    };
-                        
-                                    res.json(response);
-                                }
-                                
-                            });
-
-                        });
-                        */
-
                         usuario_model.obtiene_por_id_multiple(str_ids, function(msg, data_usuario){
                             
                             if (data_usuario) {
                                 data_usuario.forEach(function(usuario, index_usuario) {
                                     personal_arr.push(usuario.nombres + " " + usuario.apellidos);
-                                });                                
+                                });
                             }
                             
                             programacion.personal_format = personal_arr;
-
+                            
                             if (data_programacion.length == index_programacion + 1) {
                                 var response = {
                                     'ws_code' : '0',
                                     'mensaje' : msg,
-                                    'mensaje2' : "aqui",
                                     'programaciones' : data_programacion
                                 };
                     
@@ -117,7 +94,6 @@ module.exports = {
                             var response = {
                                 'ws_code' : '0',
                                 'mensaje' : msg,
-                                'mensaje2' : "aqui111",
                                 'programaciones' : data_programacion
                             };
                 
@@ -957,10 +933,43 @@ module.exports = {
         programacion_model.lista_por_fecha(fecha, function(msg, data_programacion){
             if (data_programacion.length > 0) {
                 data_programacion.forEach(function(programacion, index_programacion) {
-                    var personal = programacion.personal;
-                    var personal_ids_arr = personal.split("-");
+                    var personal_ids = programacion.personal.split("-");
+                    var personal_encargado_ids = programacion.personal_encargado.split("-");
+                    var personal_supervisor_ids = programacion.personal_supervisor.split("-");
+                    //var personal_ids_arr = [];
                     var personal_arr = [];
+
+                    personal_ids.forEach(function(id_usuario, idx) {
+                        personal_arr.push({
+                            'id_usuario' : id_usuario,
+                            'tipo' : '1',
+                            'nombres' : ''
+                        });
+                    });
+
+                    personal_encargado_ids.forEach(function(id_usuario, idx) {
+                        personal_arr.push({
+                            'id_usuario' : id_usuario,
+                            'tipo' : '5',
+                            'nombres' : ''
+                        });
+                    });
                     
+                    personal_supervisor_ids.forEach(function(id_usuario, idx) {
+                        personal_arr.push({
+                            'id_usuario' : id_usuario,
+                            'tipo' : '2',
+                            'nombres' : ''
+                        });
+                    });
+
+                    console.log(personal_arr);
+                    /*
+                    personal_ids_arr.push(personal_ids);
+                    personal_ids_arr.push(personal_encargado_ids);
+                    personal_ids_arr.push(personal_supervisor_ids);
+                    */
+                    /*
                     if (personal_ids_arr.length > 0) {
                         var str_ids = "(";
                         personal_ids_arr.forEach(function(id_usuario, index_personal) {
@@ -974,6 +983,44 @@ module.exports = {
                             if (data_usuario) {
                                 data_usuario.forEach(function(usuario, index_usuario) {
                                     personal_arr.push(usuario.nombres + " " + usuario.apellidos);
+                                });                                
+                            }
+                            
+                            programacion.personal_format = personal_arr;
+
+                            if (data_programacion.length == index_programacion + 1) {
+                                var response = {
+                                    'ws_code' : '0',
+                                    'mensaje' : msg,
+                                    'mensaje2' : "aqui",
+                                    'programaciones' : data_programacion
+                                };
+                    
+                                res.json(response);
+                            }
+                            
+                        });
+
+                    }
+                    */
+                    if (personal_arr.length > 0) {
+                        var str_ids = "(";
+                        personal_arr.forEach(function(usuario, index_personal) {
+                            str_ids += "'" + usuario.id_usuario + "',";
+                        });
+
+                        str_ids += "'')";
+
+                        usuario_model.obtiene_por_id_multiple(str_ids, function(msg, data_usuario){
+                            
+                            if (data_usuario) {
+                                data_usuario.forEach(function(usu, index_usuario) {
+                                    //personal_arr.push(usuario.nombres + " " + usuario.apellidos);
+                                    personal_arr.forEach(function(usuario, idx) {
+                                        if (usuario.id_usuario == usu.id_usuario) {
+                                            usuario.nombres = usu.nombres;
+                                        } 
+                                    });
                                 });                                
                             }
                             
