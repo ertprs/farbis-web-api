@@ -942,9 +942,9 @@ module.exports = {
                         if (id_usuario != '') {
                             personal_arr.push({
                                 'id_usuario' : id_usuario,
-                                'tipo_usuario' : '1',
-                                'nombre_usuario' : '',
-                                'apellidos_usuario' : ''
+                                'tipo' : '1',
+                                'nombres' : '',
+                                'apellidos' : ''
                             });
                         }
                     });
@@ -953,9 +953,9 @@ module.exports = {
                         if (id_usuario != '') {
                             personal_arr.push({
                                 'id_usuario' : id_usuario,
-                                'tipo_usuario' : '5',
-                                'nombre_usuario' : '',
-                                'apellidos_usuario' : ''
+                                'tipo' : '5',
+                                'nombres' : '',
+                                'apellidos' : ''
                             });
                         }
                     });
@@ -964,9 +964,9 @@ module.exports = {
                         if (id_usuario != '') {
                             personal_arr.push({
                                 'id_usuario' : id_usuario,
-                                'tipo_usuario' : '2',
-                                'nombre_usuario' : '',
-                                'apellidos_usuario' : ''
+                                'tipo' : '2',
+                                'nombres' : '',
+                                'apellidos' : ''
                             });
                         }
                     });
@@ -1017,14 +1017,14 @@ module.exports = {
                         });
 
                         str_ids += "'')";
-                        
+
                         usuario_model.obtiene_por_id_multiple(str_ids, function(msg, data_usuario){
                             if (data_usuario) {
                                 data_usuario.forEach(function(usu, index_usuario) {
                                     personal_arr.forEach(function(usuario, idx) {
                                         if (usuario.id_usuario == usu.id_usuario) {
-                                            usuario.nombre_usuario = usu.nombres;
-                                            usuario.apellidos_usuario = usu.apellidos;
+                                            usuario.nombres = usu.nombres;
+                                            usuario.apellidos = usu.apellidos;
                                         } 
                                     });
                                 });                                
