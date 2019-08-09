@@ -933,6 +933,7 @@ module.exports = {
         programacion_model.lista_por_fecha(fecha, function(msg, data_programacion){
             if (data_programacion.length > 0) {
                 data_programacion.forEach(function(programacion, index_programacion) {
+                    console.log(programacion);
                     var personal_ids = programacion.personal.split("-");
                     var personal_encargado_ids = programacion.personal_encargado.split("-");
                     var personal_supervisor_ids = programacion.personal_supervisor.split("-");
