@@ -964,8 +964,13 @@ module.exports = {
                             });
                         }
                     });
-                    console.log('personal_arr1:');
-                    console.log(personal_arr);
+
+                    if (personal_arr.length == 0) {
+                        personal_arr.push({
+                            'id_usuario' : '0000', 'tipo' : '0',
+                            'nombres' : '', 'apellidos' : '', 'telefono' : ''
+                        });
+                    }
                     if (personal_arr.length > 0) {
                         var str_ids = "(";
                         personal_arr.forEach(function(usuario, index_personal) {
