@@ -964,7 +964,7 @@ module.exports = {
                             });
                         }
                     });
-                    console.log('personal_arr:');
+                    console.log('personal_arr1:');
                     console.log(personal_arr);
                     if (personal_arr.length > 0) {
                         var str_ids = "(";
@@ -975,6 +975,8 @@ module.exports = {
                         str_ids += "'')";
 
                         usuario_model.obtiene_por_id_multiple(str_ids, function(msg, data_usuario){
+                            console.log('data_usuario:');
+                            console.log(data_usuario);
                             if (data_usuario) {
                                 data_usuario.forEach(function(usu, index_usuario) {
                                     personal_arr.forEach(function(usuario, idx) {
@@ -986,7 +988,8 @@ module.exports = {
                                     });
                                 });                                
                             }
-                            
+                            console.log('personal_arr2:');
+                            console.log(personal_arr);
                             programacion.personal_format = personal_arr;
 
                             if (data_programacion.length == index_programacion + 1) {
