@@ -983,15 +983,17 @@ module.exports = {
                             console.log('data_usuario:');
                             console.log(data_usuario);
                             if (data_usuario) {
-                                data_usuario.forEach(function(usu, index_usuario) {
-                                    personal_arr.forEach(function(usuario, idx) {
-                                        if (usuario.id_usuario == usu.id_usuario) {
-                                            usuario.nombres = usu.nombres;
-                                            usuario.apellidos = usu.apellidos;
-                                            usuario.telefono = usu.telefono;
-                                        } 
-                                    });
-                                });                                
+                                if (data_usuario.length > 0) {
+                                    data_usuario.forEach(function(usu, index_usuario) {
+                                        personal_arr.forEach(function(usuario, idx) {
+                                            if (usuario.id_usuario == usu.id_usuario) {
+                                                usuario.nombres = usu.nombres;
+                                                usuario.apellidos = usu.apellidos;
+                                                usuario.telefono = usu.telefono;
+                                            } 
+                                        });
+                                    });  
+                                }                             
                             }
                             
                             programacion.personal_format = personal_arr;
@@ -1006,7 +1008,6 @@ module.exports = {
                                 console.log('fin 1');
                                 res.json(response);
                             }
-                            
                         });
 
                     } else {
