@@ -1025,7 +1025,7 @@ module.exports = {
                     'mensaje' : msg,
                     'programaciones' : data_programacion
                 };
-    
+                console.log('fin 3');
                 res.json(response);
             }
             
