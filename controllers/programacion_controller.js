@@ -988,17 +988,17 @@ module.exports = {
                                     });
                                 });                                
                             }
-                            console.log('personal_arr2:');
-                            console.log(personal_arr);
+                            
                             programacion.personal_format = personal_arr;
-
+                            console.log('programacion.personal_format:');
+                            console.log(programacion.personal_format);
                             if (data_programacion.length == index_programacion + 1) {
                                 var response = {
                                     'ws_code' : '0',
                                     'mensaje' : msg,
                                     'programaciones' : data_programacion
                                 };
-                    
+                                console.log('fin 1');
                                 res.json(response);
                             }
                             
@@ -1013,7 +1013,7 @@ module.exports = {
                                 'mensaje' : msg,
                                 'programaciones' : data_programacion
                             };
-                
+                            console.log('fin 2');
                             res.json(response);
                         }
                     }
