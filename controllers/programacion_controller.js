@@ -964,46 +964,8 @@ module.exports = {
                             });
                         }
                     });
-
-                    /*
-                    personal_ids_arr.push(personal_ids);
-                    personal_ids_arr.push(personal_encargado_ids);
-                    personal_ids_arr.push(personal_supervisor_ids);
-                    */
-                    /*
-                    if (personal_ids_arr.length > 0) {
-                        var str_ids = "(";
-                        personal_ids_arr.forEach(function(id_usuario, index_personal) {
-                            str_ids += "'" + id_usuario + "',";
-                        });
-
-                        str_ids += "'')";
-
-                        usuario_model.obtiene_por_id_multiple(str_ids, function(msg, data_usuario){
-                            
-                            if (data_usuario) {
-                                data_usuario.forEach(function(usuario, index_usuario) {
-                                    personal_arr.push(usuario.nombres + " " + usuario.apellidos);
-                                });                                
-                            }
-                            
-                            programacion.personal_format = personal_arr;
-
-                            if (data_programacion.length == index_programacion + 1) {
-                                var response = {
-                                    'ws_code' : '0',
-                                    'mensaje' : msg,
-                                    'mensaje2' : "aqui",
-                                    'programaciones' : data_programacion
-                                };
-                    
-                                res.json(response);
-                            }
-                            
-                        });
-
-                    }
-                    */
+                    console.log('personal_arr:');
+                    console.log(personal_arr);
                     if (personal_arr.length > 0) {
                         var str_ids = "(";
                         personal_arr.forEach(function(usuario, index_personal) {
