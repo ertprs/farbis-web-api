@@ -640,9 +640,9 @@ module.exports = {
 
         programacion_model.obtiene_personal(id_programacion, function(msg, data){
 
-                    var personal_ids = programacion.personal.split("-");
-                    var personal_encargado_ids = programacion.personal_encargado.split("-");
-                    var personal_supervisor_ids = programacion.personal_supervisor.split("-");
+                    var personal_ids = data.personal.split("-");
+                    var personal_encargado_ids = data.personal_encargado.split("-");
+                    var personal_supervisor_ids = data.personal_supervisor.split("-");
                     var personal_arr = [];
 
                     personal_ids.forEach(function(id_usuario, idx) {
@@ -705,8 +705,6 @@ module.exports = {
                                 }
                             }
                             
-                            programacion.personal_format = personal_arr;
-
                             if (data_programacion.length == index_programacion + 1) {
                                 var response = {
                                     'ws_code' : '0',
@@ -720,7 +718,6 @@ module.exports = {
                         });
 
                     } else {
-                        programacion.personal_format = personal_arr;
     
                         if (data_programacion.length == index_programacion + 1) {
                             var response = {
