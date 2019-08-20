@@ -705,11 +705,12 @@ module.exports = {
                                 }
                             }
                             
+                            data.personal_format = personal_arr;
+
                             var response = {
                                 'ws_code' : '0',
                                 'mensaje' : msg,
-                                'programacion' : data,
-                                'personal_format' : personal_arr
+                                'programacion' : data
                             };
 
                             res.json(response);
@@ -717,11 +718,12 @@ module.exports = {
 
                     } else {
     
+                        data.personal_format = personal_arr;
+
                         var response = {
                             'ws_code' : '0',
                             'mensaje' : msg,
-                            'programacion' : data,
-                            'personal_format' : personal_arr
+                            'programacion' : data
                         };
                         
                         res.json(response);
