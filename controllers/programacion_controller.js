@@ -708,7 +708,7 @@ module.exports = {
                             var response = {
                                 'ws_code' : '0',
                                 'mensaje' : msg,
-                                'programaciones' : data,
+                                'programacion' : data,
                                 'personal_format' : personal_arr
                             };
 
@@ -720,7 +720,7 @@ module.exports = {
                         var response = {
                             'ws_code' : '0',
                             'mensaje' : msg,
-                            'programaciones' : data,
+                            'programacion' : data,
                             'personal_format' : personal_arr
                         };
                         
