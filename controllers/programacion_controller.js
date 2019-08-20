@@ -705,30 +705,26 @@ module.exports = {
                                 }
                             }
                             
-                            if (data_programacion.length == index_programacion + 1) {
-                                var response = {
-                                    'ws_code' : '0',
-                                    'mensaje' : msg,
-                                    'programaciones' : data,
-                                    'personal_format' : personal_arr
-                                };
-
-                                res.json(response);
-                            }
-                        });
-
-                    } else {
-    
-                        if (data_programacion.length == index_programacion + 1) {
                             var response = {
                                 'ws_code' : '0',
                                 'mensaje' : msg,
                                 'programaciones' : data,
                                 'personal_format' : personal_arr
                             };
-                            
+
                             res.json(response);
-                        }
+                        });
+
+                    } else {
+    
+                        var response = {
+                            'ws_code' : '0',
+                            'mensaje' : msg,
+                            'programaciones' : data,
+                            'personal_format' : personal_arr
+                        };
+                        
+                        res.json(response);
                     }
                     /*
             var response = {
