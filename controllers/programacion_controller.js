@@ -640,6 +640,100 @@ module.exports = {
 
         programacion_model.obtiene_personal(id_programacion, function(msg, data){
 
+                    var personal_ids = programacion.personal.split("-");
+                    var personal_encargado_ids = programacion.personal_encargado.split("-");
+                    var personal_supervisor_ids = programacion.personal_supervisor.split("-");
+                    var personal_arr = [];
+
+                    personal_ids.forEach(function(id_usuario, idx) {
+                        if (id_usuario != '') {
+                            personal_arr.push({
+                                'id_usuario' : id_usuario, 'tipo' : '1',
+                                'nombres' : '', 'apellidos' : '', 'telefono' : ''
+                            });
+                        }
+                    });
+
+                    personal_encargado_ids.forEach(function(id_usuario, idx) {
+                        if (id_usuario != '') {
+                            personal_arr.push({
+                                'id_usuario' : id_usuario, 'tipo' : '5',
+                                'nombres' : '', 'apellidos' : '', 'telefono' : ''
+                            });
+                        }
+                    });
+                    
+                    personal_supervisor_ids.forEach(function(id_usuario, idx) {
+                        if (id_usuario != '') {
+                            personal_arr.push({
+                                'id_usuario' : id_usuario, 'tipo' : '2',
+                                'nombres' : '', 'apellidos' : '', 'telefono' : ''
+                            });
+                        }
+                    });
+
+                    if (personal_arr.length == 0) {
+                        personal_arr.push({
+                            'id_usuario' : '0000', 'tipo' : '0',
+                            'nombres' : '', 'apellidos' : '', 'telefono' : ''
+                        });
+                    }
+                    if (personal_arr.length > 0) {
+                        var str_ids = "(";
+                        personal_arr.forEach(function(usuario, index_personal) {
+                            str_ids += "'" + usuario.id_usuario + "',";
+                        });
+
+                        str_ids += "'')";
+
+                        usuario_model.obtiene_por_id_multiple(str_ids, function(msg, data_usuario){
+                            console.log('data_usuario:');
+                            console.log(data_usuario);
+                            if (data_usuario) {
+                                if (data_usuario.length > 0) {
+                                    data_usuario.forEach(function(usu, index_usuario) {
+                                        personal_arr.forEach(function(usuario, idx) {
+                                            if (usuario.id_usuario == usu.id_usuario) {
+                                                usuario.nombres = usu.nombres;
+                                                usuario.apellidos = usu.apellidos;
+                                                usuario.telefono = usu.telefono;
+                                            } 
+                                        });
+                                    });  
+                                } else {
+                                    personal_arr = [];
+                                }
+                            }
+                            
+                            programacion.personal_format = personal_arr;
+
+                            if (data_programacion.length == index_programacion + 1) {
+                                var response = {
+                                    'ws_code' : '0',
+                                    'mensaje' : msg,
+                                    'programaciones' : data,
+                                    'personal_format' : personal_arr
+                                };
+
+                                res.json(response);
+                            }
+                        });
+
+                    } else {
+                        programacion.personal_format = personal_arr;
+    
+                        if (data_programacion.length == index_programacion + 1) {
+                            var response = {
+                                'ws_code' : '0',
+                                'mensaje' : msg,
+                                'programaciones' : data,
+                                'personal_format' : personal_arr
+                            };
+                            
+                            res.json(response);
+                        }
+                    }
+                    /*
             var response = {
                 'ws_code' : '0',
                 'mensaje' : msg, 
@@ -647,6 +741,7 @@ module.exports = {
             };
 
             res.json(response);
+            */
         });
     },
 
