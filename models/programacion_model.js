@@ -486,22 +486,16 @@ module.exports = {
     },
 
     lista : function(pool, callback) {
-        console.log('model prog-lista pool');
-        console.log(pool);
+
         var data = null;
         var msg = '';
 
         pool.getConnection(function (err, connection) {
-            console.log('connection:');
-            console.log(connection);
             if (err) {
                 console.error('error connecting: ' + err.stack);
                 msg = err.stack;
             }
             connection.query("CALL ssp_ope_programacion_lista()", [ ] , function (err, rows, fields) {
-                console.log('err:');
-                console.log(err);
-                //console.log(rows);
                 if (err) {
                     console.error('error connecting: ' + err.stack);
                     msg = err.message;
@@ -510,11 +504,8 @@ module.exports = {
                     data = functions.get_datatable(rows);
                     msg = functions.get_msg(rows);
                 }
-                
                 connection.release();
-                console.log('despues de release ..');
                 callback(msg, data);
-                
             });
         });
     },

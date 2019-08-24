@@ -1183,7 +1183,7 @@ module.exports = {
 
                         str_ids += "'')";
 
-                        usuario_model.obtiene_por_id_multiple(str_ids, function(msg, data_usuario){
+                        usuario_model.obtiene_por_id_multiple(str_ids, pool, function(msg, data_usuario){
                             //console.log('data_usuario:');
                             //console.log(data_usuario);
                             if (data_usuario) {
