@@ -510,8 +510,10 @@ module.exports = {
                     data = functions.get_datatable(rows);
                     msg = functions.get_msg(rows);
                 }
-                callback(msg, data);
+                
                 connection.release();
+                callback(msg, data);
+                console.log('despues de release ..');
             });
         });
         callback(msg, data);
