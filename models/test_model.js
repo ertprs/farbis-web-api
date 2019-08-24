@@ -27,13 +27,14 @@ module.exports = {
         */
        var msg = "";
         var size = numero;
-        var pool  = mysql.createPool({
-            host: '142.93.77.117',
-            user: 'root',
-            password: 'abcDEF123',
-            database: 'farbisdb'
-        });
+
         for (var i=0; i<size;i++) {
+            var pool  = mysql.createPool({
+                host: '142.93.77.117',
+                user: 'root',
+                password: 'abcDEF123',
+                database: 'farbisdb'
+            });
             pool.getConnection(function(err, connection) {
                 if (err) {
                     console.error('error connecting: ' + err.stack);
