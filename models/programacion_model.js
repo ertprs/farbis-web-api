@@ -511,11 +511,9 @@ module.exports = {
                     msg = functions.get_msg(rows);
                 }
                 callback(msg, data);
-                console.log('cnx release ..');
                 connection.release();
             });
         });
-        console.log('return callback ..');
         callback(msg, data);
     },
 
