@@ -486,7 +486,8 @@ module.exports = {
     },
 
     lista : function(pool, callback) {
-
+        console.log('model prog-lista pool');
+        console.log(pool);
         var data = null;
         var msg = '';
 
