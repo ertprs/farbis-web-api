@@ -501,7 +501,7 @@ module.exports = {
             connection.query("CALL ssp_ope_programacion_lista()", [ ] , function (err, rows, fields) {
                 console.log('err:');
                 console.log(err);
-                console.log(rows);
+                //console.log(rows);
                 if (err) {
                     console.error('error connecting: ' + err.stack);
                     msg = err.message;
