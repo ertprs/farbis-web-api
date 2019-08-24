@@ -1133,8 +1133,6 @@ module.exports = {
     {
         functions.print_console('rest method programacion: post_lista');
 
-        var fecha = req.body.fecha;
-
         programacion_model.lista(function(msg, data_programacion){
             if (data_programacion.length > 0) {
                 data_programacion.forEach(function(programacion, index_programacion) {
@@ -1209,6 +1207,7 @@ module.exports = {
                                 var response = {
                                     'ws_code' : '0',
                                     'mensaje' : msg,
+                                    'ultimo_servicio_emergencia' : 0,
                                     'programaciones' : data_programacion
                                 };
 
@@ -1223,6 +1222,7 @@ module.exports = {
                             var response = {
                                 'ws_code' : '0',
                                 'mensaje' : msg,
+                                'ultimo_servicio_emergencia' : 0,
                                 'programaciones' : data_programacion
                             };
                             
@@ -1235,6 +1235,7 @@ module.exports = {
                 var response = {
                     'ws_code' : '0',
                     'mensaje' : msg,
+                    'ultimo_servicio_emergencia' : 0,
                     'programaciones' : data_programacion
                 };
                 

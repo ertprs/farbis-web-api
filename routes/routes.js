@@ -107,6 +107,8 @@ router.post(sub_path + 'rws_programacion_actualiza_supervisores', controllers.pr
 router.post(sub_path + 'rws_programacion_lista_por_fecha', controllers.programacion_controller.post_lista_por_fecha);
 router.post(sub_path + 'rws_programacion_lista', controllers.programacion_controller.post_lista);
 
+router.post(sub_path + 'rws_test', controllers.test_controller.post_test);
+
 var fs = require('fs');
 var path = require('path');
 var myhtml = '';
