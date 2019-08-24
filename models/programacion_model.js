@@ -509,9 +509,9 @@ module.exports = {
                     console.error('set variables ..');
                     data = functions.get_datatable(rows);
                     msg = functions.get_msg(rows);
-                    console.error('cnx release ..');
-                    connection.release();
                 }
+                console.error('cnx release ..');
+                connection.release();
             });           
         });
         console.error('return callback ..');
