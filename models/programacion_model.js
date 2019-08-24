@@ -496,6 +496,8 @@ module.exports = {
                 msg = err.stack;
             }
             connection.query("CALL ssp_ope_programacion_lista()", [] , function (err, rows) {
+                console.log(err);
+                console.log(rows);
                 if (err) {
                     console.error('error connecting: ' + err.stack);
                     msg = err.message;
