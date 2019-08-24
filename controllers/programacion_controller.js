@@ -1132,8 +1132,9 @@ module.exports = {
     post_lista : function(req, res, next)
     {
         functions.print_console('rest method programacion: post_lista');
-
-        programacion_model.lista(function(msg, data_programacion){
+        var connection = require('.././database/connection');
+        var pool = connection.get_pool();
+        programacion_model.lista(pool, function(msg, data_programacion){
             if (data_programacion.length > 0) {
                 data_programacion.forEach(function(programacion, index_programacion) {
                     var personal_ids = programacion.personal.split("-");
@@ -1183,8 +1184,8 @@ module.exports = {
                         str_ids += "'')";
 
                         usuario_model.obtiene_por_id_multiple(str_ids, function(msg, data_usuario){
-                            console.log('data_usuario:');
-                            console.log(data_usuario);
+                            //console.log('data_usuario:');
+                            //console.log(data_usuario);
                             if (data_usuario) {
                                 if (data_usuario.length > 0) {
                                     data_usuario.forEach(function(usu, index_usuario) {

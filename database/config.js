@@ -33,6 +33,7 @@ if (env == 'developer')
         debug:  false
     };
     */
+   /*
     config = {
         host: '142.93.77.117',
         user: 'root',
@@ -41,6 +42,18 @@ if (env == 'developer')
         connectionLimit: 100,
         queueLimit: 0,
         waitForConnection: true,
+        multipleStatements: true,
+        debug:  false
+    };
+    */
+    config = {
+        host: '142.93.77.117',
+        user: 'root',
+        password: 'abcDEF123',
+        database: 'farbisdb',
+        //connectionLimit: 100,
+        //queueLimit: 0,
+        //waitForConnection: true,
         multipleStatements: true,
         debug:  false
     };

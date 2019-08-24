@@ -60,12 +60,8 @@ module.exports = {
 
     get_pool : function ()
     {
-        var pool  = mysql.createPool({
-            host: '142.93.77.117',
-            user: 'root',
-            password: 'abcDEF123',
-            database: 'farbisdb'
-        });
+        var pool = mysql.createPool(config);
+        return pool;
     }
 
     
