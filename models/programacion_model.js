@@ -512,11 +512,11 @@ module.exports = {
                 }
                 
                 connection.release();
-                callback(msg, data);
                 console.log('despues de release ..');
+                callback(msg, data);
+                
             });
         });
-        callback(msg, data);
     },
 
 };
