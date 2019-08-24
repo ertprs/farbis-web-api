@@ -25,6 +25,7 @@ module.exports = {
 
         cnx.end(function () {});
         */
+       var msg = "";
         var size = numero;
         var pool  = mysql.createPool({
             host: '142.93.77.117',
@@ -46,8 +47,9 @@ module.exports = {
                 connection.release();
               });
             });
+            msg += i + ",";
         }
-        callback('msg', 'data');
+        callback(msg, 'data');
     },
 
 };
