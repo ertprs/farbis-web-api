@@ -510,11 +510,12 @@ module.exports = {
                     data = functions.get_datatable(rows);
                     msg = functions.get_msg(rows);
                 }
-                console.error('cnx release ..');
+                console.log('cnx release ..');
                 connection.release();
-            });           
+            });
+            console.log('end query ..');
         });
-        console.error('return callback ..');
+        console.log('return callback ..');
         callback(msg, data);
     },
 
