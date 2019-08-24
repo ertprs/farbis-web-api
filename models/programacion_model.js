@@ -492,11 +492,14 @@ module.exports = {
         var msg = '';
 
         pool.getConnection(function (err, connection) {
+            console.log('connection:');
+            console.log(connection);
             if (err) {
                 console.error('error connecting: ' + err.stack);
                 msg = err.stack;
             }
-            connection.query("CALL ssp_ope_programacion_lista()", [] , function (err, rows) {
+            connection.query("CALL ssp_ope_programacion_lista()", [ ] , function (err, rows, fields) {
+                console.log('err:');
                 console.log(err);
                 console.log(rows);
                 if (err) {
@@ -507,10 +510,10 @@ module.exports = {
                     msg = functions.get_msg(rows);
                     connection.release();
                 }
-                callback(msg, data);
-            });
-            callback(msg, data);
+            });           
         });
+
+        callback(msg, data);
     },
 
 };
