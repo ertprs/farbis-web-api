@@ -117,7 +117,7 @@ router.get('/archivos', (req, res, next) => {
     
     var directory = 'public/files/';
     myhtml = '';
-
+    
     getFilesFromDir(directory, [""]);
     
     res.write('<html><head><link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">');

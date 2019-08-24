@@ -1,3 +1,4 @@
+var functions = require('.././util/functions');
 var test_model = require('.././models/test_model');
 
 module.exports = {
@@ -8,7 +9,7 @@ module.exports = {
 
     post_test : function(req, res, next)
     {
-        functions.print_console('rest method ficha: post_registro');
+        functions.print_console('rest method ficha: post_test');
 
         var numero = req.body.numero;
 
