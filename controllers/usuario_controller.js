@@ -21,10 +21,11 @@ module.exports = {
         var tipo_usuario = req.body.tipo_usuario;
         var color = req.body.color;
         var id_area = req.body.id_area;
+        var telefono = req.body.telefono;
         var usuario_registro = req.body.usuario_registro;
 
         usuario_model.registro(id_usuario, nombres, apellidos, usuario, contrasenia, 
-                                tipo_usuario, color, id_area, usuario_registro, function(msg, data){
+                                tipo_usuario, color, id_area, telefono, usuario_registro, function(msg, data){
 
             var response = {
                 'ws_code' : '0',
@@ -47,10 +48,11 @@ module.exports = {
         var tipo_usuario = req.body.tipo_usuario;
         var color = req.body.color;
         var id_area = req.body.id_area;
+        var telefono = req.body.telefono;
         var usuario_registro = req.body.usuario_registro;
 
         usuario_model.actualiza(id_usuario, nombres, apellidos, usuario, contrasenia, 
-                                tipo_usuario, color, id_area, usuario_registro, function(msg, data){
+                                tipo_usuario, color, id_area, telefono, usuario_registro, function(msg, data){
 
             var response = {
                 'ws_code' : '0',

@@ -4,13 +4,13 @@ var functions = require('.././util/functions');
 module.exports = {
 
     registro : function(id_usuario, nombres, apellidos, usuario, contrasenia, 
-                        tipo_usuario, color, id_area, usuario_registro, callback) {
+                        tipo_usuario, color, id_area, telefono, usuario_registro, callback) {
 
         var cnx = connection.get_connection();
 
-        cnx.query('CALL ssp_adm_usuario_registro(?,?,?,?,?,?,?,?,?,@output);select @output', [ id_usuario, 
+        cnx.query('CALL ssp_adm_usuario_registro(?,?,?,?,?,?,?,?,?,?,@output);select @output', [ id_usuario, 
             nombres, apellidos, usuario, contrasenia, 
-            tipo_usuario, color, id_area, usuario_registro ], function(err, rows, fields)
+            tipo_usuario, color, id_area, telefono, usuario_registro ], function(err, rows, fields)
         {
             var data = null;
             var msg = '';
@@ -28,13 +28,13 @@ module.exports = {
     },
 
     actualiza : function(id_usuario, nombres, apellidos, usuario, contrasenia, 
-                        tipo_usuario, color, id_area, usuario_registro, callback) {
+                        tipo_usuario, color, id_area, telefono, usuario_registro, callback) {
 
         var cnx = connection.get_connection();
 
-        cnx.query('CALL ssp_adm_usuario_actualiza(?,?,?,?,?,?,?,?,?,@output);select @output', [ id_usuario, 
+        cnx.query('CALL ssp_adm_usuario_actualiza(?,?,?,?,?,?,?,?,?,?,@output);select @output', [ id_usuario, 
             nombres, apellidos, usuario, contrasenia, 
-            tipo_usuario, color, id_area, usuario_registro ], function(err, rows, fields)
+            tipo_usuario, color, id_area, telefono, usuario_registro ], function(err, rows, fields)
         {
             var data = null;
             var msg = '';
@@ -177,8 +177,6 @@ module.exports = {
         let stmt = 'SELECT IdUsuario as id_usuario, Nombres as nombres, Apellidos as apellidos, Telefono as telefono FROM adm_usuario WHERE IdUsuario in  ' + ids + ';';
 
         pool.getConnection(function (err, connection) {
-            console.log('connection:');
-            console.log(connection);
             if (err) {
                 console.error('error connecting: ' + err.stack);
                 msg = err.stack;
