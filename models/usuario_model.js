@@ -176,6 +176,9 @@ module.exports = {
         var msg = '';
         let stmt = 'SELECT IdUsuario as id_usuario, Nombres as nombres, Apellidos as apellidos, Telefono as telefono FROM adm_usuario WHERE IdUsuario in  ' + ids + ';';
 
+        if (pool==null) {
+            pool = connection.get_pool();
+        }
         pool.getConnection(function (err, connection) {
             if (err) {
                 console.error('error connecting: ' + err.stack);

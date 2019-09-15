@@ -65,7 +65,7 @@ module.exports = {
 
                         str_ids += "'')";
 
-                        usuario_model.obtiene_por_id_multiple(str_ids, function(msg, data_usuario){
+                        usuario_model.obtiene_por_id_multiple(str_ids, null, function(msg, data_usuario){
                             
                             if (data_usuario) {
                                 data_usuario.forEach(function(usuario, index_usuario) {
@@ -686,7 +686,7 @@ module.exports = {
 
                         str_ids += "'')";
 
-                        usuario_model.obtiene_por_id_multiple(str_ids, function(msg, data_usuario){
+                        usuario_model.obtiene_por_id_multiple(str_ids, null, function(msg, data_usuario){
                             console.log('data_usuario:');
                             console.log(data_usuario);
                             if (data_usuario) {
@@ -1069,7 +1069,7 @@ module.exports = {
 
                         str_ids += "'')";
 
-                        usuario_model.obtiene_por_id_multiple(str_ids, function(msg, data_usuario){
+                        usuario_model.obtiene_por_id_multiple(str_ids, null, function(msg, data_usuario){
                             console.log('data_usuario:');
                             console.log(data_usuario);
                             if (data_usuario) {
