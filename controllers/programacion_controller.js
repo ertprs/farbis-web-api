@@ -640,6 +640,15 @@ module.exports = {
 
         programacion_model.obtiene_personal(id_programacion, function(msg, data){
 
+            if (data == null) {
+                var response = {
+                    'ws_code' : '0',
+                    'mensaje' : 'La programación no existe', 
+                    'programacion' : null
+                };
+    
+                res.json(response);
+            }
                     var personal_ids = data.personal.split("-");
                     var personal_encargado_ids = data.personal_encargado.split("-");
                     var personal_supervisor_ids = data.personal_supervisor.split("-");
