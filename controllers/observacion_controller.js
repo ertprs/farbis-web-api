@@ -45,7 +45,7 @@ module.exports = {
 
             if (msg == 'OK' && origen == 'P') { //Registro por programador
                 // Buscamos al personal asignado al servicio y obtenemos los tokens
-                usuario_model.lista_por_programacion(id_programacion, function(msg, data){
+                usuario_model.lista_token_por_programacion(id_programacion, function(msg, data){
 
                     functions.send_push_notification_list(data, 'AppProgramador', 'Tienes una nueva indicación', function(msg) {
                         var response = {

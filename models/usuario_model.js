@@ -281,6 +281,7 @@ module.exports = {
             if (err) {
                 msg = err.message;
             }else{
+                console.log(rows);
                 data = functions.get_datatable(rows);
                 msg = functions.get_msg(rows);
             }

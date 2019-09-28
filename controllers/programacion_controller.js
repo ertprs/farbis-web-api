@@ -557,7 +557,7 @@ module.exports = {
                             };
 
                             res.json(response);
-                        });   
+                        });
                     } else {
                         var response = {
                             'ws_code' : '0',
