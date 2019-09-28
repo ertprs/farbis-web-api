@@ -45,18 +45,38 @@ module.exports = {
 
             if (msg == 'OK' && origen == 'P') { //Registro por programador
                 // Buscamos al personal asignado al servicio y obtenemos los tokens
-                usuario_model.lista_token_por_programacion(id_programacion, function(msg, data){
+                usuario_model.lista_token_por_programacion(id_programacion, function(msg_token, data){
 
-                    functions.send_push_notification_list(data, 'AppProgramador', 'Tienes una nueva indicación', function(msg) {
+                    if (data == null) {
                         var response = {
                             'ws_code' : '0',
-                            'mensaje' : 'OK',
-                            'token' : token,
-                            'push' : msg
+                            'mensaje' : msg,
+                            'notificacion' : 'No existen tokens',
+                            'item' : item,
+                            'fecha_hora' : fecha
                         };
 
-                        res.json(response);
-                    });
+                        res.json(response);  
+                    } else {
+                        // formatear los tokens
+                        var tokens = [];
+                        data.forEach(usuario => {
+                            tokens.push(usuario.token);
+                        });
+
+                        functions.send_push_notification_list(tokens, 'Nueva indicación', observacion, function(msg_push) {
+
+                            var response = {
+                                'ws_code' : '0',
+                                'mensaje' : msg,
+                                'notificacion' : msg_push,
+                                'item' : item,
+                                'fecha_hora' : fecha
+                            };
+    
+                            res.json(response);
+                        });
+                    }                    
                 });
             } else {
                 var response = {
