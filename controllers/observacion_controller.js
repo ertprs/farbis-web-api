@@ -2,6 +2,7 @@ var mysql = require('mysql');
 var views = require('.././routes/views');
 var functions = require('.././util/functions');
 var observacion_model = require('.././models/observacion_model');
+var usuario_model = require('.././models/usuario_model');
 
 module.exports = {
 
