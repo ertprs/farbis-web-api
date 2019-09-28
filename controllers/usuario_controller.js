@@ -135,6 +135,7 @@ module.exports = {
         var usuario = req.body.usuario;
         var contrasenia = req.body.contrasenia;
         var tipo = '4';
+        var token = req.body.token;
 
         usuario_model.valida(usuario, tipo, function(msg, data){
 

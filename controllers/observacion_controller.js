@@ -40,14 +40,34 @@ module.exports = {
         observacion_model.registro(id_programacion, observacion, origen, 
                         ruta_foto, ruta_audio, id_usuario, function(msg, data, item, fecha){
 
-            var response = {
-                'ws_code' : '0',
-                'mensaje' : msg,
-                'item' : item,
-                'fecha_hora' : fecha
-            };
+            var notificacion = '';
 
-            res.json(response);
+            if (msg == 'OK' && origen == 'P') { //Registro por programador
+                // Buscamos al personal asignado al servicio y obtenemos los tokens
+                usuario_model.lista_por_programacion(id_programacion, function(msg, data){
+
+                    functions.send_push_notification_list(data, 'AppProgramador', 'Tienes una nueva indicación', function(msg) {
+                        var response = {
+                            'ws_code' : '0',
+                            'mensaje' : 'OK',
+                            'token' : token,
+                            'push' : msg
+                        };
+
+                        res.json(response);
+                    });
+                });
+            } else {
+                var response = {
+                    'ws_code' : '0',
+                    'mensaje' : msg,
+                    'notificacion' : notificacion,
+                    'item' : item,
+                    'fecha_hora' : fecha
+                };
+    
+                res.json(response);   
+            }
         });
     },
 

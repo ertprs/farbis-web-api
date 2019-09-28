@@ -246,4 +246,48 @@ module.exports = {
 
         cnx.end(function () {});
     },
+
+    lista_por_programacion : function(id_programacion, callback) {
+
+        var cnx = connection.get_connection();
+
+        cnx.query('CALL ssp_adm_usuario_lista_por_programacion(?)', [ id_programacion ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                data = functions.get_datatable(rows);
+                msg = functions.get_msg(rows);
+            }
+
+            callback(msg, data);
+        });
+
+        cnx.end(function () {});
+    },
+
+    lista_token_por_programacion : function(id_programacion, callback) {
+
+        var cnx = connection.get_connection();
+
+        cnx.query('CALL ssp_adm_usuario_lista_token_por_programacion(?)', [ id_programacion ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
+            if (err) {
+                msg = err.message;
+            }else{
+                data = functions.get_datatable(rows);
+                msg = functions.get_msg(rows);
+            }
+
+            callback(msg, data);
+        });
+
+        cnx.end(function () {});
+    },
 };

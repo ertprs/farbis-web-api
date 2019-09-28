@@ -223,6 +223,55 @@ class functions {
         });
     }
 
+    static send_push_notification_list(tokens, title, body, callback) {
+
+        if (tokens == null) {
+            callback('No existen tokens');
+        }
+        
+        var gcm = require('node-gcm');
+
+        // Set up the sender with your GCM/FCM API key (declare this once for multiple messages) 
+        var API = 'AIzaSyDSUtsd_rPy-gMwjnufu4Lg1jZb2JAOKVs';
+        
+        // Create a message 
+        var message = new gcm.Message({
+            priority: 'normal',
+            data: {
+                titulo: title,
+                mensaje: body
+            },
+            notification: {
+                title: title, //title
+                icon: "ic_launcher",
+                body: body,
+                sound: "default",
+                badge: "1"
+            }
+        });
+
+        // Set up the sender with you API key 
+        var sender = new gcm.Sender(API);
+
+        // Add the registration tokens of the devices you want to send to 
+        var registrationTokens = tokens;
+
+        // Send the message 
+        sender.send(message, { registrationTokens: registrationTokens }, function (err, response) {
+
+            var msg = '';
+            if (err) {
+                msg = err;
+                console.error(err);
+            } else {
+                msg = response;
+                console.log(response);
+            }
+                
+            callback(msg);
+        });
+    }
+
 
 }
 
