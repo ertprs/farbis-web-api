@@ -56,7 +56,7 @@ module.exports = {
                             'fecha_hora' : fecha
                         };
 
-                        res.json(response);  
+                        res.json(response);
                     } else {
                         // formatear los tokens
                         var tokens = [];

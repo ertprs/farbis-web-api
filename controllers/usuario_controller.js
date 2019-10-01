@@ -135,7 +135,36 @@ module.exports = {
         var usuario = req.body.usuario;
         var contrasenia = req.body.contrasenia;
         var tipo = '4';
-        var token = req.body.token;
+
+        usuario_model.valida(usuario, tipo, function(msg, data){
+
+            if (data) {
+                if (data.contrasenia != contrasenia) {
+                    data = {};
+                    msg = 'La contraseña es incorrecta.';
+                }
+            }else{
+                data = {};
+                msg = 'El usuario no existe.';
+            }
+
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : msg, 
+                'usuario' : data
+            };
+
+            res.json(response);
+        });
+    },
+
+    post_validar_usuario : function(req, res, next)
+    {
+        functions.print_console('rest method usuario: post_validar_usuario');
+
+        var usuario = req.body.usuario;
+        var contrasenia = req.body.contrasenia;
+        var tipo = '';
 
         usuario_model.valida(usuario, tipo, function(msg, data){
 

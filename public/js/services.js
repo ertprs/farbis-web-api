@@ -43,7 +43,7 @@ angular.module('FarbisWebApp')
   usuarioService.validar = function(data) {
     return $http({
       method: 'POST', 
-      url: '/sireis/api/v1/rws_programador_valida',
+      url: '/sireis/api/v1/rws_usuario_valida',
       data: data
     });
   }
