@@ -500,7 +500,6 @@ module.exports = {
                     console.error('error connecting: ' + err.stack);
                     msg = err.message;
                 } else {
-                    console.error('set variables ..');
                     data = functions.get_datatable(rows);
                     msg = functions.get_msg(rows);
                 }

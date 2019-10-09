@@ -187,17 +187,14 @@ module.exports = {
             connection.query(stmt, [ ] , function (err, rows, fields) {
                 console.log('err:');
                 console.log(err);
-                //console.log(rows);
                 if (err) {
                     console.error('error connecting: ' + err.stack);
                     msg = err.message;
                 } else {
-                    console.error('set variables ..');
                     data = rows;
                     msg = 'OK';
                 }
                 connection.release();
-                console.log('despues de release ..');
                 callback(msg, data);
             });
         });
