@@ -3,7 +3,7 @@ var functions = require('.././util/functions');
 
 module.exports = {
 
-    lista_por_operario : function(id_programacion, callback) {
+    lista_por_programacion : function(id_programacion, callback) {
 
         var cnx = connection.get_connection();
 
