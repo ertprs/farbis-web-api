@@ -1141,6 +1141,9 @@ module.exports = {
     post_lista : function(req, res, next)
     {
         functions.print_console('rest method programacion: post_lista');
+
+        var id_operario = req.body.id_operario;
+        
         var connection = require('.././database/connection');
         var pool = connection.get_pool();
         programacion_model.lista(pool, function(msg, data_programacion){
@@ -1193,8 +1196,6 @@ module.exports = {
                         str_ids += "'')";
 
                         usuario_model.obtiene_por_id_multiple(str_ids, pool, function(msg, data_usuario){
-                            //console.log('data_usuario:');
-                            //console.log(data_usuario);
                             if (data_usuario) {
                                 if (data_usuario.length > 0) {
                                     data_usuario.forEach(function(usu, index_usuario) {
@@ -1214,14 +1215,18 @@ module.exports = {
                             programacion.personal_format = personal_arr;
 
                             if (data_programacion.length == index_programacion + 1) {
-                                var response = {
-                                    'ws_code' : '0',
-                                    'mensaje' : msg,
-                                    'ultimo_servicio_emergencia' : 0,
-                                    'programaciones' : data_programacion
-                                };
 
-                                res.json(response);
+                                programacion_model.servicio_emergencia_cantidad(id_operario, function(msg, row){
+
+                                    var response = {
+                                        'ws_code' : '0',
+                                        'mensaje' : msg, 
+                                        'ultimo_servicio_emergencia' : row,
+                                        'programaciones' : data_programacion
+                                    };
+                    
+                                    res.json(response);
+                                });
                             }
                         });
 
@@ -1229,29 +1234,36 @@ module.exports = {
                         programacion.personal_format = personal_arr;
     
                         if (data_programacion.length == index_programacion + 1) {
-                            var response = {
-                                'ws_code' : '0',
-                                'mensaje' : msg,
-                                'ultimo_servicio_emergencia' : 0,
-                                'programaciones' : data_programacion
-                            };
-                            
-                            res.json(response);
+
+                            programacion_model.servicio_emergencia_cantidad(id_operario, function(msg, row){
+
+                                var response = {
+                                    'ws_code' : '0',
+                                    'mensaje' : msg, 
+                                    'ultimo_servicio_emergencia' : row,
+                                    'programaciones' : data_programacion
+                                };
+                
+                                res.json(response);
+                            });
                         }
                     }
                     
                 });
             } else {
-                var response = {
-                    'ws_code' : '0',
-                    'mensaje' : msg,
-                    'ultimo_servicio_emergencia' : 0,
-                    'programaciones' : data_programacion
-                };
-                
-                res.json(response);
+
+                programacion_model.servicio_emergencia_cantidad(id_operario, function(msg, row){
+
+                    var response = {
+                        'ws_code' : '0',
+                        'mensaje' : msg, 
+                        'ultimo_servicio_emergencia' : row,
+                        'programaciones' : data_programacion
+                    };
+    
+                    res.json(response);
+                });
             }
-            
         });
     },
 
