@@ -171,7 +171,6 @@ module.exports = {
     },
 
     obtiene_por_id_multiple : function(ids, pool, callback) {
-        console.log('obtiene_por_id_multiple pool');
         var data = null;
         var msg = '';
         let stmt = 'SELECT IdUsuario as id_usuario, Nombres as nombres, Apellidos as apellidos, Telefono as telefono FROM adm_usuario WHERE IdUsuario in  ' + ids + ';';
@@ -185,8 +184,6 @@ module.exports = {
                 msg = err.stack;
             }
             connection.query(stmt, [ ] , function (err, rows, fields) {
-                console.log('err:');
-                console.log(err);
                 if (err) {
                     console.error('error connecting: ' + err.stack);
                     msg = err.message;
