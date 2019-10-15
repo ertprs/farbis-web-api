@@ -1254,7 +1254,7 @@ module.exports = {
                                 });
                             }
                         }
-
+                        /*
                         var response = {
                             'ws_code' : '0',
                             'mensaje' : msg, 
@@ -1262,6 +1262,7 @@ module.exports = {
                         };
             
                         res.json(response);
+                        */
                     });
                 });
             } else {
