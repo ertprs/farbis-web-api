@@ -1150,7 +1150,7 @@ module.exports = {
             if (data_programacion.length > 0) {
                 data_programacion.forEach(function(programacion, index_programacion) {
 
-                    observacion_model.lista_por_programacion(id_programacion, function(msg, observaciones){
+                    observacion_model.lista_por_programacion(programacion.id_programacion, function(msg, observaciones){
 
                         programacion.observaciones = observaciones;
 
