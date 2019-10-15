@@ -3,8 +3,34 @@ var functions = require('.././util/functions');
 
 module.exports = {
 
-    lista_por_programacion : function(id_programacion, callback) {
+    lista_por_programacion : function(id_programacion, pool, callback) {
 
+
+        if (pool==null) {
+            pool = connection.get_pool();
+        }
+        pool.getConnection(function (err, connection) {
+            if (err) {
+                console.error('error connecting: ' + err.stack);
+                msg = err.stack;
+            }
+
+            connection.query('CALL ssp_ope_observacion_lista_por_programacion(?)', [ id_programacion ], function(err, rows, fields)
+            {
+                var data = null;
+                var msg = '';
+                
+                if (err) {
+                    msg = err.message;
+                }else{
+                    data = functions.get_datatable(rows);
+                    msg = functions.get_msg(rows);
+                }
+                connection.release();
+                callback(msg, data);
+            });
+        });
+/*
         var cnx = connection.get_connection();
 
         cnx.query('CALL ssp_ope_observacion_lista_por_programacion(?)', [ id_programacion ], function(err, rows, fields)
@@ -23,6 +49,7 @@ module.exports = {
         });
 
         cnx.end(function () {});
+    */
     },
 
     lista_por_programacion_origen : function(id_programacion, origen, callback) {
