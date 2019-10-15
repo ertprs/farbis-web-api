@@ -15,7 +15,7 @@ module.exports = {
 
         var id_programacion = req.body.id_programacion;
 
-        observacion_model.lista_por_programacion(id_programacion, function(msg, data){
+        observacion_model.lista_por_programacion(id_programacion, null, function(msg, data){
 
             var response = {
                 'ws_code' : '0',
