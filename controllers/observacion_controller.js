@@ -14,8 +14,10 @@ module.exports = {
         functions.print_console('rest method observacion: post_lista_por_programacion');
 
         var id_programacion = req.body.id_programacion;
+        var connection = require('.././database/connection');
+        var pool = connection.get_pool();
 
-        observacion_model.lista_por_programacion(id_programacion, null, function(msg, data){
+        observacion_model.lista_por_programacion(id_programacion, pool, function(msg, data){
 
             var response = {
                 'ws_code' : '0',
