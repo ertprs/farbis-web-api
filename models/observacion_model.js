@@ -102,12 +102,8 @@ module.exports = {
     },
 
     registro_multiple : function(observaciones, callback) {
-        //id_programacion, observacion, origen, ruta_foto, ruta_audio, id_usuario
         var cnx = connection.get_connection();
-        //id_programacion, observacion, origen, ruta_foto, ruta_audio, id_usuario
-        console.log(observaciones);
         let stmt = 'INSERT INTO  ope_observacion (IdProgramacion, Item, Observacion, Origen, RutaFoto, RutaAudio, Estado, IdUsuario, FechaRegistro) VALUES  ?  ';
-        //cnx.query('CALL ssp_ope_observacion_registro(?,?,?,?,?,?,?,?)', [ observaciones ], function(err, rows, fields)
         cnx.query(stmt, [ observaciones ], function(err, rows, fields)
         {
             var data = null;
@@ -118,14 +114,10 @@ module.exports = {
             if (err) {
                 msg = err.message;
             }else{
-                //msg = functions.get_msg(rows);
-                //item = functions.get_output(rows, '@item');
-                //fecha = functions.get_output(rows, '@fecha');
                 msg = 'OK';
                 item = '';
                 fecha = '';
             }
-            console.log(msg);
             callback(msg, data, item, fecha);
         });
         

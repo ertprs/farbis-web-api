@@ -332,7 +332,6 @@ module.exports = {
         functions.print_console('rest method programacion: post_registro_multiple');
 
         var programaciones = req.body;
-        var ids = [];
         var arr_programaciones = [];
         var arr_ids = [];
         var str_ids = "(";
@@ -453,7 +452,7 @@ module.exports = {
 
                 if (arr_programaciones_final.length > 0) {
                     programacion_model.registro_multiple(arr_programaciones_final, function(msg, data, id){
-                        console.log('registro_multiple: ' + msg);
+                        console.log('prog registro_multiple: ' + msg);
                         if (msg == "OK") {
                             ficha_model.registro_multiple(arr_fichas, function(msg){
                                 var response = {

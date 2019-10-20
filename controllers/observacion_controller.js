@@ -99,7 +99,6 @@ module.exports = {
         functions.print_console('rest method observacion: post_registro_multiple');
 
         var observaciones = req.body;
-        var ids = [];
         var arr_observaciones = [];
         var arr_result = [];
 
@@ -108,38 +107,14 @@ module.exports = {
             var item = obs.item;
             var observacion = obs.observacion;
             var origen = obs.origen;
-            var ruta_foto = '';//obs.ruta_foto;
-            var ruta_audio = '';//obs.ruta_audio;
+            var ruta_foto = '';
+            var ruta_audio = '';
             var id_usuario = obs.id_usuario;
             var fecha = new Date();
 
-            //contador += 1;
             arr_observaciones.push([
                 id_programacion, item, observacion, origen, ruta_foto, ruta_audio, '1', id_usuario, fecha
             ]);
-            //values += "('demian', 'demian@gmail.com', 1,2),"
-            //('john', 'john@gmail.com', 2,4)
-            /*
-            observacion_model.registro(id_programacion, observacion, origen, 
-                            ruta_foto, ruta_audio, id_usuario, function(msg, data, item, fecha){
-
-                ids.push({
-                    'mensaje' : msg,
-                    'item' : item,
-                    'fecha_hora' : fecha
-                });
-                
-                if (observaciones.length == index + 1){
-                    var response = {
-                        'ws_code' : '0',
-                        'mensaje' : 'OK',
-                        'observaciones' : ids
-                    };
-            
-                    res.json(response);
-                }
-            });
-            */
 
             arr_result.push({
                 "mensaje" : "OK",
@@ -149,10 +124,10 @@ module.exports = {
         });
 
         observacion_model.registro_multiple(arr_observaciones, function(msg, data, item, fecha){
-
+            console.log('obs registro_multiple: ' + msg);
             var response = {
                 'ws_code' : '0',
-                'mensaje' : 'OK',
+                'mensaje' : msg,
                 'observaciones' : arr_result
             };
     
