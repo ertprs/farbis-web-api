@@ -857,8 +857,11 @@ module.exports = {
                                     }
                                 });
                             });
-                            
+                            res.write('Error controlado B');
+                            res.end();
                         });
+                        res.write('Error controlado A');
+                        res.end();
                     }
                 } else {
                     res.write('La carpeta ' + directory + ' no existe');
