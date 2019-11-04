@@ -788,7 +788,7 @@ module.exports = {
         var id_programacion = req.params.id_programacion;
 
         programacion_model.obtener(id_programacion, function(msg, programacion){
-            console.log(programacion);
+            //console.log(programacion);
             var directory = programacion.fecha.getFullYear() + '-' + programacion.nro_orden + '-' +  programacion.id_programacion;
             var full_directory = 'public/files/' + directory + '/';
             var filename = '';
@@ -817,7 +817,13 @@ module.exports = {
                         //zip a folder and change folder destination name
                         var FolderZip = require('folder-zip');
                         var zip = new FolderZip();
-                        zip.zipFolder(full_directory, options, function(){
+                        console.log(full_directory);
+                        console.log(directory);
+                        zip.zipFolder(full_directory, options, function(err){
+                            if (err) {
+                                console.log('Error =>');
+                                console.log(err);
+                            }
                             zip.writeToFile('public/zip/' + directory + '.zip');
                             console.log('aqui 2');
                             setTimeout(function() {
