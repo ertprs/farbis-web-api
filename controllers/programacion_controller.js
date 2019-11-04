@@ -821,9 +821,10 @@ module.exports = {
                         console.log(directory);
                         zip.zipFolder(full_directory, options, function(err){
                             if (err) {
-                                console.log('Error =>');
+                                console.log('Error A =>');
                                 console.log(err);
                             }
+                            /*
                             zip.writeToFile('public/zip/' + directory + '.zip');
                             console.log('aqui 2');
                             setTimeout(function() {
@@ -838,6 +839,25 @@ module.exports = {
                                     }
                                 });
                             }, 3000);
+                            */
+                            zip.writeToFile('public/zip/' + directory + '.zip', function(err) {
+                                if (err) {
+                                    console.log('Error B =>');
+                                    console.log(err);
+                                }
+                                console.log('aqui 2');
+                                fs.exists(file, function(exists) {
+                                    if (exists) {
+                                        console.log('aqui 3');
+                                        res.download(file);
+                                    } else {
+                                        console.log('aqui 4');
+                                        res.write('El archivo ' + directory + '.zip no existe');
+                                        res.end();
+                                    }
+                                });
+                            });
+                            
                         });
                     }
                 } else {
