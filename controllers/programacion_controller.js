@@ -819,7 +819,7 @@ module.exports = {
                         var zip = new FolderZip();
                         console.log(full_directory);
                         console.log(directory);
-                        zip.zipFolder(full_directory, options, function(err){
+                        zip.zipFolder('../public/files/2019-2019 000011-0000033509', options, function(err){
                             if (err) {
                                 console.log('Error A =>');
                                 console.log(err);
