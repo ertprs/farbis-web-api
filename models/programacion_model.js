@@ -269,24 +269,30 @@ module.exports = {
         cnx.end(function () {});
     },
 
-    servicio_emergencia_cantidad : function(id_usuario, callback) {
+    servicio_emergencia_cantidad : function(id_usuario, pool, callback) {
 
-        var cnx = connection.get_connection();
+        if (pool==null) {
+            pool = connection.get_pool();
+        }
 
-        cnx.query('CALL ssp_ope_programacion_servicio_emergencia_cantidad(?)', [ id_usuario ], function(err, rows, fields)
-        {
-            var data = null;
-            var msg = '';
-            
-            if (err) {
-                msg = err.message;
-            }else{
-                data = functions.get_datavalue(rows);
-                msg = functions.get_msg(rows);
-            }
+        pool.getConnection(function (err, connection) {
 
-            callback(msg, data);
+            connection.query('CALL ssp_ope_programacion_servicio_emergencia_cantidad(?)', [ id_usuario ], function(err, rows, fields)
+            {
+                var data = null;
+                var msg = '';
+                
+                if (err) {
+                    msg = err.message;
+                }else{
+                    data = functions.get_datavalue(rows);
+                    msg = functions.get_msg(rows);
+                }
+                connection.release();
+                callback(msg, data);
+            });
         });
+        
 
         cnx.end(function () {});
     },

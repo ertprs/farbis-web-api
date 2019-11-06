@@ -23,7 +23,7 @@ module.exports = {
 
         programacion_model.lista_por_operario(id_operario, function(msg, data){
 
-            programacion_model.servicio_emergencia_cantidad(id_operario, function(msg, row){
+            programacion_model.servicio_emergencia_cantidad(id_operario, null, function(msg, row){
 
                 var response = {
                     'ws_code' : '0',
@@ -1251,7 +1251,7 @@ module.exports = {
 
                                 if (data_programacion.length == index_programacion + 1) {
 
-                                    programacion_model.servicio_emergencia_cantidad(id_operario, function(msg, row){
+                                    programacion_model.servicio_emergencia_cantidad(id_operario, pool, function(msg, row){
 
                                         var response = {
                                             'ws_code' : '0',
@@ -1270,7 +1270,7 @@ module.exports = {
 
                             if (data_programacion.length == index_programacion + 1) {
 
-                                programacion_model.servicio_emergencia_cantidad(id_operario, function(msg, row){
+                                programacion_model.servicio_emergencia_cantidad(id_operario, pool, function(msg, row){
 
                                     var response = {
                                         'ws_code' : '0',
@@ -1296,7 +1296,7 @@ module.exports = {
                 });
             } else {
 
-                programacion_model.servicio_emergencia_cantidad(id_operario, function(msg, row){
+                programacion_model.servicio_emergencia_cantidad(id_operario, pool, function(msg, row){
 
                     var response = {
                         'ws_code' : '0',

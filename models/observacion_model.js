@@ -5,7 +5,6 @@ module.exports = {
 
     lista_por_programacion : function(id_programacion, pool, callback) {
 
-
         if (pool==null) {
             pool = connection.get_pool();
         }
