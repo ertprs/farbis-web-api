@@ -292,9 +292,6 @@ module.exports = {
                 callback(msg, data);
             });
         });
-        
-
-        cnx.end(function () {});
     },
 
     obtiene_personal : function(id_programacion, callback) {
