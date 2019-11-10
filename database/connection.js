@@ -64,15 +64,14 @@ module.exports = {
         return pool;
     },
 
-    get_pool_connection : function ()
+    get_pool_connection : function (callback)
     {
         var pool = mysql.createPool(config);
         pool.getConnection(function (err, connection) {
             if (err) {
                 console.error('error get_pool_connection: ' + err.stack);
             }
-            //callback(msg, data);
-            return connection;
+            callback(connection);
         });
     }
     

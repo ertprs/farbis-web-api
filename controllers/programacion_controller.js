@@ -1309,86 +1309,105 @@ module.exports = {
         var id_operario = req.body.id_operario;
 
         var connection = require('.././database/connection');
-        var pool_cnx = connection.get_pool_connection();
-        
-        programacion_model.lista(pool_cnx, function(msg, data_programacion){
-            if (data_programacion.length > 0) {
-                data_programacion.forEach(function(programacion, index_programacion) {
-
-                    observacion_model.lista_por_programacion(programacion.id_programacion, pool_cnx, function(msg, observaciones){
-
-                        programacion.observaciones = observaciones;
-
-                        // Listamos el personal
-                        var personal_ids = programacion.personal.split("-");
-                        var personal_encargado_ids = programacion.personal_encargado.split("-");
-                        var personal_supervisor_ids = programacion.personal_supervisor.split("-");
-                        var personal_arr = [];
-
-                        personal_ids.forEach(function(id_usuario, idx) {
-                            if (id_usuario != '') {
-                                personal_arr.push({
-                                    'id_usuario' : id_usuario, 'tipo' : '1',
-                                    'nombres' : '', 'apellidos' : '', 'telefono' : ''
-                                });
-                            }
-                        });
-
-                        personal_encargado_ids.forEach(function(id_usuario, idx) {
-                            if (id_usuario != '') {
-                                personal_arr.push({
-                                    'id_usuario' : id_usuario, 'tipo' : '5',
-                                    'nombres' : '', 'apellidos' : '', 'telefono' : ''
-                                });
-                            }
-                        });
-
-                        personal_supervisor_ids.forEach(function(id_usuario, idx) {
-                            if (id_usuario != '') {
-                                personal_arr.push({
-                                    'id_usuario' : id_usuario, 'tipo' : '2',
-                                    'nombres' : '', 'apellidos' : '', 'telefono' : ''
-                                });
-                            }
-                        });
-
-                        if (personal_arr.length == 0) {
-                            personal_arr.push({
-                                'id_usuario' : '0000', 'tipo' : '0',
-                                'nombres' : '', 'apellidos' : '', 'telefono' : ''
-                            });
-                        }
-                        if (personal_arr.length > 0) {
-                            var str_ids = "(";
-                            personal_arr.forEach(function(usuario, index_personal) {
-                                str_ids += "'" + usuario.id_usuario + "',";
-                            });
-
-                            str_ids += "'')";
-
-                            usuario_model.obtiene_por_id_multiple(str_ids, pool_cnx, function(msg, data_usuario){
-                                if (data_usuario) {
-                                    if (data_usuario.length > 0) {
-                                        data_usuario.forEach(function(usu, index_usuario) {
-                                            personal_arr.forEach(function(usuario, idx) {
-                                                if (usuario.id_usuario == usu.id_usuario) {
-                                                    usuario.nombres = usu.nombres;
-                                                    usuario.apellidos = usu.apellidos;
-                                                    usuario.telefono = usu.telefono;
-                                                } 
-                                            });
-                                        });  
-                                    } else {
-                                        personal_arr = [];
-                                    }
+        //var pool_cnx = connection.get_pool_connection();
+        connection.get_pool_connection(function(pool_cnx) {
+            programacion_model.lista(pool_cnx, function(msg, data_programacion){
+                if (data_programacion.length > 0) {
+                    data_programacion.forEach(function(programacion, index_programacion) {
+    
+                        observacion_model.lista_por_programacion(programacion.id_programacion, pool_cnx, function(msg, observaciones){
+    
+                            programacion.observaciones = observaciones;
+    
+                            // Listamos el personal
+                            var personal_ids = programacion.personal.split("-");
+                            var personal_encargado_ids = programacion.personal_encargado.split("-");
+                            var personal_supervisor_ids = programacion.personal_supervisor.split("-");
+                            var personal_arr = [];
+    
+                            personal_ids.forEach(function(id_usuario, idx) {
+                                if (id_usuario != '') {
+                                    personal_arr.push({
+                                        'id_usuario' : id_usuario, 'tipo' : '1',
+                                        'nombres' : '', 'apellidos' : '', 'telefono' : ''
+                                    });
                                 }
-                                
+                            });
+    
+                            personal_encargado_ids.forEach(function(id_usuario, idx) {
+                                if (id_usuario != '') {
+                                    personal_arr.push({
+                                        'id_usuario' : id_usuario, 'tipo' : '5',
+                                        'nombres' : '', 'apellidos' : '', 'telefono' : ''
+                                    });
+                                }
+                            });
+    
+                            personal_supervisor_ids.forEach(function(id_usuario, idx) {
+                                if (id_usuario != '') {
+                                    personal_arr.push({
+                                        'id_usuario' : id_usuario, 'tipo' : '2',
+                                        'nombres' : '', 'apellidos' : '', 'telefono' : ''
+                                    });
+                                }
+                            });
+    
+                            if (personal_arr.length == 0) {
+                                personal_arr.push({
+                                    'id_usuario' : '0000', 'tipo' : '0',
+                                    'nombres' : '', 'apellidos' : '', 'telefono' : ''
+                                });
+                            }
+                            if (personal_arr.length > 0) {
+                                var str_ids = "(";
+                                personal_arr.forEach(function(usuario, index_personal) {
+                                    str_ids += "'" + usuario.id_usuario + "',";
+                                });
+    
+                                str_ids += "'')";
+    
+                                usuario_model.obtiene_por_id_multiple(str_ids, pool_cnx, function(msg, data_usuario){
+                                    if (data_usuario) {
+                                        if (data_usuario.length > 0) {
+                                            data_usuario.forEach(function(usu, index_usuario) {
+                                                personal_arr.forEach(function(usuario, idx) {
+                                                    if (usuario.id_usuario == usu.id_usuario) {
+                                                        usuario.nombres = usu.nombres;
+                                                        usuario.apellidos = usu.apellidos;
+                                                        usuario.telefono = usu.telefono;
+                                                    } 
+                                                });
+                                            });  
+                                        } else {
+                                            personal_arr = [];
+                                        }
+                                    }
+                                    
+                                    programacion.personal_format = personal_arr;
+    
+                                    if (data_programacion.length == index_programacion + 1) {
+    
+                                        programacion_model.servicio_emergencia_cantidad(id_operario, pool_cnx, function(msg, row){
+    
+                                            var response = {
+                                                'ws_code' : '0',
+                                                'mensaje' : msg, 
+                                                'ultimo_servicio_emergencia' : row,
+                                                'programaciones' : data_programacion
+                                            };
+                                            pool_cnx.release();
+                                            res.json(response);
+                                        });
+                                    }
+                                });
+    
+                            } else {
                                 programacion.personal_format = personal_arr;
-
+    
                                 if (data_programacion.length == index_programacion + 1) {
-
+    
                                     programacion_model.servicio_emergencia_cantidad(id_operario, pool_cnx, function(msg, row){
-
+    
                                         var response = {
                                             'ws_code' : '0',
                                             'mensaje' : msg, 
@@ -1399,42 +1418,24 @@ module.exports = {
                                         res.json(response);
                                     });
                                 }
-                            });
-
-                        } else {
-                            programacion.personal_format = personal_arr;
-
-                            if (data_programacion.length == index_programacion + 1) {
-
-                                programacion_model.servicio_emergencia_cantidad(id_operario, pool_cnx, function(msg, row){
-
-                                    var response = {
-                                        'ws_code' : '0',
-                                        'mensaje' : msg, 
-                                        'ultimo_servicio_emergencia' : row,
-                                        'programaciones' : data_programacion
-                                    };
-                                    pool_cnx.release();
-                                    res.json(response);
-                                });
                             }
-                        }
+                        });
                     });
-                });
-            } else {
-
-                programacion_model.servicio_emergencia_cantidad(id_operario, pool_cnx, function(msg, row){
-
-                    var response = {
-                        'ws_code' : '0',
-                        'mensaje' : msg, 
-                        'ultimo_servicio_emergencia' : row,
-                        'programaciones' : data_programacion
-                    };
-                    pool_cnx.release();
-                    res.json(response);
-                });
-            }
+                } else {
+    
+                    programacion_model.servicio_emergencia_cantidad(id_operario, pool_cnx, function(msg, row){
+    
+                        var response = {
+                            'ws_code' : '0',
+                            'mensaje' : msg, 
+                            'ultimo_servicio_emergencia' : row,
+                            'programaciones' : data_programacion
+                        };
+                        pool_cnx.release();
+                        res.json(response);
+                    });
+                }
+            });
         });
     },
 
