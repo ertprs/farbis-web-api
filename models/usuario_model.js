@@ -169,7 +169,7 @@ module.exports = {
 
         cnx.end(function () {});
     },
-
+/*
     obtiene_por_id_multiple : function(ids, pool, callback) {
         var data = null;
         var msg = '';
@@ -194,6 +194,26 @@ module.exports = {
                 connection.release();
                 callback(msg, data);
             });
+        });
+    },
+*/
+    obtiene_por_id_multiple : function(ids, pool_cnx, callback) {
+        var data = null;
+        var msg = '';
+        let stmt = 'SELECT IdUsuario as id_usuario, Nombres as nombres, Apellidos as apellidos, Telefono as telefono FROM adm_usuario WHERE IdUsuario in  ' + ids + ';';
+
+        if (pool_cnx==null) {
+            pool_cnx = connection.get_pool_connection();
+        }
+        pool_cnx.query(stmt, [ ] , function (err, rows, fields) {
+            if (err) {
+                console.error('error connecting: ' + err.stack);
+                msg = err.message;
+            } else {
+                data = rows;
+                msg = 'OK';
+            }
+            callback(msg, data);
         });
     },
 

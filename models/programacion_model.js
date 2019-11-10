@@ -268,7 +268,7 @@ module.exports = {
 
         cnx.end(function () {});
     },
-
+/*
     servicio_emergencia_cantidad : function(id_usuario, pool, callback) {
 
         if (pool==null) {
@@ -291,6 +291,27 @@ module.exports = {
                 connection.release();
                 callback(msg, data);
             });
+        });
+    },
+*/
+    servicio_emergencia_cantidad : function(id_usuario, pool_cnx, callback) {
+
+        if (pool_cnx==null) {
+            pool_cnx = connection.get_pool_connection();
+        }
+
+        pool_cnx.query('CALL ssp_ope_programacion_servicio_emergencia_cantidad(?)', [ id_usuario ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+                
+            if (err) {
+                msg = err.message;
+            }else{
+                data = functions.get_datavalue(rows);
+                msg = functions.get_msg(rows);
+            }
+            callback(msg, data);
         });
     },
 
@@ -487,7 +508,7 @@ module.exports = {
 
         cnx.end(function () {});
     },
-
+/*
     lista : function(pool, callback) {
 
         var data = null;
@@ -506,9 +527,26 @@ module.exports = {
                     data = functions.get_datatable(rows);
                     msg = functions.get_msg(rows);
                 }
-                connection.release();
+                //connection.release();
                 callback(msg, data);
             });
+        });
+    },
+*/
+    lista : function(pool_cnx, callback) {
+
+        var data = null;
+        var msg = '';
+
+        pool_cnx.query("CALL ssp_ope_programacion_lista()", [ ] , function (err, rows, fields) {
+            if (err) {
+                console.error('error connecting: ' + err.stack);
+                msg = err.message;
+            } else {
+                data = functions.get_datatable(rows);
+                msg = functions.get_msg(rows);
+            }
+            callback(msg, data);
         });
     },
 

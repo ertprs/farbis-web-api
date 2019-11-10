@@ -2,7 +2,7 @@ var connection = require('.././database/connection');
 var functions = require('.././util/functions');
 
 module.exports = {
-
+/*
     lista_por_programacion : function(id_programacion, pool, callback) {
 
         if (pool==null) {
@@ -29,26 +29,26 @@ module.exports = {
                 callback(msg, data);
             });
         });
-/*
-        var cnx = connection.get_connection();
+    },
+*/
+    lista_por_programacion : function(id_programacion, pool_cnx, callback) {
 
-        cnx.query('CALL ssp_ope_observacion_lista_por_programacion(?)', [ id_programacion ], function(err, rows, fields)
+        if (pool_cnx==null) {
+            pool_cnx = connection.get_pool_connection();
+        }
+        pool_cnx.query('CALL ssp_ope_observacion_lista_por_programacion(?)', [ id_programacion ], function(err, rows, fields)
         {
             var data = null;
             var msg = '';
-            
+                
             if (err) {
                 msg = err.message;
             }else{
                 data = functions.get_datatable(rows);
                 msg = functions.get_msg(rows);
             }
-
             callback(msg, data);
         });
-
-        cnx.end(function () {});
-    */
     },
 
     lista_por_programacion_origen : function(id_programacion, origen, callback) {
