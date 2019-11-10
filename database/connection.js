@@ -62,8 +62,8 @@ module.exports = {
     {
         var pool = mysql.createPool(config);
         return pool;
-    },
-
+    }
+/*
     get_pool_connection : function (callback)
     {
         var pool = mysql.createPool(config);
@@ -74,5 +74,5 @@ module.exports = {
             callback(connection);
         });
     }
-    
+  */  
 };

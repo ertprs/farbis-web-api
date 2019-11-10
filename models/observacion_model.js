@@ -2,40 +2,28 @@ var connection = require('.././database/connection');
 var functions = require('.././util/functions');
 
 module.exports = {
-/*
-    lista_por_programacion : function(id_programacion, pool, callback) {
 
-        if (pool==null) {
-            pool = connection.get_pool();
-        }
-        pool.getConnection(function (err, connection) {
+    lista_por_programacion : function(id_programacion, callback) {
+
+        var cnx = connection.get_connection();
+
+        cnx.query('CALL ssp_ope_observacion_lista_por_programacion(?)', [ id_programacion ], function(err, rows, fields)
+        {
+            var data = null;
+            var msg = '';
+            
             if (err) {
-                console.error('error connecting: ' + err.stack);
-                msg = err.stack;
+                msg = err.message;
+            }else{                    data = functions.get_datatable(rows);
+                msg = functions.get_msg(rows);
             }
-
-            connection.query('CALL ssp_ope_observacion_lista_por_programacion(?)', [ id_programacion ], function(err, rows, fields)
-            {
-                var data = null;
-                var msg = '';
-                
-                if (err) {
-                    msg = err.message;
-                }else{
-                    data = functions.get_datatable(rows);
-                    msg = functions.get_msg(rows);
-                }
-                connection.release();
-                callback(msg, data);
-            });
+            connection.release();
+            callback(msg, data);
         });
     },
-*/
+
     lista_por_programacion : function(id_programacion, pool_cnx, callback) {
 
-        if (pool_cnx==null) {
-            pool_cnx = connection.get_pool_connection();
-        }
         pool_cnx.query('CALL ssp_ope_observacion_lista_por_programacion(?)', [ id_programacion ], function(err, rows, fields)
         {
             var data = null;

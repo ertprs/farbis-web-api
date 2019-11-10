@@ -1309,8 +1309,13 @@ module.exports = {
         var id_operario = req.body.id_operario;
 
         var connection = require('.././database/connection');
+        var pool = connection.get_pool();
         //var pool_cnx = connection.get_pool_connection();
-        connection.get_pool_connection(function(pool_cnx) {
+        pool.getConnection(function(err, pool_cnx) {
+            if (err) {
+                console.error('error get_pool_connection: ' + err.stack);
+            }
+
             programacion_model.lista(pool_cnx, function(msg, data_programacion){
                 if (data_programacion.length > 0) {
                     data_programacion.forEach(function(programacion, index_programacion) {
@@ -1436,6 +1441,11 @@ module.exports = {
                     });
                 }
             });
+        });
+        pool.end(function(err) {
+            if (err) {
+              return console.log(err.message);
+            }
         });
     },
 

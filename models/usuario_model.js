@@ -169,34 +169,28 @@ module.exports = {
 
         cnx.end(function () {});
     },
-/*
-    obtiene_por_id_multiple : function(ids, pool, callback) {
+
+    obtiene_por_id_multiple : function(ids, callback) {
         var data = null;
         var msg = '';
         let stmt = 'SELECT IdUsuario as id_usuario, Nombres as nombres, Apellidos as apellidos, Telefono as telefono FROM adm_usuario WHERE IdUsuario in  ' + ids + ';';
 
-        if (pool==null) {
-            pool = connection.get_pool();
-        }
-        pool.getConnection(function (err, connection) {
+        var cnx = connection.get_connection();
+
+        cnx.query(stmt, [ ] , function (err, rows, fields) {
             if (err) {
                 console.error('error connecting: ' + err.stack);
-                msg = err.stack;
+                msg = err.message;
+            } else {
+                data = rows;
+                msg = 'OK';
             }
-            connection.query(stmt, [ ] , function (err, rows, fields) {
-                if (err) {
-                    console.error('error connecting: ' + err.stack);
-                    msg = err.message;
-                } else {
-                    data = rows;
-                    msg = 'OK';
-                }
-                connection.release();
-                callback(msg, data);
-            });
+            connection.release();
+            callback(msg, data);
+            
         });
     },
-*/
+
     obtiene_por_id_multiple : function(ids, pool_cnx, callback) {
         var data = null;
         var msg = '';
