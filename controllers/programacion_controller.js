@@ -882,11 +882,10 @@ module.exports = {
         var id_programacion = req.body.id_programacion;
 
         programacion_model.obtener(id_programacion, function(msg, programacion){
-            console.log(programacion);
-
+            
+            var host = "http://142.93.77.117/files/";
             var directory = programacion.fecha.getFullYear() + '-' + programacion.nro_orden + '-' +  programacion.id_programacion;
             var full_directory = 'public/files/' + directory + '/';
-            console.log(full_directory);
             var filesToReturn = [];
             // http://142.93.77.117/files/2017-000001-P000000001/img010.jpg
 
@@ -894,18 +893,19 @@ module.exports = {
             for (var i in files) {
                 var curFile = path.join(full_directory, files[i]);      
                 if (fs.statSync(curFile).isFile()) {
-                    filesToReturn.push(curFile.replace(full_directory, ''));
+                    filesToReturn.push(host + curFile.replace(full_directory, ''));
+                    /*
                     var link = curFile.replace(full_directory, '');
                     link = curFile.replace('public/', '');
                     console.log(link);
+                    */
                 }
             }
 
-            console.log(filesToReturn);
             var response = {
                 'ws_code' : '0',
                 'mensaje' : 'OK', 
-                'archivos' : data
+                'archivos' : filesToReturn
             };
 
             res.json(response);
