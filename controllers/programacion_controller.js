@@ -9,6 +9,9 @@ var ficha_model = require('.././models/ficha_model');
 var fs = require('fs');
 var constants = require('.././util/constants');
 
+var path = require('path');
+
+
 module.exports = {
     
     /**
@@ -886,9 +889,7 @@ module.exports = {
             console.log(full_directory);
             var filesToReturn = [];
             // http://142.93.77.117/files/2017-000001-P000000001/img010.jpg
-            var fs = require('fs');
-            var path = require('path');
-            
+
             var files = fs.readdirSync(full_directory);
             for (var i in files) {
                 var curFile = path.join(full_directory, files[i]);      
