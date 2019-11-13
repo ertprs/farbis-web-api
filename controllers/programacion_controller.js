@@ -876,11 +876,11 @@ module.exports = {
     {
         functions.print_console('rest method programacion: post_descarga_archivos');
 
-        var id_programacion = req.params.id_programacion;
+        var id_programacion = req.body.id_programacion;
 
         programacion_model.obtener(id_programacion, function(msg, programacion){
             console.log(programacion);
-            
+
             var directory = programacion.fecha.getFullYear() + '-' + programacion.nro_orden + '-' +  programacion.id_programacion;
             var full_directory = 'public/files/' + directory + '/';
             console.log(full_directory);
