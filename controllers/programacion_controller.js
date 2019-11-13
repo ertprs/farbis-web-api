@@ -894,8 +894,8 @@ module.exports = {
             for (var i in files) {
                 var curFile = path.join(full_directory, files[i]);      
                 if (fs.statSync(curFile).isFile()) {
-                    filesToReturn.push(curFile.replace(dir, ''));
-                    var link = curFile.replace(dir, '');
+                    filesToReturn.push(curFile.replace(full_directory, ''));
+                    var link = curFile.replace(full_directory, '');
                     link = curFile.replace('public/', '');
                     console.log(link);
                 }
