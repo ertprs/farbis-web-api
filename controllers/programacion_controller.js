@@ -783,7 +783,7 @@ module.exports = {
 
     get_descarga : function(req, res, next)
     {
-        functions.print_console('rest method programacion: post_actualiza_descargado');
+        functions.print_console('rest method programacion: get_descarga');
 
         var id_programacion = req.params.id_programacion;
 
@@ -869,6 +869,42 @@ module.exports = {
                     res.end();
                 }
             });
+        });
+    },
+
+    post_descarga_archivos : function(req, res, next)
+    {
+        functions.print_console('rest method programacion: post_descarga_archivos');
+
+        var id_programacion = req.params.id_programacion;
+
+        programacion_model.obtener(id_programacion, function(msg, programacion){
+            
+            var directory = programacion.fecha.getFullYear() + '-' + programacion.nro_orden + '-' +  programacion.id_programacion;
+            var full_directory = 'public/files/' + directory + '/';
+            console.log(full_directory);
+            var filesToReturn = [];
+            // http://142.93.77.117/files/2017-000001-P000000001/img010.jpg
+            var fs = require('fs');
+            var files = fs.readdirSync(full_directory);
+            for (var i in files) {
+                var curFile = path.join(full_directory, files[i]);      
+                if (fs.statSync(curFile).isFile()) {
+                    filesToReturn.push(curFile.replace(dir, ''));
+                    var link = curFile.replace(dir, '');
+                    link = curFile.replace('public/', '');
+                    console.log(link);
+                }
+            }
+
+            console.log(filesToReturn);
+            var response = {
+                'ws_code' : '0',
+                'mensaje' : 'OK', 
+                'archivos' : data
+            };
+
+            res.json(response);
         });
     },
 

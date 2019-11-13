@@ -59,6 +59,7 @@ router.post(sub_path + 'rws_programacion_lista_sin_descargar', controllers.progr
 router.post(sub_path + 'rws_programacion_actualiza_descargado', controllers.programacion_controller.post_actualiza_descargado);
 router.post(sub_path + 'rws_programacion_obtener_por_id', controllers.programacion_controller.post_obtener_por_id);
 router.get(sub_path + 'rws_programacion_descarga/:id_programacion', controllers.programacion_controller.get_descarga);
+router.post(sub_path + 'rws_programacion_descarga', controllers.programacion_controller.get_descarga_archivos);
 
 router.post(sub_path + 'rws_observacion_lista_por_programacion', controllers.observacion_controller.post_lista_por_programacion);
 router.post(sub_path + 'rws_observacion_registro', controllers.observacion_controller.post_registro);
