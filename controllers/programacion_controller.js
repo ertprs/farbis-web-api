@@ -91,6 +91,9 @@ module.exports = {
                                         'programaciones' : data_programacion
                                     };
                         
+                                    pool_cnx.release();
+                                    pool.end();
+
                                     res.json(response);
                                 }
                                 
@@ -738,6 +741,9 @@ module.exports = {
                                     'programacion' : data
                                 };
     
+                                pool_cnx.release();
+                                pool.end();
+
                                 res.json(response);
                             });
                         });
@@ -1197,6 +1203,9 @@ module.exports = {
                                         'programaciones' : data_programacion
                                     };
     
+                                    pool_cnx.release();
+                                    pool.end();
+
                                     res.json(response);
                                 }
                             });
