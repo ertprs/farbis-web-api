@@ -46,6 +46,7 @@ module.exports = {
 
         var id_operario = req.body.id_operario;
         var fecha = req.body.fecha;
+        var connection = require('.././database/connection');
         var pool = connection.get_pool();
         pool.getConnection(function(err, pool_cnx) {
             if (err) {
@@ -703,6 +704,7 @@ module.exports = {
 
                         str_ids += "'')";
 
+                        var connection = require('.././database/connection');
                         var pool = connection.get_pool();
                         pool.getConnection(function(err, pool_cnx) {
                             if (err) {
@@ -1160,6 +1162,7 @@ module.exports = {
 
                         str_ids += "'')";
 
+                        var connection = require('.././database/connection');
                         var pool = connection.get_pool();
                         pool.getConnection(function(err, pool_cnx) {
                             if (err) {
