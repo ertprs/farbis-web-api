@@ -196,9 +196,6 @@ module.exports = {
         var msg = '';
         let stmt = 'SELECT IdUsuario as id_usuario, Nombres as nombres, Apellidos as apellidos, Telefono as telefono FROM adm_usuario WHERE IdUsuario in  ' + ids + ';';
 
-        if (pool_cnx==null) {
-            pool_cnx = connection.get_pool_connection();
-        }
         pool_cnx.query(stmt, [ ] , function (err, rows, fields) {
             if (err) {
                 console.error('error connecting: ' + err.stack);
