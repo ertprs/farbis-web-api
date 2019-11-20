@@ -26,16 +26,23 @@ module.exports = {
 
         programacion_model.lista_por_operario(id_operario, function(msg, data){
 
-            programacion_model.servicio_emergencia_cantidad(id_operario, null, function(msg, row){
+            var connection = require('.././database/connection');
+            var pool = connection.get_pool();
+            pool.getConnection(function(err, pool_cnx) {
+                if (err) {
+                    console.error('error get_pool_connection: ' + err.stack);
+                }
+                programacion_model.servicio_emergencia_cantidad(id_operario, pool_cnx, function(msg, row){
 
-                var response = {
-                    'ws_code' : '0',
-                    'mensaje' : msg, 
-                    'ultimo_servicio_emergencia' : row,
-                    'programaciones' : data
-                };
-
-                res.json(response);
+                    var response = {
+                        'ws_code' : '0',
+                        'mensaje' : msg, 
+                        'ultimo_servicio_emergencia' : row,
+                        'programaciones' : data
+                    };
+    
+                    res.json(response);
+                });
             });
         });
     },
