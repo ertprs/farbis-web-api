@@ -854,40 +854,47 @@ module.exports = {
                         parentFolderName: '' //if specified, the content will be zipped, within the 'v1.0' folder
                     };
                     
-                    zip.zipFolder('public/files/2019-2019 000011-0000033509', options, function(err){
-                        console.log(err);
-
-                        zip.writeToResponse(res, 'attachment.zip');
-
-                        /*
-                        zip.writeToFile('public/zip/' + nombre_archivo_lg, function() {
-                            console.log('Creado');
-                            var filePath = "public/zip/" + nombre_archivo_lg;
-                            setTimeout(function () {
-                                console.log(filePath);
-                                console.log('Descargando ...');
-                                
-                                fs.readFile(filePath, function (err, file){
-                                    if (err) {
-                                        res.writeHead(500, {
-                                          "Content-Type": "binary"
+                    try{
+                        zip.zipFolder('public/files/2019-2019 000011-0000033509', options, function(err){
+                            console.log(err);
+    
+                            zip.writeToResponse(res, 'attachment.zip');
+    
+                            /*
+                            zip.writeToFile('public/zip/' + nombre_archivo_lg, function() {
+                                console.log('Creado');
+                                var filePath = "public/zip/" + nombre_archivo_lg;
+                                setTimeout(function () {
+                                    console.log(filePath);
+                                    console.log('Descargando ...');
+                                    
+                                    fs.readFile(filePath, function (err, file){
+                                        if (err) {
+                                            res.writeHead(500, {
+                                              "Content-Type": "binary"
+                                            });
+                                            res.write(err + "\n");
+                                            res.end();
+                                            return;
+                                        }
+                                        res.writeHead(200, {
+                                            "Content-Disposition": "attachment;filename=" + nombre_archivo_lg,
+                                            'Content-Type': 'application/zip',
+                                            'Content-Length': file.length
                                         });
-                                        res.write(err + "\n");
+                                        res.write(file);
                                         res.end();
-                                        return;
-                                    }
-                                    res.writeHead(200, {
-                                        "Content-Disposition": "attachment;filename=" + nombre_archivo_lg,
-                                        'Content-Type': 'application/zip',
-                                        'Content-Length': file.length
-                                    });
-                                    res.write(file);
-                                    res.end();
-                                });                        
-                            }, 1000);
+                                    });                        
+                                }, 1000);
+                            });
+                            */
                         });
-                        */
-                    });
+                    } catch (error){
+                        console.log('Catch:');
+                        console.log(error);
+                    }
+
+                    
                     
 
                     /*
