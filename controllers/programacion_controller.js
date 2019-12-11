@@ -848,7 +848,7 @@ module.exports = {
 
                     console.log('Carpeta: ' + nombre_archivo_lg);
 
-                    /*
+                    
                     var options = {
                         excludeParentFolder: false, //Default : false. if true, the content will be zipped excluding parent folder.
                         parentFolderName: '' //if specified, the content will be zipped, within the 'v1.0' folder
@@ -860,6 +860,7 @@ module.exports = {
                             var filePath = "public/zip/" + nombre_archivo_lg;
                             setTimeout(function () {
                                 console.log(filePath);
+                                console.log('Descargando ...');
                                 
                                 fs.readFile(filePath, function (err, file){
                                     if (err) {
@@ -881,8 +882,9 @@ module.exports = {
                             }, 1000);
                         });
                     });
-                    */
+                    
 
+                    /*
                     var files = [
                         {source : 'public/files/2019-2019 000011-0000033509/2019-2019 000011-0000033509-00006-1-1-DET.jpg',target:'2019-2019 000011-0000033509-00006-1-1-DET.jpg'},
                         //{source : 'public/files/2019-2019 000011-0000033509/2019-2019 000011-0000033509-00006-1-1-DET.jpg',target:'2019-2019 000011-0000033509-00006-1-2-DET.jpg'},
@@ -920,7 +922,7 @@ module.exports = {
                         });
                         
                     });
-                    
+                    */
 
                 }
             });
