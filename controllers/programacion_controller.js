@@ -838,7 +838,10 @@ module.exports = {
                 } else {
                 }
             });
-            /*
+
+            jsFolder.file('hello.js','alert("hello world")');
+            jsFolder.writeToFile('folder.zip');
+            
             var files = [
                 {source : 'index.js',target:'index.js'},
                 {target : 'img'},//if source is null,means make a folder
@@ -849,11 +852,39 @@ module.exports = {
                 if (exists) {
                     var FolderZip = require('folder-zip');
                     var zip = new FolderZip();
-                    zip.addFile()
+                    var nombre_archivo_lg = directory + ".zip";
+
+                    zip.addFile('2019-2019 000011-0000033509-00006-1-1-DET.jpg', 'public/files/2019-2019 000011-0000033509/2019-2019 000011-0000033509-00006-1-1-DET.jpg', function () {
+                        zip.writeToFile('public/zip/' + nombre_archivo_lg);
+                        var filePath = "public/zip/" + nombre_archivo_lg;
+                        setTimeout(function () {
+                            console.log(filePath);
+                            
+                            fs.readFile(filePath, function (err, file){
+                                if (err) {
+                                    res.writeHead(500, {
+                                      "Content-Type": "binary"
+                                    });
+                                    res.write(err + "\n");
+                                    res.end();
+                                    return;
+                                }
+                                res.writeHead(200, {
+                                    "Content-Disposition": "attachment;filename=" + nombre_archivo_lg,
+                                    'Content-Type': 'application/zip',
+                                    'Content-Length': file.length
+                                });
+                                res.write(file);
+                                res.end();
+                            });                        
+                        }, 1000);
+                    });
+
                 }
             });
-            */
             
+            
+            /*
             console.log('aqui 0');
             fs.exists(fileFolder, function(exists) {
                 if (exists) {
@@ -905,7 +936,8 @@ module.exports = {
                     res.end();
                 }
             });
-            
+            */
+
         });
     },
 
