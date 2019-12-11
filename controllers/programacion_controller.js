@@ -891,7 +891,7 @@ module.exports = {
 
                     console.log('Agregando archivo ...');
                     //zip.addFile('2019-2019 000011-0000033509-00006-1-1-DET.jpg', 'public/files/2019-2019 000011-0000033509/2019-2019 000011-0000033509-00006-1-1-DET.jpg', function () {
-                    zip.addFile(files, function () {
+                    zip.batchAdd(files, function () {
                         console.log('Agregado');
                         zip.writeToFile('public/zip/' + nombre_archivo_lg, function() {
                             console.log('Creado');
