@@ -856,29 +856,32 @@ module.exports = {
                     console.log('Agregando archivo ...');
                     zip.addFile('2019-2019 000011-0000033509-00006-1-1-DET.jpg', 'public/files/2019-2019 000011-0000033509/2019-2019 000011-0000033509-00006-1-1-DET.jpg', function () {
                         console.log('Agregado');
-                        zip.writeToFile('public/zip/' + nombre_archivo_lg);
-                        var filePath = "public/zip/" + nombre_archivo_lg;
-                        setTimeout(function () {
-                            console.log(filePath);
-                            
-                            fs.readFile(filePath, function (err, file){
-                                if (err) {
-                                    res.writeHead(500, {
-                                      "Content-Type": "binary"
+                        zip.writeToFile('public/zip/' + nombre_archivo_lg, function() {
+                            console.log('Creado');
+                            var filePath = "public/zip/" + nombre_archivo_lg;
+                            setTimeout(function () {
+                                console.log(filePath);
+                                
+                                fs.readFile(filePath, function (err, file){
+                                    if (err) {
+                                        res.writeHead(500, {
+                                          "Content-Type": "binary"
+                                        });
+                                        res.write(err + "\n");
+                                        res.end();
+                                        return;
+                                    }
+                                    res.writeHead(200, {
+                                        "Content-Disposition": "attachment;filename=" + nombre_archivo_lg,
+                                        'Content-Type': 'application/zip',
+                                        'Content-Length': file.length
                                     });
-                                    res.write(err + "\n");
+                                    res.write(file);
                                     res.end();
-                                    return;
-                                }
-                                res.writeHead(200, {
-                                    "Content-Disposition": "attachment;filename=" + nombre_archivo_lg,
-                                    'Content-Type': 'application/zip',
-                                    'Content-Length': file.length
-                                });
-                                res.write(file);
-                                res.end();
-                            });                        
-                        }, 1000);
+                                });                        
+                            }, 1000);
+                        });
+                        
                     });
 
                 }
