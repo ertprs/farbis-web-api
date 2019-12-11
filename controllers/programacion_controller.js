@@ -850,7 +850,7 @@ module.exports = {
 
                     
                     var options = {
-                        excludeParentFolder: false, //Default : false. if true, the content will be zipped excluding parent folder.
+                        excludeParentFolder: true, //Default : false. if true, the content will be zipped excluding parent folder.
                         parentFolderName: '' //if specified, the content will be zipped, within the 'v1.0' folder
                     };
                     
