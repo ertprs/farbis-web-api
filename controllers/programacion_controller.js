@@ -860,9 +860,9 @@ module.exports = {
                     };
                     
                     zip.zipFolder('../public/files/2019-2019 000011-0000033509', options, function(){
-                        zip.writeToFile('public/zip/zipall.zip', function() {
+                        zip.writeToFile('public/zip/' + nombre_archivo_lg, function() {
                             console.log('Creado');
-                            var filePath = "public/zip/zipall.zip";
+                            var filePath = "public/zip/" + nombre_archivo_lg;
                             setTimeout(function () {
                                 console.log(filePath);
                                 
