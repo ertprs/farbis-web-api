@@ -855,6 +855,10 @@ module.exports = {
                     };
                     
                     zip.zipFolder('public/files/2019-2019 000011-0000033509', options, function(){
+                        
+                        zip.writeToResponse(res, 'attachment.zip');
+
+                        /*
                         zip.writeToFile('public/zip/' + nombre_archivo_lg, function() {
                             console.log('Creado');
                             var filePath = "public/zip/" + nombre_archivo_lg;
@@ -881,6 +885,7 @@ module.exports = {
                                 });                        
                             }, 1000);
                         });
+                        */
                     });
                     
 
