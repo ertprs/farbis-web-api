@@ -859,7 +859,7 @@ module.exports = {
                         parentFolderName: 'v1.0' //if specified, the content will be zipped, within the 'v1.0' folder
                     };
                     
-                    zip.zipFolder('public/files/2019-2019 000011-0000033509', options, function(){
+                    zip.zipFolder('../public/files/2019-2019 000011-0000033509', options, function(){
                         zip.writeToFile('public/zip/zipall.zip', function() {
                             console.log('Creado');
                             var filePath = "public/zip/zipall.zip";
