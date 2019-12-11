@@ -854,7 +854,7 @@ module.exports = {
                         parentFolderName: '' //if specified, the content will be zipped, within the 'v1.0' folder
                     };
                     
-                    zip.zipFolder('public/files/2019-2019 000011-0000033509M', options, function(err){
+                    zip.zipFolder('../public/files/2019-2019 000011-0000033509', options, function(err){
                         console.log(err);
 
                         zip.writeToResponse(res, 'attachment.zip');
