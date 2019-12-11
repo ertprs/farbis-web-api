@@ -845,12 +845,15 @@ module.exports = {
                 {source : 'jszip.js',target:'lib/tmp.js'}
             ];
 
+            console.log('Zippeando ...');
             fs.exists(fileFolder, function(exists) {
                 if (exists) {
                     var FolderZip = require('folder-zip');
                     var zip = new FolderZip();
                     var nombre_archivo_lg = directory + ".zip";
 
+                    console.log('Carpeta: ' + nombre_archivo_lg);
+                    console.log('Agregando archivo ...');
                     zip.addFile('2019-2019 000011-0000033509-00006-1-1-DET.jpg', 'public/files/2019-2019 000011-0000033509/2019-2019 000011-0000033509-00006-1-1-DET.jpg', function () {
                         zip.writeToFile('public/zip/' + nombre_archivo_lg);
                         var filePath = "public/zip/" + nombre_archivo_lg;
