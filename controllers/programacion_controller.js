@@ -838,9 +838,6 @@ module.exports = {
                 } else {
                 }
             });
-
-            jsFolder.file('hello.js','alert("hello world")');
-            jsFolder.writeToFile('folder.zip');
             
             var files = [
                 {source : 'index.js',target:'index.js'},
