@@ -855,7 +855,7 @@ module.exports = {
                     console.log('Carpeta: ' + nombre_archivo_lg);
 
                     var options = {
-                        excludeParentFolder: true, //Default : false. if true, the content will be zipped excluding parent folder.
+                        excludeParentFolder: false, //Default : false. if true, the content will be zipped excluding parent folder.
                         parentFolderName: 'v1.0' //if specified, the content will be zipped, within the 'v1.0' folder
                     };
                     
