@@ -41,6 +41,9 @@ module.exports = {
                         'programaciones' : data
                     };
     
+                    pool_cnx.release();
+                    pool.end();
+
                     res.json(response);
                 });
             });
@@ -826,13 +829,31 @@ module.exports = {
             var file = constants.dirname + 'public/zip/' + directory + '.zip';
             var fileFolder = constants.dirname + 'public/files/' + directory + '/';
             var currentPath = full_directory;
-            console.log('aqui -1');
+
+            
+            console.log('Verificando carpeta ...');
             fs.exists(file, function(exists) {
                 if (exists) {
                     fs.unlinkSync(file); // Delete file
                 } else {
                 }
             });
+            /*
+            var files = [
+                {source : 'index.js',target:'index.js'},
+                {target : 'img'},//if source is null,means make a folder
+                {source : 'jszip.js',target:'lib/tmp.js'}
+            ];
+
+            fs.exists(fileFolder, function(exists) {
+                if (exists) {
+                    var FolderZip = require('folder-zip');
+                    var zip = new FolderZip();
+                    zip.addFile()
+                }
+            });
+            */
+            
             console.log('aqui 0');
             fs.exists(fileFolder, function(exists) {
                 if (exists) {
@@ -856,22 +877,6 @@ module.exports = {
                                 console.log('Error A =>');
                                 console.log(err);
                             }
-                            /*
-                            zip.writeToFile('public/zip/' + directory + '.zip');
-                            console.log('aqui 2');
-                            setTimeout(function() {
-                                fs.exists(file, function(exists) {
-                                    if (exists) {
-                                        console.log('aqui 3');
-                                        res.download(file);
-                                    } else {
-                                        console.log('aqui 4');
-                                        res.write('El archivo ' + directory + '.zip no existe');
-                                        res.end();
-                                    }
-                                });
-                            }, 3000);
-                            */
                             zip.writeToFile('public/zip/' + directory + '.zip', function(err) {
                                 if (err) {
                                     console.log('Error B =>');
@@ -892,14 +897,15 @@ module.exports = {
                             res.write('Error controlado B');
                             res.end();
                         });
-                        res.write('Error controlado A');
-                        res.end();
+                        //res.write('Error controlado A');
+                        //res.end();
                     }
                 } else {
                     res.write('La carpeta ' + directory + ' no existe');
                     res.end();
                 }
             });
+            
         });
     },
 

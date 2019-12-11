@@ -269,6 +269,7 @@ module.exports = {
         cnx.end(function () {});
     },
 
+    /*
     servicio_emergencia_cantidad : function(id_usuario, callback) {
 
         var cnx = connection.get_connection();
@@ -288,12 +289,8 @@ module.exports = {
             callback(msg, data);
         });
     },
-
+*/
     servicio_emergencia_cantidad : function(id_usuario, pool_cnx, callback) {
-
-        if (pool_cnx==null) {
-            pool_cnx = connection.get_pool_connection();
-        }
 
         pool_cnx.query('CALL ssp_ope_programacion_servicio_emergencia_cantidad(?)', [ id_usuario ], function(err, rows, fields)
         {
