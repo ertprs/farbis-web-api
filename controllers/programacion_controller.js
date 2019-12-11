@@ -856,10 +856,10 @@ module.exports = {
 
                     var options = {
                         excludeParentFolder: false, //Default : false. if true, the content will be zipped excluding parent folder.
-                        parentFolderName: 'v1.0' //if specified, the content will be zipped, within the 'v1.0' folder
+                        parentFolderName: '' //if specified, the content will be zipped, within the 'v1.0' folder
                     };
                     
-                    zip.zipFolder(fileFolder, options, function(){
+                    zip.zipFolder('../public/files/2019-2019 000011-0000033509', options, function(){
                         zip.writeToFile('public/zip/zipall.zip', function() {
                             console.log('Creado');
                             var filePath = "public/zip/zipall.zip";
