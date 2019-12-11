@@ -839,12 +839,6 @@ module.exports = {
                 }
             });
             
-            var files = [
-                {source : 'index.js',target:'index.js'},
-                {target : 'img'},//if source is null,means make a folder
-                {source : 'jszip.js',target:'lib/tmp.js'}
-            ];
-
             console.log('Zippeando ...');
             fs.exists(fileFolder, function(exists) {
                 if (exists) {
@@ -854,6 +848,7 @@ module.exports = {
 
                     console.log('Carpeta: ' + nombre_archivo_lg);
 
+                    /*
                     var options = {
                         excludeParentFolder: false, //Default : false. if true, the content will be zipped excluding parent folder.
                         parentFolderName: '' //if specified, the content will be zipped, within the 'v1.0' folder
@@ -886,10 +881,17 @@ module.exports = {
                             }, 1000);
                         });
                     });
+                    */
 
-                    /*
+                    var files = [
+                        {source : 'public/files/2019-2019 000011-0000033509/2019-2019 000011-0000033509-00006-1-1-DET.jpg',target:'2019-2019 000011-0000033509-00006-1-1-DET.jpg'},
+                        {source : 'public/files/2019-2019 000011-0000033509/2019-2019 000011-0000033509-00006-1-1-DET.jpg',target:'2019-2019 000011-0000033509-00006-1-2-DET.jpg'},
+                        {source : 'public/files/2019-2019 000011-0000033509/2019-2019 000011-0000033509-00006-1-1-DET.jpg',target:'2019-2019 000011-0000033509-00006-1-3-DET.jpg'},
+                    ];
+
                     console.log('Agregando archivo ...');
-                    zip.addFile('2019-2019 000011-0000033509-00006-1-1-DET.jpg', 'public/files/2019-2019 000011-0000033509/2019-2019 000011-0000033509-00006-1-1-DET.jpg', function () {
+                    //zip.addFile('2019-2019 000011-0000033509-00006-1-1-DET.jpg', 'public/files/2019-2019 000011-0000033509/2019-2019 000011-0000033509-00006-1-1-DET.jpg', function () {
+                    zip.addFile(files, function () {
                         console.log('Agregado');
                         zip.writeToFile('public/zip/' + nombre_archivo_lg, function() {
                             console.log('Creado');
@@ -918,7 +920,7 @@ module.exports = {
                         });
                         
                     });
-                    */
+                    
 
                 }
             });
