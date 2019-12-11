@@ -855,6 +855,7 @@ module.exports = {
                     console.log('Carpeta: ' + nombre_archivo_lg);
                     console.log('Agregando archivo ...');
                     zip.addFile('2019-2019 000011-0000033509-00006-1-1-DET.jpg', 'public/files/2019-2019 000011-0000033509/2019-2019 000011-0000033509-00006-1-1-DET.jpg', function () {
+                        console.log('Agregado');
                         zip.writeToFile('public/zip/' + nombre_archivo_lg);
                         var filePath = "public/zip/" + nombre_archivo_lg;
                         setTimeout(function () {
