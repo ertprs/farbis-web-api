@@ -192,10 +192,9 @@ angular.module('FarbisWebApp')
             if (programacion.direccion != '') {
                 //geocodeAddress(programacion);
             }
-        });
-
-        
+        });        
     }
+
     function abrirDetalleModal() {
         var modalInstance = $uibModal.open({
             templateUrl: 'views/programacion/modal-detalle.html',
