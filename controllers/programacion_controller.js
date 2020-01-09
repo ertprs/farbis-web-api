@@ -1003,7 +1003,7 @@ module.exports = {
         functions.print_console('rest method programacion: post_descarga_archivos');
 
         var id_programacion = req.body.id_programacion;
-
+        console.log('id_programacion: '+id_programacion);
         programacion_model.obtener(id_programacion, function(msg, programacion){
             
             var host = "http://142.93.77.117/files/";
@@ -1012,28 +1012,39 @@ module.exports = {
             var filesToReturn = [];
             // http://142.93.77.117/files/2017-000001-P000000001/img010.jpg
 
-            var files = fs.readdirSync(full_directory);
-            console.log('FILES >>>');
-            console.log(files);
-            for (var i in files) {
-                var curFile = path.join(full_directory, files[i]);      
-                if (fs.statSync(curFile).isFile()) {
-                    filesToReturn.push(host + directory + '/' + curFile.replace(full_directory, ''));
-                    /*
-                    var link = curFile.replace(full_directory, '');
-                    link = curFile.replace('public/', '');
-                    console.log(link);
-                    */
+            fs.exists(full_directory, function(exists) {
+                if (exists) {
+                    var files = fs.readdirSync(full_directory);
+                    for (var i in files) {
+                        var curFile = path.join(full_directory, files[i]);      
+                        if (fs.statSync(curFile).isFile()) {
+                            filesToReturn.push(host + directory + '/' + curFile.replace(full_directory, ''));
+                            /*
+                            var link = curFile.replace(full_directory, '');
+                            link = curFile.replace('public/', '');
+                            console.log(link);
+                            */
+                        }
+                    }
+        
+                    var response = {
+                        'ws_code' : '0',
+                        'mensaje' : 'OK', 
+                        'archivos' : filesToReturn
+                    };
+        
+                    res.json(response);
+                } 
+                else {
+                    var response = {
+                        'ws_code' : '0',
+                        'mensaje' : 'OK', 
+                        'archivos' : filesToReturn
+                    };
+        
+                    res.json(response);
                 }
-            }
-
-            var response = {
-                'ws_code' : '0',
-                'mensaje' : 'OK', 
-                'archivos' : filesToReturn
-            };
-
-            res.json(response);
+            });
         });
     },
 
