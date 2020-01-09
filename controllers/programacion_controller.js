@@ -1013,6 +1013,8 @@ module.exports = {
             // http://142.93.77.117/files/2017-000001-P000000001/img010.jpg
 
             var files = fs.readdirSync(full_directory);
+            console.log('FILES >>>');
+            console.log(files);
             for (var i in files) {
                 var curFile = path.join(full_directory, files[i]);      
                 if (fs.statSync(curFile).isFile()) {
