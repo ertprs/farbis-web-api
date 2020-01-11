@@ -1,0 +1,1 @@
+Carpeta que contiene la versión a instalar.
