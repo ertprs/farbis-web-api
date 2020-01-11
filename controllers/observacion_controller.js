@@ -25,6 +25,9 @@ module.exports = {
                 'observaciones' : data
             };
 
+            pool_cnx.release();
+            pool.end();
+
             res.json(response);
         });
     },
