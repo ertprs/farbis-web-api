@@ -14,22 +14,27 @@ module.exports = {
         functions.print_console('rest method observacion: post_lista_por_programacion');
 
         var id_programacion = req.body.id_programacion;
+ 
         var connection = require('.././database/connection');
         var pool = connection.get_pool();
+        pool.getConnection(function(err, pool_cnx) {
+            if (err) {
+                console.error('error get_pool_connection: ' + err.stack);
+            }
+            observacion_model.lista_por_programacion(id_programacion, pool_cnx, function(msg, data){
 
-        observacion_model.lista_por_programacion(id_programacion, pool, function(msg, data){
-
-            var response = {
-                'ws_code' : '0',
-                'mensaje' : msg, 
-                'observaciones' : data
-            };
-
-            pool_cnx.release();
-            pool.end();
-
-            res.json(response);
-        });
+                var response = {
+                    'ws_code' : '0',
+                    'mensaje' : msg, 
+                    'observaciones' : data
+                };
+    
+                pool_cnx.release();
+                pool.end();
+    
+                res.json(response);
+            });
+        });        
     },
 
     post_registro : function(req, res, next)
