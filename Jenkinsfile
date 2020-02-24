@@ -6,7 +6,7 @@ pipeline {
         docker { 
             image 'node:6.3' 
         } 
-    },
+    }
 
     stages {
         stage('Build') {
