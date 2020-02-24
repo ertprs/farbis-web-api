@@ -32,7 +32,7 @@
     "express-fileupload": "^0.1.4",
     "express-session": "^1.15.6",
     "folder-zip": "0.0.5",
-    "mysql": "^2.13.0",
+    "mysql": "^2.14.0",
     "node-gcm": "^0.14.6",
     "node-zip": "^1.1.1",
     "nodemailer": "^4.6.4",
