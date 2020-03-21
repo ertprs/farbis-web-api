@@ -296,7 +296,9 @@ module.exports = {
                 celular_programadora2, nombre_programadora3, celular_programadora3, servicio_emergencia, id_usuario, 
                 function(msg, data, id){
 
-
+                    console.log('msg: ' + msg);
+                    console.log('data: ' + data);
+                    console.log('id: ' + id);
 
             if (indicaciones != null) {
                 var arr_indicaciones = [];
