@@ -40,7 +40,160 @@ function myMap() {
             //fullscreenControl: true,
             styles: [
                 {
+                  "featureType": "administrative.land_parcel",
+                  "elementType": "labels",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "administrative.locality",
+                  "elementType": "labels",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "administrative.neighborhood",
+                  "elementType": "labels",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "landscape.man_made",
+                  "elementType": "geometry",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "landscape.man_made",
+                  "elementType": "labels",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "landscape.natural",
+                  "elementType": "labels",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
                   "featureType": "poi",
+                  "stylers": [
+                    {
+                      "visibility": "simplified"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.attraction",
+                  "stylers": [
+                    {
+                      "visibility": "simplified"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.business",
+                  "stylers": [
+                    {
+                      "visibility": "simplified"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.government",
+                  "stylers": [
+                    {
+                      "visibility": "simplified"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.medical",
+                  "stylers": [
+                    {
+                      "visibility": "simplified"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.park",
+                  "stylers": [
+                    {
+                      "visibility": "simplified"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.park",
+                  "elementType": "labels.text",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.place_of_worship",
+                  "stylers": [
+                    {
+                      "visibility": "simplified"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.school",
+                  "stylers": [
+                    {
+                      "visibility": "simplified"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.sports_complex",
+                  "stylers": [
+                    {
+                      "visibility": "simplified"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.arterial",
+                  "elementType": "labels",
+                  "stylers": [
+                    {
+                      "visibility": "simplified"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.highway",
+                  "stylers": [
+                    {
+                      "visibility": "simplified"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.local",
+                  "elementType": "labels",
                   "stylers": [
                     {
                       "visibility": "off"

@@ -82,7 +82,7 @@ html, body
   width: 100%;
   height: 100%;
   position: relative;
-  padding-bottom: 65% !important;
+  padding-bottom: 60% !important;
 }
 .gm-style .gm-style-cc span, .gm-style .gm-style-cc a, .gm-style .gm-style-mtc div {
   font-size: 12px !important;
