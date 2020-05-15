@@ -185,6 +185,7 @@ function myMap() {
             var commentsRef = firebase.database().ref('usuarios');
             commentsRef.on('child_added', function(data) {
                 console.log('child_added');
+                console.log(data);
                 const id_usuario = data.key;
                 const login = data.val().login;
                 const lat = data.val().lat;
