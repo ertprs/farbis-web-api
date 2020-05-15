@@ -81,7 +81,7 @@ html, body
 
 #gmaps {
   width: 100%;
-  height: 615px;
+  height: 100%;
 }
 .gm-style .gm-style-cc span, .gm-style .gm-style-cc a, .gm-style .gm-style-mtc div {
   font-size: 12px !important;

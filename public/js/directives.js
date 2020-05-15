@@ -34,7 +34,10 @@ function myMap() {
             center: new google.maps.LatLng(-12.0466083, -77.0430169),
             zoom: 14,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
+            zoomControl: true,
             scrollwheel: false,
+            disableDefaultUI: true,
+            fullscreenControl: true,
             styles: [
                 {
                   "featureType": "poi",
