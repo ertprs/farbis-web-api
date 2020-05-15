@@ -78,10 +78,15 @@ html, body
   cursor: pointer;
 }
 
+html, body, .container, #gmaps {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 #gmaps {
-  width: 100%;
-  height: 615px;
+  position: relative;
 }
 .gm-style .gm-style-cc span, .gm-style .gm-style-cc a, .gm-style .gm-style-mtc div {
   font-size: 12px !important;
