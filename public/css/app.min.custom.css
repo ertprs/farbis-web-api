@@ -87,6 +87,7 @@ html, body, .container, #gmaps {
 
 #gmaps {
   position: relative;
+  padding-bottom: 65% !important;
 }
 .gm-style .gm-style-cc span, .gm-style .gm-style-cc a, .gm-style .gm-style-mtc div {
   font-size: 12px !important;
