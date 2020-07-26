@@ -1496,7 +1496,6 @@ module.exports = {
         functions.print_console('rest method programacion: post_lista');
 
         var id_operario = req.body.id_operario;
-        console.log('id_operario:'+id_operario);
         var connection = require('.././database/connection');
         var pool = connection.get_pool();
 
@@ -1506,12 +1505,10 @@ module.exports = {
             }
 
             programacion_model.lista(pool_cnx, function(msg, data_programacion){
-                console.log('prg len:'+data_programacion.length);
                 if (data_programacion.length > 0) {
                     data_programacion.forEach(function(programacion, index_programacion) {
     
                         observacion_model.lista_por_programacion(programacion.id_programacion, pool_cnx, function(msg, observaciones){
-                            console.log('obs len:'+observaciones.length);
                             programacion.observaciones = observaciones;
     
                             // Listamos el personal
@@ -1562,7 +1559,6 @@ module.exports = {
                                 str_ids += "'')";
     
                                 usuario_model.obtiene_por_id_multiple(str_ids, pool_cnx, function(msg, data_usuario){
-                                    console.log(data_usuario);
                                     if (data_usuario) {
                                         if (data_usuario.length > 0) {
                                             data_usuario.forEach(function(usu, index_usuario) {
