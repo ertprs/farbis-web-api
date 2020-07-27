@@ -193,11 +193,11 @@ module.exports = {
         var item = req.body.item;
         
         if (req.files) {
-            
+            nro_orden = nro_orden.replace('/', '');
+
             var file = req.files.imagen;
             var mensaje = '';
             var directory = 'public/files/' + anio + '-' + nro_orden + '-' +  id_programacion + '/';
-            directory = directory.replace('/', '');
             directory = directory.replace(' ', '');
             console.log('directory:'+directory);
             functions.check_directory(directory, function(err) {  
