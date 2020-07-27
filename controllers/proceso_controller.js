@@ -199,7 +199,7 @@ module.exports = {
             var file = req.files.imagen;
             var mensaje = '';
             var directory = 'public/files/' + anio + '-' + nro_orden + '-' +  id_programacion + '/';
-            console.log('directory:'+directory);
+            
             functions.check_directory(directory, function(err) {  
                 if (err) {
                     mensaje = err;

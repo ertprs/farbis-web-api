@@ -163,6 +163,7 @@ function getFilesFromDir(dir, fileTypes) {
         filename = filename.replace(dir, '');
         var link = curFile.replace(dir, '');
         link = curFile.replace('public/', '');
+        link = curFile.replace('archivos/', '');
         myhtml += "<li class='file'><a target='_blank' href='"+link+"'>"+filename+"</a></li>";
 
       } else if (fs.statSync(curFile).isDirectory()) {

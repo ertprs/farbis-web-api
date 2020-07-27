@@ -170,7 +170,9 @@ module.exports = {
         var anio = req.body.anio;
         
         if (req.files) {
-            
+            nro_orden = nro_orden.replace('/', '');
+            nro_orden = nro_orden.replace(' ', '');
+
             var file = req.files.imagen;
             var mensaje = '';
             var directory = 'public/files/' + anio + '-' + nro_orden + '-' +  id_programacion + '/';
@@ -281,6 +283,8 @@ module.exports = {
         if (celular_coordino == null) {
             celular_coordino = '';
         }
+        nro_orden = nro_orden.replace('/', '');
+        nro_orden = nro_orden.replace(' ', '');
         /*
         if (personal == '') {
             personal = personal_encargado;
@@ -412,6 +416,8 @@ module.exports = {
             if (celular_coordino == null) {
                 celular_coordino = '';
             }
+            nro_orden = nro_orden.replace('/', '');
+            nro_orden = nro_orden.replace(' ', '');
             
             arr_programaciones.push([
                 id_programacion, id_empresa, fecha, nro_orden, cliente, giro_comercial, direccion, referencia,
@@ -824,7 +830,9 @@ module.exports = {
         var id_programacion = req.params.id_programacion;
 
         programacion_model.obtener(id_programacion, function(msg, programacion){
-            //console.log(programacion);
+            programacion.nro_orden = programacion.nro_orden.replace('/', '');
+            programacion.nro_orden = programacion.nro_orden.replace(' ', '');
+
             var directory = programacion.fecha.getFullYear() + '-' + programacion.nro_orden + '-' +  programacion.id_programacion;
             var full_directory = 'public/files/' + directory + '/';
             var filename = '';
@@ -1007,6 +1015,8 @@ module.exports = {
         var id_programacion = req.body.id_programacion;
         console.log('id_programacion: '+id_programacion);
         programacion_model.obtener(id_programacion, function(msg, programacion){
+            programacion.nro_orden = programacion.nro_orden.replace('/', '');
+            programacion.nro_orden = programacion.nro_orden.replace(' ', '');
             
             var host = "http://142.93.77.117/files/";
             var directory = programacion.fecha.getFullYear() + '-' + programacion.nro_orden + '-' +  programacion.id_programacion;
