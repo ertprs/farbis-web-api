@@ -29,7 +29,7 @@
     "cors": "^2.8.4",
     "ejs": "^2.5.5",
     "express": "^4.14.0",
-    "express-fileupload": "^0.1.4",
+    "express-fileupload": "^1.1.9",
     "express-session": "^1.15.6",
     "folder-zip": "0.0.5",
     "mysql": "^2.13.0",
